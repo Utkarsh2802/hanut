@@ -69,7 +69,7 @@ public class HanutApp extends JApplet {
             
             @Override
             public void run() {
-                createScene();
+                createScene(); //change this
             }
         });
     }
