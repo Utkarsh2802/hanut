@@ -8,7 +8,7 @@ CREATE TABLE customer (
 );
 
 CREATE TABLE cred (
-	id int(10) NOT NULL,
+	email varchar(50) UNIQUE,
 	password varchar(20) NOT NULL,
 	PRIMARY KEY (id)
 );
@@ -18,6 +18,7 @@ CREATE TABLE seller (
 	name varchar(30) NOT NULL,
 	phone numeric(10) NOT NULL UNIQUE,
 	email varchar(50) UNIQUE,
+	address varchar(50) UNIQUE,
 	PRIMARY KEY (id)
 );
 
@@ -26,6 +27,7 @@ CREATE TABLE manufacturer (
 	name varchar(30) NOT NULL,
 	phone numeric(10) NOT NULL UNIQUE,
 	email varchar(50) UNIQUE,
+	address varchar(50) UNIQUE,
 	PRIMARY KEY (id)
 );
 
