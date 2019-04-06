@@ -640,6 +640,7 @@ JOptionPane.showMessageDialog(null, "Status Updated Successfuly");
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
 LoginPage L = new LoginPage();
+Session.logout();
 L.setVisible(true);
 this.setVisible(false);// TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed

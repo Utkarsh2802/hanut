@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package project_hanut;
-import Project_hANUT.*;
+//import Project_hANUT.*;
 import java.sql.*;
 import javax.swing.JOptionPane;
 
@@ -38,14 +38,10 @@ public class LoginPage extends javax.swing.JFrame {
         sidepane1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jTextField2 = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jLabel3 = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
         jLabel4 = new javax.swing.JLabel();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
-        jRadioButton3 = new javax.swing.JRadioButton();
         jPasswordField1 = new javax.swing.JPasswordField();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
@@ -69,12 +65,7 @@ public class LoginPage extends javax.swing.JFrame {
         jTextField2.setForeground(new java.awt.Color(204, 204, 204));
         jTextField2.setBorder(null);
         jTextField2.setOpaque(false);
-        jPanel2.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 48, 301, -1));
-
-        jLabel1.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 14)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Login As");
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, 108, 31));
+        jPanel2.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 301, -1));
 
         jSeparator1.setForeground(new java.awt.Color(255, 255, 255));
         jPanel2.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 75, 301, 10));
@@ -91,38 +82,6 @@ public class LoginPage extends javax.swing.JFrame {
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Password");
         jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, 108, 31));
-
-        buttonGroup1.add(jRadioButton1);
-        jRadioButton1.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 14)); // NOI18N
-        jRadioButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jRadioButton1.setText("Manufacturer");
-        jRadioButton1.setBorder(null);
-        jRadioButton1.setIconTextGap(5);
-        jRadioButton1.setOpaque(false);
-        jPanel2.add(jRadioButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 260, -1, -1));
-
-        buttonGroup1.add(jRadioButton2);
-        jRadioButton2.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 14)); // NOI18N
-        jRadioButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jRadioButton2.setText("Customer");
-        jRadioButton2.setBorder(null);
-        jRadioButton2.setIconTextGap(5);
-        jRadioButton2.setOpaque(false);
-        jPanel2.add(jRadioButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 260, -1, -1));
-
-        buttonGroup1.add(jRadioButton3);
-        jRadioButton3.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 14)); // NOI18N
-        jRadioButton3.setForeground(new java.awt.Color(255, 255, 255));
-        jRadioButton3.setText("Seller");
-        jRadioButton3.setBorder(null);
-        jRadioButton3.setIconTextGap(5);
-        jRadioButton3.setOpaque(false);
-        jRadioButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton3ActionPerformed(evt);
-            }
-        });
-        jPanel2.add(jRadioButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 260, -1, -1));
 
         jPasswordField1.setBackground(new java.awt.Color(51, 49, 60));
         jPasswordField1.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 14)); // NOI18N
@@ -223,47 +182,43 @@ public class LoginPage extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
 String username = jTextField2.getText();
 String password = new String(jPasswordField1.getPassword());
-Connection conn = null;
-Statement mystmt = null;
-ResultSet us = null;
-PreparedStatement ps;
-String query = "select * from cred where email=? and password =?";
-
-conn = Project_hANUT.getConnection();
+boolean verified=false;
 try 
 {            
-   
-ps = conn.prepareStatement(query);
-ps.setString(1,username);
-ps.setString(2,password);
-us = ps.executeQuery();
-if(us.next())
-{
-if(jRadioButton2.isSelected() == true)
-{
-    AllProductPage a = new AllProductPage();
-    a.setVisible(true);
-    this.setVisible(false);
+Class.forName("java.sql.DriverManager");
+            com.mysql.jdbc.Connection con = (com.mysql.jdbc.Connection)
+            DriverManager.getConnection
+            ("jdbc:mysql://localhost:3306/hanut",
+            "root", "khator");
+            com.mysql.jdbc.Statement stmt = (com.mysql.jdbc.Statement) con.createStatement();
+            String query="SELECT PASSWORD FROM cred where username='"+username+"';";
+            ResultSet rs=stmt.executeQuery(query);
+            
+            if(rs.next()){
+                String pass=rs.getString("password");
+                if(pass.equals(password)){
+                Session.logined(username);
+                verified=true;
+                }
+                else
+                    JOptionPane.showMessageDialog(this, "password incorrect!");
+            }
+            else{
+                JOptionPane.showMessageDialog(this, "Username incorrect!");
+            }
+            if(verified){
+                switch(Session.user_type()){
+                    case 'C':new AllProductPage().setVisible(true);
+                        break;
+                    case 'S':new SellerPage().setVisible(true);
+                        break;
+                    case 'M'://manufacturer page->new ManufacturerPage().setVisible(true);
+                        break;
+                }
+                this.dispose();
+            }
 }
-else if(jRadioButton3.isSelected() == true)
-{
-        SellerPage a = new SellerPage(username);
-    a.setVisible(true);
-    this.setVisible(false);
-}
-else if(jRadioButton1.isSelected() == true)
-{
-    AllProductPage a = new AllProductPage();
-    a.setVisible(true);
-    this.setVisible(false);
-}
-}
-else
-    JOptionPane.showMessageDialog(null, "Wrong username or password please try again");
-}
-catch(SQLException e)
-{
-}
+catch(Exception e){}
 
 /*else
 {
@@ -273,10 +228,6 @@ catch(SQLException e)
 }*/
 // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void jRadioButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -321,7 +272,6 @@ catch(SQLException e)
     private javax.swing.ButtonGroup buttonGroup4;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -329,9 +279,6 @@ catch(SQLException e)
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPasswordField jPasswordField1;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
-    private javax.swing.JRadioButton jRadioButton3;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JTextField jTextField2;
