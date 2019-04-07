@@ -69,6 +69,11 @@ public class LoginPage extends javax.swing.JFrame {
         jTextField2.setForeground(new java.awt.Color(204, 204, 204));
         jTextField2.setBorder(null);
         jTextField2.setOpaque(false);
+        jTextField2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTextField2MouseClicked(evt);
+            }
+        });
         jPanel2.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 301, -1));
 
         jSeparator1.setForeground(new java.awt.Color(255, 255, 255));
@@ -91,12 +96,19 @@ public class LoginPage extends javax.swing.JFrame {
         jPasswordField1.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 14)); // NOI18N
         jPasswordField1.setForeground(new java.awt.Color(255, 255, 255));
         jPasswordField1.setBorder(null);
+        jPasswordField1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPasswordField1MouseClicked(evt);
+            }
+        });
         jPanel2.add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, 300, -1));
 
+        jLabel1.setFont(new java.awt.Font("Ubuntu", 2, 15)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(251, 45, 45));
         jLabel1.setText("Incorrect email id");
         jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, -1, -1));
 
+        jLabel6.setFont(new java.awt.Font("Ubuntu", 2, 15)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(244, 19, 19));
         jLabel6.setText("Incorrect password");
         jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, -1, -1));
@@ -196,15 +208,9 @@ String emailid = jTextField2.getText();
 String password = new String(jPasswordField1.getPassword());
 boolean verified=false;
 try 
-{            
-Class.forName("java.sql.DriverManager");
-            com.mysql.jdbc.Connection con = (com.mysql.jdbc.Connection)
-            DriverManager.getConnection
-            ("jdbc:mysql://localhost:3306/hanut",
-            "root", "khator");
-            com.mysql.jdbc.Statement stmt = (com.mysql.jdbc.Statement) con.createStatement();
+{  
             String query="SELECT id,password FROM cred where email='"+emailid+"';";
-            ResultSet rs=stmt.executeQuery(query);
+            ResultSet rs=SqlQ.retrive(query);
             
             if(rs.next()){
                 jLabel1.setVisible(false);
@@ -218,6 +224,7 @@ Class.forName("java.sql.DriverManager");
                     jLabel6.setVisible(true);//JOptionPane.showMessageDialog(this, "password incorrect!");
             }
             else{
+                jLabel6.setVisible(false);
                 jLabel1.setVisible(true);// JOptionPane.showMessageDialog(this, "Username incorrect!");
             }
             if(verified){
@@ -227,7 +234,7 @@ Class.forName("java.sql.DriverManager");
                         break;
                     case 'S':new SellerPage().setVisible(true);
                         break;
-                    case 'M'://manufacturer page->new ManufacturerPage().setVisible(true);
+                    case 'M':new SellerPage().setVisible(true);//manufacturer page->new ManufacturerPage().setVisible(true);
                         break;
                 }
                 this.dispose();
@@ -243,6 +250,15 @@ catch(Exception e){System.out.println(e);}
 }*/
 // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jPasswordField1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPasswordField1MouseClicked
+jLabel6.setVisible(false);
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jPasswordField1MouseClicked
+
+    private void jTextField2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField2MouseClicked
+jLabel1.setVisible(false);        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField2MouseClicked
 
     /**
      * @param args the command line arguments

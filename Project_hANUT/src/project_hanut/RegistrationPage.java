@@ -22,6 +22,7 @@ public class RegistrationPage extends javax.swing.JFrame {
      */
     public RegistrationPage() {
         initComponents();
+        jLabel5.setVisible(false);
     }
 
     /**
@@ -61,6 +62,7 @@ public class RegistrationPage extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         jPasswordField2 = new javax.swing.JPasswordField();
         jButton1 = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -215,6 +217,11 @@ public class RegistrationPage extends javax.swing.JFrame {
 
         jPasswordField1.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 12)); // NOI18N
         jPasswordField1.setOpaque(false);
+        jPasswordField1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPasswordField1MouseClicked(evt);
+            }
+        });
 
         jLabel11.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 12)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(51, 49, 60));
@@ -222,6 +229,16 @@ public class RegistrationPage extends javax.swing.JFrame {
 
         jPasswordField2.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 12)); // NOI18N
         jPasswordField2.setOpaque(false);
+        jPasswordField2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPasswordField2MouseClicked(evt);
+            }
+        });
+        jPasswordField2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jPasswordField2ActionPerformed(evt);
+            }
+        });
 
         jButton1.setBackground(new java.awt.Color(51, 49, 60));
         jButton1.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 12)); // NOI18N
@@ -233,6 +250,10 @@ public class RegistrationPage extends javax.swing.JFrame {
             }
         });
 
+        jLabel5.setFont(new java.awt.Font("Ubuntu", 2, 15)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel5.setText("passwords do not match");
+
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
@@ -242,10 +263,6 @@ public class RegistrationPage extends javax.swing.JFrame {
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jButton1)
                     .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                            .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jPasswordField2, javax.swing.GroupLayout.PREFERRED_SIZE, 474, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 474, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel5Layout.createSequentialGroup()
@@ -273,7 +290,13 @@ public class RegistrationPage extends javax.swing.JFrame {
                                                 .addComponent(jRadioButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                 .addComponent(jRadioButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 474, javax.swing.GroupLayout.PREFERRED_SIZE))))))))
+                                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 474, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                            .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel5)
+                                .addComponent(jPasswordField2, javax.swing.GroupLayout.PREFERRED_SIZE, 474, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(113, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
@@ -311,7 +334,9 @@ public class RegistrationPage extends javax.swing.JFrame {
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPasswordField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(29, 29, 29)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel5)
+                .addGap(52, 52, 52)
                 .addComponent(jButton1)
                 .addContainerGap(48, Short.MAX_VALUE))
         );
@@ -361,7 +386,7 @@ String password2 = new String(jPasswordField2.getPassword());
 
 if(!password2.equals(password))
 {
-    JOptionPane.showMessageDialog(null, "Passwords entered do not match please try again!");
+    jLabel5.setVisible(true);//JOptionPane.showMessageDialog(null, "Passwords entered do not match please try again!");
 }
 Connection conn = null;
 Statement mystmt = null;
@@ -374,10 +399,14 @@ try
 if(jRadioButton1.isSelected())
 {
    //then it's a customer who is registering
-    String query = "insert into customer values('"+name+"','"+phoneno+"','"+email+"','"+address+"');";
+    String query = "insert into customer(name,phone,email,address) values('"+name+"','"+phoneno+"','"+email+"','"+address+"');";
     SqlQ.updateq(query);
-    query = "insert into cred values('"+email+"','"+password+"');";
-    SqlQ.updateq(query);
+    ResultSet rs= SqlQ.retrive("select id from customer where email='"+email+"';");
+    if(rs.next()){
+    String id=rs.getString("id");
+    System.out.print(id);
+    query = "insert into cred values('"+email+"','"+id+"','"+password+"');";
+    SqlQ.updateq(query);}
     
 LoginPage l = new LoginPage();
 this.setVisible(false);
@@ -385,14 +414,15 @@ l.setVisible(true);
 }
 else if(jRadioButton4.isSelected())
 {
-    String query = "insert into seller values('"+name+"','"+phoneno+"','"+email+"','"+address+"');";
+    String query = "insert into seller(name,phone,email,address) values('"+name+"','"+phoneno+"','"+email+"','"+address+"');";
     SqlQ.updateq(query);
 
-  query = "insert into cred values(?,?)";
-    ps = conn.prepareStatement(query);
-    ps.setString(1,email);
-    ps.setString(2,password);    
-    ps.executeUpdate();
+  ResultSet rs= SqlQ.retrive("select id from seller where email='"+email+"';");
+    if(rs.next()){
+    String id=rs.getString("id");
+    System.out.print(id);
+    query = "insert into cred values('"+email+"','"+id+"','"+password+"');";
+    SqlQ.updateq(query);}
     LoginPage l = new LoginPage();
 this.setVisible(false);
 l.setVisible(true);
@@ -400,21 +430,14 @@ l.setVisible(true);
 }
 else if(jRadioButton5.isSelected())
 {
-    String query = "insert into manufacturer(name,phone,email,address) values(?,?,?,?)";
-    ps = conn.prepareStatement(query);
-ps.setString(1,name);
-ps.setString(2,phoneno);
-ps.setString(3,email);
-ps.setString(4,address);
-
-ps.executeUpdate();
-
-  query = "insert into cred values(?,?)";
-    ps = conn.prepareStatement(query);
-    ps.setString(1,email);
-    ps.setString(2,password);
-    
-ps.executeUpdate();
+    String query = "insert into manufacturer(name,phone,email,address) values('"+name+"','"+phoneno+"','"+email+"','"+address+"');";
+    SqlQ.updateq(query);
+ResultSet rs= SqlQ.retrive("select id from manufacturer where email='"+email+"';");
+    if(rs.next()){
+    String id=rs.getString("id");
+    System.out.print(id);
+    query = "insert into cred values('"+email+"','"+id+"','"+password+"');";
+    SqlQ.updateq(query);}
     LoginPage l = new LoginPage();
 this.setVisible(false);
 l.setVisible(true);
@@ -443,6 +466,20 @@ catch(Exception e)
     private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jRadioButton1ActionPerformed
+
+    private void jPasswordField2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPasswordField2MouseClicked
+jLabel5.setVisible(false);
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jPasswordField2MouseClicked
+
+    private void jPasswordField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jPasswordField2ActionPerformed
+
+    private void jPasswordField1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPasswordField1MouseClicked
+jLabel5.setVisible(false);
+// TODO add your handling code here:
+    }//GEN-LAST:event_jPasswordField1MouseClicked
 
     /**
      * @param args the command line arguments
@@ -489,6 +526,7 @@ catch(Exception e)
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;

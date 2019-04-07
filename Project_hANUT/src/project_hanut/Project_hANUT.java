@@ -24,13 +24,7 @@ public class Project_hANUT {
             conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/hanut","root","khator");
             if(conn!=null)
                 System.out.print("connected");
-            
-             /* mystmt = conn.createStatement();
-              rs = mystmt.executeQuery("select * from cred");
-              while(rs.next())
-              {
-                  System.out.println(rs.getString("id"));
-              }*/
+           
         }
         catch(Exception e)
         {
@@ -40,12 +34,7 @@ public class Project_hANUT {
 }
     public static void main(String[] args) {
         // TODO code application logic here
-       
-       
-      
-        
-        LoginPage lp = new LoginPage();
-        lp.setVisible(true);
+        new LoginPage().setVisible(true);
     }
     
 }
