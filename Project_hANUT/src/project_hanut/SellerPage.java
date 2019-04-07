@@ -23,56 +23,70 @@ public class SellerPage extends javax.swing.JFrame {
      */
     public SellerPage() {
         initComponents();
+        sellerDetails();
     }
-    public SellerPage(String msg)
-    {
-       initComponents();
-        
-Connection conn = null;
-Statement mystmt = null;
-ResultSet us = null;
-PreparedStatement ps;
-String query = "select * from seller where email =?";
-
-conn = Project_hANUT.getConnection();
-try {
-ps = conn.prepareStatement(query);
-ps.setString(1, msg);
-us = ps.executeQuery();
-if(us.next())
-{
-    System.out.println("us not empty");
-}
-    String name = us.getString("name");
-    System.out.println(name);
-    jTextField1.setText(name);
-//us.getString("name"));
-String phone =us.getString("phone");
-String email = us.getString("email");
-String cname = us.getString("name") + "hANUT";
-jTextField5.setText(cname);
-jTextField6.setText(phone);
-jTextField7.setText(email);
-
-query = "select * from s_acc where s_id = (select id from seller where email = ?)";
-ps = conn.prepareStatement(query);
-ps.setString(1, msg);
-us = ps.executeQuery();
-String income =us.getString("income") ;
-String expen = us.getString("expen");
-String profit = us.getString("profit");
-jTextField8.setText(income);
-jTextField9.setText(expen);
-jTextField10.setText(profit);
- 
-}
-catch(SQLException e)
-{
-   e.printStackTrace();
-}
-
-        
-    };
+    public void sellerDetails(){
+        String query="Select * from seller where id='"+Session.curr_user()+"'";
+        ResultSet rs=SqlQ.retrive(query);
+        try{
+            
+        if(rs.next()){
+            jTextField1.setText(rs.getString("name"));
+            jTextField6.setText(rs.getString("phone"));
+            jTextField7.setText(rs.getString("email"));
+        }
+        }
+        catch(Exception e){}
+    }
+//    public SellerPage(String msg)
+//    {
+//       initComponents();
+//        
+//Connection conn = null;
+//Statement mystmt = null;
+//ResultSet us = null;
+//PreparedStatement ps;
+//String query = "select * from seller where email =?";
+//
+//conn = Project_hANUT.getConnection();
+//try {
+//ps = conn.prepareStatement(query);
+//ps.setString(1, msg);
+//us = ps.executeQuery();
+//if(us.next())
+//{
+//    System.out.println("us not empty");
+//}
+//    String name = us.getString("name");
+//    System.out.println(name);
+//    jTextField1.setText(name);
+////us.getString("name"));
+//String phone =us.getString("phone");
+//String email = us.getString("email");
+//String cname = us.getString("name") + "hANUT";
+//jTextField5.setText(cname);
+//jTextField6.setText(phone);
+//jTextField7.setText(email);
+//
+//query = "select * from s_acc where s_id = (select id from seller where email = ?)";
+//ps = conn.prepareStatement(query);
+//ps.setString(1, msg);
+//us = ps.executeQuery();
+//String income =us.getString("income") ;
+//String expen = us.getString("expen");
+//String profit = us.getString("profit");
+//jTextField8.setText(income);
+//jTextField9.setText(expen);
+//jTextField10.setText(profit);
+// 
+//}
+//catch(SQLException e)
+//{
+//   e.printStackTrace();
+//}
+//
+//        
+//    };
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -98,8 +112,6 @@ catch(SQLException e)
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
-        jLabel10 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
         jTextField6 = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
@@ -245,7 +257,7 @@ catch(SQLException e)
         jLabel3.setText("Profile");
 
         jLabel4.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 12)); // NOI18N
-        jLabel4.setText("Name");
+        jLabel4.setText("Name:");
 
         jTextField1.setEditable(false);
         jTextField1.setBackground(new java.awt.Color(204, 204, 255));
@@ -258,22 +270,8 @@ catch(SQLException e)
             }
         });
 
-        jLabel10.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 12)); // NOI18N
-        jLabel10.setText("Company Name");
-
-        jTextField5.setEditable(false);
-        jTextField5.setBackground(new java.awt.Color(204, 204, 255));
-        jTextField5.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 13)); // NOI18N
-        jTextField5.setText("<CompanyName>");
-        jTextField5.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        jTextField5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField5ActionPerformed(evt);
-            }
-        });
-
         jLabel11.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 12)); // NOI18N
-        jLabel11.setText("Phone Number");
+        jLabel11.setText("Phone Number:");
 
         jTextField6.setEditable(false);
         jTextField6.setBackground(new java.awt.Color(204, 204, 255));
@@ -282,7 +280,7 @@ catch(SQLException e)
         jTextField6.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
 
         jLabel12.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 12)); // NOI18N
-        jLabel12.setText("Email ID");
+        jLabel12.setText("Email ID:");
 
         jTextField7.setEditable(false);
         jTextField7.setBackground(new java.awt.Color(204, 204, 255));
@@ -299,13 +297,11 @@ catch(SQLException e)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jTextField1)
-                    .addComponent(jTextField5, javax.swing.GroupLayout.DEFAULT_SIZE, 183, Short.MAX_VALUE)
                     .addComponent(jTextField6, javax.swing.GroupLayout.DEFAULT_SIZE, 183, Short.MAX_VALUE)
                     .addComponent(jTextField7, javax.swing.GroupLayout.DEFAULT_SIZE, 183, Short.MAX_VALUE)
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel4)
-                            .addComponent(jLabel10)
                             .addComponent(jLabel11)
                             .addComponent(jLabel12))
                         .addGap(0, 0, Short.MAX_VALUE)))
@@ -321,10 +317,6 @@ catch(SQLException e)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel10)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
                 .addComponent(jLabel11)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -332,7 +324,7 @@ catch(SQLException e)
                 .addComponent(jLabel12)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(200, Short.MAX_VALUE))
+                .addContainerGap(266, Short.MAX_VALUE))
         );
 
         jLabel5.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 15)); // NOI18N
@@ -375,21 +367,23 @@ catch(SQLException e)
 
         jTextField2.setBackground(new java.awt.Color(204, 204, 255));
         jTextField2.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 12)); // NOI18N
-        jTextField2.setText("<Name>");
+        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField2ActionPerformed(evt);
+            }
+        });
 
         jLabel13.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 12)); // NOI18N
         jLabel13.setText("Product ID");
 
         jTextField3.setBackground(new java.awt.Color(204, 204, 255));
         jTextField3.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 12)); // NOI18N
-        jTextField3.setText("<Name>");
 
         jLabel14.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 12)); // NOI18N
         jLabel14.setText("Tracking Status");
 
         jTextField4.setBackground(new java.awt.Color(204, 204, 255));
         jTextField4.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 12)); // NOI18N
-        jTextField4.setText("<Name>");
 
         jButton5.setBackground(new java.awt.Color(51, 49, 60));
         jButton5.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 12)); // NOI18N
@@ -642,16 +636,16 @@ JOptionPane.showMessageDialog(null, "Status Updated Successfuly");
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
 
-    private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField5ActionPerformed
-
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
 LoginPage L = new LoginPage();
 Session.logout();
 L.setVisible(true);
 this.setVisible(false);// TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -695,7 +689,6 @@ this.setVisible(false);// TODO add your handling code here:
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
@@ -727,7 +720,6 @@ this.setVisible(false);// TODO add your handling code here:
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField7;
     private javax.swing.JTextField jTextField8;
