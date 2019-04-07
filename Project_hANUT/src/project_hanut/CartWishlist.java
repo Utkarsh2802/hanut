@@ -5,6 +5,8 @@
  */
 package project_hanut;
 
+import java.sql.ResultSet;
+
 /**
  *
  * @author MAHE
@@ -16,6 +18,60 @@ public class CartWishlist extends javax.swing.JFrame {
      */
     public CartWishlist() {
         initComponents();
+        initializeCart();
+    }
+    public String getImgID(int pid){
+        switch(pid){
+            case 80001:return "../PicturesSmall/b01_MasterOfTheGame.jpeg";
+            case 80002:return "../PicturesSmall/b02_Divergent.jpeg";
+            case 80003:return "../PicturesSmall/b03_sapiens.jpeg";  
+            case 80004:return "../PicturesSmall/b04_WingOfFire.jpeg";  
+            case 80005:return "../PicturesSmall/b06_Notebook.jpeg"; 
+            case 80006:return "../PicturesSmall/b05_HalfBloodPrince.jpeg";
+            case 80007:return "../PicturesSmall/b07_LightingThief.jpeg";  
+            case 80008:return "../PicturesSmall/b08_DigitalFortress.jpeg";  
+            case 80009:return "../PicturesSmall/as01_Watch.jpeg";  
+            case 80010:return "../PicturesSmall/as02_Bag.jpeg";  
+            case 80011:return "../PicturesSmall/as03_Purse.jpeg";  
+            case 80012:return "../PicturesSmall/as04_Cuffs.jpeg";  
+            case 80013:return "../PicturesSmall/as05_Wallet.jpeg";  
+            case 80014:return "../PicturesSmall/as06_HairBand.jpeg";  
+            case 80015:return "../PicturesSmall/as07_Neckless.jpeg";  
+            case 80016:return "../PicturesSmall/as08Ring.jpeg";  
+            case 80017:return "../PicturesSmall/e01_Earphones.jpeg";  
+            case 80018:return "../PicturesSmall/e02_Headphones.jpeg";  
+            case 80019:return "../PicturesSmall/e03_Laptop.jpeg";  
+            case 80020:return "../PicturesSmall/e04_Phone.jpeg";  
+            case 80021:return "../PicturesSmall/e05_Ram.jpeg";  
+            case 80022:return "../PicturesSmall/e06_Mouse.jpeg";  
+            case 80023:return "../PicturesSmall/e07_Keyboard.jpeg";  
+            case 80024:return "../PicturesSmall/e08_Speaker.jpeg";  
+            case 80025:return "../PicturesSmall/f01_WJacket.jpeg";  
+            case 80026:return "../PicturesSmall/f02_MJacket.jpeg";  
+            case 80027:return "../PicturesSmall/f03_TShirt.jpeg";  
+            case 80028:return "../PicturesSmall/f04_WTop.jpeg";  
+            case 80029:return "../PicturesSmall/f05_MPants.jpeg";  
+            case 80030:return "../PicturesSmall/f06_Palazzo.jpeg";  
+            case 80031:return "../PicturesSmall/f07_Kurti.jpeg";  
+            case 80032:return "../PicturesSmall/f08_Dress.jpeg";  
+            case 80033:return "../PicturesSmall/hf01_Sofa.jpeg";  
+            case 80034:return "../PicturesSmall/hf02_Bed.jpeg";  
+            case 80035:return "../PicturesSmall/hf03_DinningTable.jpeg";  
+            case 80036:return "../PicturesSmall/hf04_StudyTable.jpeg";  
+            case 80037:return "../PicturesSmall/hf05_cabinets.jpeg";  
+            case 80038:return "../PicturesSmall/hf06_Vase.jpeg";  
+            case 80039:return "../PicturesSmall/hf07_Fountain.jpeg";  
+            case 80040:return "../PicturesSmall/hf08_lamp.jpeg";  
+            default:return null;
+            
+        }
+    }
+    public void initializeCart(){
+        
+        String q="select p_id from cart where cust_id ='"+Session.curr_user()+"'";
+        ResultSet rs= SqlQ.retrive(q);
+        
+        
     }
 
     /**
@@ -469,7 +525,7 @@ this.setVisible(false);
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
+                     
                 }
             }
         } catch (ClassNotFoundException ex) {

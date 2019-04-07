@@ -5,6 +5,10 @@
  */
 package project_hanut;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author MAHE
@@ -317,6 +321,27 @@ public class ProductPage extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+//check for limit of 3
+//count of 3
+String query= "select count(p_id) as count from cart where cust_id="+Session.curr_user()+";";
+ResultSet rs=SqlQ.retrive(query);
+try{
+if(rs.next()){
+    if(Integer.parseInt(rs.getString("count"))>=3){
+        JOptionPane.showMessageDialog(this, "You cant add more than 3 products in cart");
+    }
+    else{
+        //add
+        query="insert into cart values('"+Session.curr_user()+"',);";
+        //incomplete code
+        //To Do:
+        /*
+        get product ID from add to cart button
+        */
+        
+    }
+}}
+catch(SQLException e){}
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 
