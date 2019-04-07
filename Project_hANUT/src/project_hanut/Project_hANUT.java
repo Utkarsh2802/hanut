@@ -21,7 +21,7 @@ public class Project_hANUT {
         Connection conn = null;
         try
         {
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/hanut","root","student");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/hanut","root","khator");
             if(conn!=null)
                 System.out.print("connected");
             

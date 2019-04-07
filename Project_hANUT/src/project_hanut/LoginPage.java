@@ -19,6 +19,8 @@ public class LoginPage extends javax.swing.JFrame {
      */
     public LoginPage() {
         initComponents();
+        jLabel1.setVisible(false);
+        jLabel6.setVisible(false);
     }
 
     /**
@@ -43,6 +45,8 @@ public class LoginPage extends javax.swing.JFrame {
         jSeparator2 = new javax.swing.JSeparator();
         jLabel4 = new javax.swing.JLabel();
         jPasswordField1 = new javax.swing.JPasswordField();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
@@ -76,7 +80,7 @@ public class LoginPage extends javax.swing.JFrame {
         jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 11, 108, 31));
 
         jSeparator2.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel2.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, 300, 30));
+        jPanel2.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, 300, 10));
 
         jLabel4.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
@@ -88,6 +92,14 @@ public class LoginPage extends javax.swing.JFrame {
         jPasswordField1.setForeground(new java.awt.Color(255, 255, 255));
         jPasswordField1.setBorder(null);
         jPanel2.add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, 300, -1));
+
+        jLabel1.setForeground(new java.awt.Color(251, 45, 45));
+        jLabel1.setText("Incorrect email id");
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, -1, -1));
+
+        jLabel6.setForeground(new java.awt.Color(244, 19, 19));
+        jLabel6.setText("Incorrect password");
+        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, -1, -1));
 
         jButton1.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 14)); // NOI18N
         jButton1.setForeground(new java.awt.Color(51, 49, 60));
@@ -180,7 +192,7 @@ public class LoginPage extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-String username = jTextField2.getText();
+String emailid = jTextField2.getText();
 String password = new String(jPasswordField1.getPassword());
 boolean verified=false;
 try 
@@ -191,22 +203,25 @@ Class.forName("java.sql.DriverManager");
             ("jdbc:mysql://localhost:3306/hanut",
             "root", "khator");
             com.mysql.jdbc.Statement stmt = (com.mysql.jdbc.Statement) con.createStatement();
-            String query="SELECT PASSWORD FROM cred where username='"+username+"';";
+            String query="SELECT id,password FROM cred where email='"+emailid+"';";
             ResultSet rs=stmt.executeQuery(query);
             
             if(rs.next()){
+                jLabel1.setVisible(false);
                 String pass=rs.getString("password");
+                String username=rs.getString("id");
                 if(pass.equals(password)){
                 Session.logined(username);
                 verified=true;
                 }
                 else
-                    JOptionPane.showMessageDialog(this, "password incorrect!");
+                    jLabel6.setVisible(true);//JOptionPane.showMessageDialog(this, "password incorrect!");
             }
             else{
-                JOptionPane.showMessageDialog(this, "Username incorrect!");
+                jLabel1.setVisible(true);// JOptionPane.showMessageDialog(this, "Username incorrect!");
             }
             if(verified){
+                jLabel6.setVisible(false);
                 switch(Session.user_type()){
                     case 'C':new AllProductPage().setVisible(true);
                         break;
@@ -218,7 +233,7 @@ Class.forName("java.sql.DriverManager");
                 this.dispose();
             }
 }
-catch(Exception e){}
+catch(Exception e){System.out.println(e);}
 
 /*else
 {
@@ -272,10 +287,12 @@ catch(Exception e){}
     private javax.swing.ButtonGroup buttonGroup4;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPasswordField jPasswordField1;
