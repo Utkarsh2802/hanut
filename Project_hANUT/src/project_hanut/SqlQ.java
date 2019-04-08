@@ -1,48 +1,51 @@
 package project_hanut;
+<<<<<<< HEAD
 
 
 import java.sql.*;
+=======
+import java.sql.*;/*
+import com.mysql.jdbc.Connection;
+import com.mysql.jdbc.Statement;*/
+>>>>>>> 3f2f343b6da0a2f74e9ee8d8336f3caea378315c
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/**
- *
- * @author raghav
- */
 public class SqlQ {
     public static ResultSet retrive(String query){
         ResultSet rs=null;
-        try{
+        try {
             Class.forName("java.sql.DriverManager");
+<<<<<<< HEAD
             Connection con = (Connection)
             DriverManager.getConnection
             ("jdbc:mysql://localhost:3306/hanut","root", "student123");
             
+=======
+            Connection con = (Connection)DriverManager.getConnection("jdbc:mysql://localhost:3306/hanut","root","dastan");
+>>>>>>> 3f2f343b6da0a2f74e9ee8d8336f3caea378315c
             Statement stmt = (Statement) con.createStatement();
-            rs=stmt.executeQuery(query);
-               
+            rs=stmt.executeQuery(query);            
         }
-        catch(Exception e){
+        catch(Exception e) {
             System.out.println(e);
         }
         return rs;
-}
-    public static void updateq(String query){
-        try{
+    }
+    
+    public static void updateq(String query) {
+        try {
             Class.forName("java.sql.DriverManager");
+<<<<<<< HEAD
             Connection con = (Connection)
             DriverManager.getConnection
             ("jdbc:mysql://localhost:3306/hanut","root", "student123");
             
+=======
+            Connection con = (Connection)DriverManager.getConnection("jdbc:mysql://localhost:3306/hanut","root","dastan");
+>>>>>>> 3f2f343b6da0a2f74e9ee8d8336f3caea378315c
             Statement stmt = (Statement) con.createStatement();
-            stmt.executeUpdate(query);
-                        
+            stmt.executeUpdate(query);                       
         }
         catch(Exception e){
             System.out.println(e);

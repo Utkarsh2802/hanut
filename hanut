@@ -119,7 +119,7 @@ ALTER TABLE man_pro ADD CONSTRAINT man_pro_fk1 FOREIGN KEY (P_ID) REFERENCES pro
 
 insert into customer values(6700011,'Chandranshi',9830828787,'chansi.saraf@gmail.com','33 /, Hennur Main Road, Lingarajpuram');
 insert into customer values(6700012,'Raghav',9752354670,'raghav@msn.com','C/315, Vashi Plaza, Sector 17, Vashi');
-insert into customer values(6700013,'Prashant',9713577875,'Prashant@rediff.com','H-6, 1st Fl.,Omkar,Near Marathi Vidhiyalaya');
+insert into customer values(6700013,'Prashant',9713577875,'prashant@in.com','H-6, 1st Fl.,Omkar,Near Marathi Vidhiyalaya');
 insert into customer values(6700014,'Utkarsh',9572635551,'Utkarsh@rediff.com','Hs 27, Main Market, Kailash Colon');
 insert into customer values(6700015,'Sahil',9470720607,'Sahil@outlook.com','B/12 Shukla Cmpd, Dahisar');
 insert into seller values(8300011,'Raju Singh',9376689349,'Raju@yahoo.com','47 / nd Flr, Ramwadi, Kalbadevi');
@@ -135,7 +135,7 @@ insert into manufacturer values(7700014,'upala sankar',9221277687,'upala@gmail.c
 insert into manufacturer values(7700015,'Hemakuta  Mukherjee',9440366955,'Hemakuta@rediff.com','Copper Rollers Premises,LSB Marg');
 insert into cred values('chansi.saraf@gmail.com',6700011,'hello123');
 insert into cred values('raghav@msn.com',6700012,'doramon12');
-insert into cred values('Prashant@rediff.com',6700013,'therethere');
+insert into cred values('prashant@in.com',6700013,'hbk');
 insert into cred values('Utkarsh@rediff.com',6700014,'boss123');
 insert into cred values('Sahil@outlook.com',6700015,'quipquip');
 insert into cred values('Raju@yahoo.com',8300011,'hello123');
@@ -190,4 +190,4 @@ insert into product values(800039,'Indoor Fountian',8999,'home',8300016,7);
 insert into product values(800040,'hanging Lamps',12099,'home',8300016,7);
 insert into orders values(6700011,7900011,900);
 insert into items values(7900011,800001,2);
-insert into delivery values(7900011,800001,to_date(23-01-2019,'dd-mm-yyyy'),3,'up');
+insert into delivery values(7900011,800001,'2019-01-23',3,'up');
