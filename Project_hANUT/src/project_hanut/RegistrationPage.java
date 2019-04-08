@@ -214,12 +214,37 @@ public class RegistrationPage extends javax.swing.JFrame {
 
         jTextField5.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 12)); // NOI18N
         jTextField5.setOpaque(false);
+        jTextField5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTextField5MouseClicked(evt);
+            }
+        });
+        jTextField5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField5ActionPerformed(evt);
+            }
+        });
 
         jTextField6.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 12)); // NOI18N
         jTextField6.setOpaque(false);
+        jTextField6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTextField6MouseClicked(evt);
+            }
+        });
 
         jTextField7.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 12)); // NOI18N
         jTextField7.setOpaque(false);
+        jTextField7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTextField7MouseClicked(evt);
+            }
+        });
+        jTextField7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField7ActionPerformed(evt);
+            }
+        });
 
         jPasswordField1.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 12)); // NOI18N
         jPasswordField1.setOpaque(false);
@@ -276,7 +301,7 @@ public class RegistrationPage extends javax.swing.JFrame {
 
         jLabel16.setFont(new java.awt.Font("Ubuntu", 2, 15)); // NOI18N
         jLabel16.setForeground(new java.awt.Color(255, 0, 0));
-        jLabel16.setText("Eneter A valid mail");
+        jLabel16.setText("enter A valid mail");
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -432,34 +457,27 @@ try
 }
 catch(Exception e)
 {
-    jLabel14.setVisible(true);
-    check=false;
+    System.out.println(e);
     
 }
 
 String email = jTextField7.getText();
 if(!email.endsWith(".com"))
         {
-            jLabel14.setVisible(true);
+            jLabel16.setVisible(true);
             check=false;
         }
 String password = new String(jPasswordField1.getPassword());
 String password2 = new String(jPasswordField2.getPassword());
 boolean success=true;
-ResultSet us = null;
 if(!password2.equals(password))
 {
     jLabel5.setVisible(true);
 }
-<<<<<<< HEAD
-else{
-     jLabel5.setVisible(false);
-=======
 
 else if(check){
-
-
->>>>>>> a1fe0b3da1957ac9605f7fdfc92344e4adfa2cd5
+     
+jLabel5.setVisible(false);
 try 
 {    
 if(jRadioButton1.isSelected())
@@ -475,10 +493,7 @@ else if(jRadioButton4.isSelected())
     SqlQ.updateq(query);
 
     us= SqlQ.retrive("select id from seller where email='"+email+"';");
-<<<<<<< HEAD
-=======
 
->>>>>>> a1fe0b3da1957ac9605f7fdfc92344e4adfa2cd5
     
 }
 else if(jRadioButton5.isSelected())
@@ -486,10 +501,7 @@ else if(jRadioButton5.isSelected())
     String query = "insert into manufacturer(name,phone,email,address) values('"+name+"','"+phoneno+"','"+email+"','"+address+"');";
     SqlQ.updateq(query);
     us= SqlQ.retrive("select id from manufacturer where email='"+email+"';");
-<<<<<<< HEAD
-=======
 
->>>>>>> a1fe0b3da1957ac9605f7fdfc92344e4adfa2cd5
 }
 else
 { 
@@ -511,13 +523,9 @@ catch(Exception e)
     JOptionPane.showMessageDialog(null, "Sorry some error has occured");
 }
 }
-<<<<<<< HEAD
-
-=======
-//JOptionPane.showMessageDialog(null,"Successfully Registered");
->>>>>>> a1fe0b3da1957ac9605f7fdfc92344e4adfa2cd5
 
 
+        
 // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -546,6 +554,28 @@ jLabel5.setVisible(false);
     private void jLabel14MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel14MouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_jLabel14MouseClicked
+
+    private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField5ActionPerformed
+
+    private void jTextField5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField5MouseClicked
+jLabel15.setVisible(false);
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField5MouseClicked
+
+    private void jTextField6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField6MouseClicked
+jLabel14.setVisible(false);
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField6MouseClicked
+
+    private void jTextField7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField7ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField7ActionPerformed
+
+    private void jTextField7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField7MouseClicked
+jLabel16.setVisible(false);        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField7MouseClicked
 
     /**
      * @param args the command line arguments
