@@ -317,21 +317,6 @@ public class ProductPage extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-String query= "select count(p_id) as count from wishlist where cust_id="+Session.curr_user()+";";
-ResultSet rs=SqlQ.retrive(query);
-try{
-if(rs.next()){
-    if(Integer.parseInt(rs.getString("count"))>=3){
-        JOptionPane.showMessageDialog(this, "You cant add more than 3 products in cart");
-    }
-    else{
-        //add
-        query="insert into wishlist values('"+Session.curr_user()+"',);";
-        SqlQ.updateq(query);
-        
-    }
-}}
-catch(SQLException e){}
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
