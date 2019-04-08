@@ -240,7 +240,7 @@ try
                 this.dispose();
             }
 }
-catch(Exception e){System.out.println(e+"hi ");}
+catch(Exception e){System.out.println(e+"hi");}
 
 /*else
 {

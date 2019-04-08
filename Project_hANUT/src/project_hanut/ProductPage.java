@@ -333,11 +333,7 @@ if(rs.next()){
     else{
         //add
         query="insert into cart values('"+Session.curr_user()+"',);";
-        //incomplete code
-        //To Do:
-        /*
-        get product ID from add to cart button
-        */
+        SqlQ.updateq(query);
         
     }
 }}
