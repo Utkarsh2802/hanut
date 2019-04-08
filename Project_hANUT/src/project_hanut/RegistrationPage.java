@@ -37,6 +37,7 @@ public class RegistrationPage extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
@@ -149,7 +150,7 @@ public class RegistrationPage extends javax.swing.JFrame {
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 820, Short.MAX_VALUE)
+            .addGap(0, 845, Short.MAX_VALUE)
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -192,6 +193,7 @@ public class RegistrationPage extends javax.swing.JFrame {
             }
         });
 
+        buttonGroup1.add(jRadioButton1);
         jRadioButton1.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 12)); // NOI18N
         jRadioButton1.setForeground(new java.awt.Color(51, 49, 60));
         jRadioButton1.setText("Customer");
@@ -202,11 +204,13 @@ public class RegistrationPage extends javax.swing.JFrame {
             }
         });
 
+        buttonGroup1.add(jRadioButton4);
         jRadioButton4.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 12)); // NOI18N
         jRadioButton4.setForeground(new java.awt.Color(51, 49, 60));
         jRadioButton4.setText("Seller");
         jRadioButton4.setIconTextGap(5);
 
+        buttonGroup1.add(jRadioButton5);
         jRadioButton5.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 12)); // NOI18N
         jRadioButton5.setForeground(new java.awt.Color(51, 49, 60));
         jRadioButton5.setText("Manufacturer");
@@ -613,6 +617,7 @@ jLabel16.setVisible(false);        // TODO add your handling code here:
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
