@@ -10,6 +10,11 @@ import javax.imageio.ImageIO;
 public class AllProductPage extends javax.swing.JFrame {
     public AllProductPage() {
         initComponents();
+        java.awt.event.MouseEvent evt=null;
+        jLabel4MouseClicked(evt);
+        jLabel10.setText("Books");
+        
+        
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -125,6 +130,11 @@ public class AllProductPage extends javax.swing.JFrame {
         );
 
         jPanel8.setBackground(new java.awt.Color(51, 49, 30));
+        jPanel8.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel8MouseClicked(evt);
+            }
+        });
 
         jLabel4.setFont(new java.awt.Font("Yu Gothic UI Semilight", 0, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
@@ -358,7 +368,7 @@ public class AllProductPage extends javax.swing.JFrame {
 
         jLabel10.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 18)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(51, 49, 60));
-        jLabel10.setText("<CategoryName>");
+        jLabel10.setText("Books");
 
         jPanel18.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
@@ -737,6 +747,7 @@ public class AllProductPage extends javax.swing.JFrame {
 
     private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
         try {
+            jLabel10.setText("Electronics");
             ImageIcon image1 = new ImageIcon("PicturesSmall/e01_Earphones.png");
             ImageIcon image2 = new ImageIcon("PicturesSmall/e02_Headphones.jpeg");
             ImageIcon image3 = new ImageIcon("PicturesSmall/e03_Laptop.jpeg");
@@ -760,6 +771,7 @@ public class AllProductPage extends javax.swing.JFrame {
 
     private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
         try {
+            jLabel10.setText("Fashion");
             ImageIcon image1 = new ImageIcon("PicturesSmall/f01_WJacket.jpeg");
             ImageIcon image2 = new ImageIcon("PicturesSmall/f02_MJacket.jpeg");
             ImageIcon image3 = new ImageIcon("PicturesSmall/f03_TShirt.jpeg");
@@ -783,6 +795,7 @@ public class AllProductPage extends javax.swing.JFrame {
 
     private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
         try {
+            jLabel10.setText("Accessories");
             ImageIcon image1 = new ImageIcon("PicturesSmall/as01_Watch.jpeg");
             ImageIcon image2 = new ImageIcon("PicturesSmall/as02_Bag.jpeg");
             ImageIcon image3 = new ImageIcon("PicturesSmall/as03_Purse.jpeg");
@@ -806,6 +819,7 @@ public class AllProductPage extends javax.swing.JFrame {
 
     private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
        try {
+           jLabel10.setText("Home and Furniture");
             ImageIcon image1 = new ImageIcon("PicturesSmall/hf01_Sofa.jpeg");
             ImageIcon image2 = new ImageIcon("PicturesSmall/hf02_Bed.jpeg");
             ImageIcon image3 = new ImageIcon("PicturesSmall/hf03_DiningTable.jpeg");
@@ -920,6 +934,11 @@ public class AllProductPage extends javax.swing.JFrame {
     private void jLabel45MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel45MouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_jLabel45MouseClicked
+
+    private void jPanel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel8MouseClicked
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jPanel8MouseClicked
           
      
     /**
