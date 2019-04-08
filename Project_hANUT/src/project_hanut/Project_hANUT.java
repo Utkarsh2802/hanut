@@ -1,21 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package project_hanut;
 import java.sql.*;
-/**
- *
- * @author MAHE
- */
 public class Project_hANUT {
-
-    /**
-     * @param args the command line arguments
-     */
-    public static Connection getConnection()
-    {
+   public static Connection getConnection() {
         Statement mystmt = null;
         ResultSet rs = null;
         Connection conn = null;

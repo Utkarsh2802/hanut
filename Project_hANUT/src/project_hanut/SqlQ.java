@@ -1,49 +1,31 @@
 package project_hanut;
-
-
+import java.sql.*;/*
 import com.mysql.jdbc.Connection;
-import com.mysql.jdbc.Statement;
+import com.mysql.jdbc.Statement;*/
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/**
- *
- * @author raghav
- */
 public class SqlQ {
     public static ResultSet retrive(String query){
         ResultSet rs=null;
-        try{
+        try {
             Class.forName("java.sql.DriverManager");
-            Connection con = (Connection)
-            DriverManager.getConnection
-            ("jdbc:mysql://localhost:3306/hanut",
-            "root", "khator");
+            Connection con = (Connection)DriverManager.getConnection("jdbc:mysql://localhost:3306/hanut","root","dastan");
             Statement stmt = (Statement) con.createStatement();
-            rs=stmt.executeQuery(query);
-               
+            rs=stmt.executeQuery(query);            
         }
-        catch(Exception e){
+        catch(Exception e) {
             System.out.println(e);
         }
         return rs;
-}
-    public static void updateq(String query){
-        try{
+    }
+    
+    public static void updateq(String query) {
+        try {
             Class.forName("java.sql.DriverManager");
-            Connection con = (Connection)
-            DriverManager.getConnection
-            ("jdbc:mysql://localhost:3306/hanut",
-            "root", "khator");
+            Connection con = (Connection)DriverManager.getConnection("jdbc:mysql://localhost:3306/hanut","root","dastan");
             Statement stmt = (Statement) con.createStatement();
-            stmt.executeUpdate(query);
-                        
+            stmt.executeUpdate(query);                       
         }
         catch(Exception e){
             System.out.println(e);
