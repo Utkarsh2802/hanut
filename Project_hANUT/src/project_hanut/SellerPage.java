@@ -11,6 +11,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -28,6 +29,10 @@ public class SellerPage extends javax.swing.JFrame {
     public void sellerDetails(){
         String query="Select * from seller where id='"+Session.curr_user()+"'";
         ResultSet rs=SqlQ.retrive(query);
+        DefaultTableModel model = (DefaultTableModel)
+        jTable1.getModel();
+        String query2="select order_id,p_id,name,qty,status from items natural join delivery natural join product where s_id='"+Session.curr_user()+"';";
+        ResultSet rs2= SqlQ.retrive(query);
         try{
             
         if(rs.next()){
@@ -35,8 +40,16 @@ public class SellerPage extends javax.swing.JFrame {
             jTextField6.setText(rs.getString("phone"));
             jTextField7.setText(rs.getString("email"));
         }
+        while(rs2.next()){
+            String oid=rs2.getString("order_id");
+            String pid=rs2.getString("p_id");
+            String name=rs2.getString("name");
+            String qty=rs2.getString("qty");
+            String status=rs2.getString("status");
+            model.addRow(new Object[]{oid,pid,name,qty,status});
         }
-        catch(Exception e){}
+        }
+        catch(Exception e){System.out.print(e);}
     }
 //    public SellerPage(String msg)
 //    {
@@ -581,8 +594,22 @@ public class SellerPage extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-
-         // TODO add your handling code here:
+       try {
+           DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+           String query="select order_id,p_id,name,qty,status from items natural join delivery natural join product where s_id='"+Session.curr_user()+"';";
+            ResultSet rs= SqlQ.retrive(query);
+            while(rs.next()){
+            String oid=rs.getString("order_id");
+            String pid=rs.getString("p_id");
+            String name=rs.getString("name");
+            String qty=rs.getString("qty");
+            String status=rs.getString("status");
+            model.addRow(new Object[]{oid,pid,name,qty,status});
+        }
+        }
+       catch(Exception e){}
+    
+         // TODO add your handling code here:Stri g 
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed

@@ -383,29 +383,21 @@ String email = jTextField7.getText();
 String password = new String(jPasswordField1.getPassword());
 String password2 = new String(jPasswordField2.getPassword());
 boolean success=true;
-
+ResultSet us = null;
 if(!password2.equals(password))
 {
-    jLabel5.setVisible(true);//JOptionPane.showMessageDialog(null, "Passwords entered do not match please try again!");
+    jLabel5.setVisible(true);
 }
-Connection conn = null;
-Statement mystmt = null;
-ResultSet us = null;
-PreparedStatement ps;
-conn = Project_hANUT.getConnection();
-
+else{
+     jLabel5.setVisible(false);
 try 
 {    
 if(jRadioButton1.isSelected())
 {
-   //then it's a customer who is registering
     String query = "insert into customer(name,phone,email,address) values('"+name+"','"+phoneno+"','"+email+"','"+address+"');";
     SqlQ.updateq(query);
     us= SqlQ.retrive("select id from customer where email='"+email+"';");
-    
-//LoginPage l = new LoginPage();
-//this.setVisible(false);
-//l.setVisible(true);
+
 }
 else if(jRadioButton4.isSelected())
 {
@@ -413,13 +405,6 @@ else if(jRadioButton4.isSelected())
     SqlQ.updateq(query);
 
     us= SqlQ.retrive("select id from seller where email='"+email+"';");
-//    if(rs.next()){
-//    String id=rs.getString("id");
-//    query = "insert into cred values('"+email+"','"+id+"','"+password+"');";
-//    SqlQ.updateq(query);}
-//    LoginPage l = new LoginPage();
-//this.setVisible(false);
-//l.setVisible(true);
     
 }
 else if(jRadioButton5.isSelected())
@@ -427,13 +412,6 @@ else if(jRadioButton5.isSelected())
     String query = "insert into manufacturer(name,phone,email,address) values('"+name+"','"+phoneno+"','"+email+"','"+address+"');";
     SqlQ.updateq(query);
     us= SqlQ.retrive("select id from manufacturer where email='"+email+"';");
-//    if(rs.next()){
-//    String id=rs.getString("id");
-//    query = "insert into cred values('"+email+"','"+id+"','"+password+"');";
-//    SqlQ.updateq(query);}
-//    LoginPage l = new LoginPage();
-//this.setVisible(false);
-//l.setVisible(true);
 }
 else
 { 
@@ -444,6 +422,7 @@ if(us.next() && success){
     String id=us.getString("id");
     String query = "insert into cred values('"+email+"','"+id+"','"+password+"');";
     SqlQ.updateq(query);
+    JOptionPane.showMessageDialog(null,"Successfully Registered");
     LoginPage l = new LoginPage();
     this.setVisible(false);
     l.setVisible(true);
@@ -453,8 +432,8 @@ catch(Exception e)
 {
     JOptionPane.showMessageDialog(null, "Sorry some error has occured");
 }
+}
 
-//JOptionPane.showMessageDialog(null,"Successfully Registered");
 
 
 // TODO add your handling code here:
