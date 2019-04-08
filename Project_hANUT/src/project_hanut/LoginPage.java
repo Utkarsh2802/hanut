@@ -242,22 +242,14 @@ try
 }
 catch(Exception e){System.out.println(e+"hi");}
 
-/*else
-{
-    SellerPage sp = new SellerPage();
-    sp.setVisible(true);
-    this.setVisible(false);
-}*/
-// TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jPasswordField1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPasswordField1MouseClicked
 jLabel6.setVisible(false);
-        // TODO add your handling code here:
     }//GEN-LAST:event_jPasswordField1MouseClicked
 
     private void jTextField2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField2MouseClicked
-jLabel1.setVisible(false);        // TODO add your handling code here:
+jLabel1.setVisible(false);       
     }//GEN-LAST:event_jTextField2MouseClicked
 
     /**

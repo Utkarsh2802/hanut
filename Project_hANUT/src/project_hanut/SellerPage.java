@@ -631,8 +631,7 @@ us = ps.executeQuery();
 String status =us.getString("status") ;
 jTextField4.setText(status);
             
-        } catch (Exception e) {
-        }
+        } catch (Exception e) {}
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed

@@ -22,6 +22,7 @@ public class AllProductPage extends javax.swing.JFrame {
      */
     public AllProductPage() {
         initComponents();
+        jTextField2.setText("What is that you are looking for?");
     }
     public static void books(){
         
@@ -294,9 +295,14 @@ public class AllProductPage extends javax.swing.JFrame {
 
         jTextField2.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 14)); // NOI18N
         jTextField2.setForeground(new java.awt.Color(204, 204, 204));
-        jTextField2.setText("What is that you are looking for?");
+        jTextField2.setToolTipText("search");
         jTextField2.setBorder(null);
         jTextField2.setOpaque(false);
+        jTextField2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTextField2MouseClicked(evt);
+            }
+        });
 
         jButton3.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 14)); // NOI18N
         jButton3.setForeground(new java.awt.Color(51, 49, 60));
@@ -553,6 +559,11 @@ BufferedImage image;
     
         // TODO add your handling code here:
     }//GEN-LAST:event_jLabel4MouseClicked
+
+    private void jTextField2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField2MouseClicked
+jTextField2.setText("");
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField2MouseClicked
 
     /**
      * @param args the command line arguments
