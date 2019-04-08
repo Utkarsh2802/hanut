@@ -19,21 +19,17 @@ public class Project_hANUT {
         Statement mystmt = null;
         ResultSet rs = null;
         Connection conn = null;
-        try
-        {
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/hanut","root","khator");
+        try {
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/hanut","root","dastan");
             if(conn!=null)
                 System.out.print("connected");
-           
         }
-        catch(Exception e)
-        {
+        catch(Exception e) {
             System.out.print("not connected");
         }
         return conn;
 }
     public static void main(String[] args) {
-        // TODO code application logic here
         new LoginPage().setVisible(true);
     }
     
