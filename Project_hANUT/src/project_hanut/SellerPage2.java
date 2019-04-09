@@ -4,7 +4,13 @@
  * and open the template in the editor.
  */
 package project_hanut;
-
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 /**
  *
  * @author MAHE
@@ -16,6 +22,7 @@ public class SellerPage2 extends javax.swing.JFrame {
      */
     public SellerPage2() {
         initComponents();
+        stockDetails();
     }
 
     /**
@@ -513,6 +520,30 @@ public class SellerPage2 extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    public void stockDetails(){
+        String query="Select * from seller where id='"+Session.curr_user()+"'";
+        ResultSet rs=SqlQ.retrive(query);
+        DefaultTableModel model = (DefaultTableModel)
+        jTable1.getModel();
+        String query2="select p_id,name,cost,quantity from product where s_id='"+Session.curr_user()+"';";
+        ResultSet rs2= SqlQ.retrive(query);
+        Object rowdata[] = new Object[4];
+        try{
+        if(rs.next()){
+            jTextField1.setText(rs.getString("name"));
+            jTextField6.setText(rs.getString("phone"));
+            jTextField7.setText(rs.getString("email"));
+        }
+        while(rs2.next()){
+            rowdata[0]=rs2.getString("p_id");
+            rowdata[1]=rs2.getString("name");
+            rowdata[2]=rs2.getString("cost");
+            rowdata[3]=rs2.getString("quantity");
+            model.addRow(rowdata);
+        }
+        }
+        catch(Exception e){System.out.print(e);}
+    }
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
        
     }//GEN-LAST:event_jButton3ActionPerformed
