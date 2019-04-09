@@ -32,7 +32,8 @@ public class SellerPage extends javax.swing.JFrame {
         DefaultTableModel model = (DefaultTableModel)
         jTable1.getModel();
         String query2="select order_id,p_id,name,qty,status from items natural join delivery natural join product where s_id='"+Session.curr_user()+"';";
-        ResultSet rs2= SqlQ.retrive(query);
+        ResultSet rs2= SqlQ.retrive(query2);
+        Object rowdata[]= new Object[5];
         try{
             
         if(rs.next()){
@@ -41,12 +42,12 @@ public class SellerPage extends javax.swing.JFrame {
             jTextField7.setText(rs.getString("email"));
         }
         while(rs2.next()){
-            String oid=rs2.getString("order_id");
-            String pid=rs2.getString("p_id");
-            String name=rs2.getString("name");
-            String qty=rs2.getString("qty");
-            String status=rs2.getString("status");
-            model.addRow(new Object[]{oid,pid,name,qty,status});
+            rowdata[0]=rs2.getString("order_id");
+            rowdata[1]=rs2.getString("p_id");
+            rowdata[2]=rs2.getString("name");
+            rowdata[3]=rs2.getString("qty");
+            rowdata[4]=rs2.getString("status");
+            model.addRow(rowdata);
         }
         }
         catch(Exception e){System.out.print(e);}
@@ -362,14 +363,7 @@ public class SellerPage extends javax.swing.JFrame {
         jTable1.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 12)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+
             },
             new String [] {
                 "Order ID", "Product ID", "Product", "Quantity ", "Tracking Status"
