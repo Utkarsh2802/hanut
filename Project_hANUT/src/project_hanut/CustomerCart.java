@@ -42,7 +42,7 @@ public class CustomerCart extends javax.swing.JFrame {
            System.out.println(e+"hello");
            
        }
-        ResultSet rs2=SqlQ.retrive("select P_ID,name,cost,status from orders natural join items natural join delivery natural join product where cust_ID='"+Session.curr_user()+"';");
+        ResultSet rs2=SqlQ.retrive("select P_ID,name,amount,status from orders natural join items natural join delivery natural join product where cust_ID='"+Session.curr_user()+"';");
          if(count_pid==0)
         {
             jPanel11.setVisible(false);
@@ -60,7 +60,7 @@ public class CustomerCart extends javax.swing.JFrame {
               jLabel10.setIcon(im1);
               System.out.println(rs2.getString("P_ID"));
               jLabel5.setText(rs2.getString("name"));
-              jLabel6.setText(rs2.getString("cost"));
+              jLabel6.setText(rs2.getString("amount"));
               jLabel7.setText(rs2.getString("status"));
 
             }
@@ -80,13 +80,13 @@ public class CustomerCart extends javax.swing.JFrame {
               jLabel10.setIcon((Icon) im1);
               System.out.println(getImgID(Integer.parseInt(rs2.getString("P_ID"))));
               jLabel5.setText(rs2.getString("name"));
-              jLabel6.setText(rs2.getString("cost"));
+              jLabel6.setText(rs2.getString("amount"));
               jLabel7.setText(rs2.getString("status"));
               rs2.next();
               ImageIcon im2=new ImageIcon(getImgID(Integer.parseInt(rs2.getString("P_ID")))); 
               jLabel16.setIcon((Icon) im2);
               jLabel13.setText(rs2.getString("name"));
-              jLabel14.setText(rs2.getString("cost"));
+              jLabel14.setText(rs2.getString("amount"));
               jLabel15.setText(rs2.getString("status"));
               }
             }
@@ -103,19 +103,19 @@ public class CustomerCart extends javax.swing.JFrame {
               ImageIcon im1=new ImageIcon(getImgID(Integer.parseInt(rs2.getString("P_ID")))); 
               jLabel10.setIcon((Icon) im1);
               jLabel5.setText(rs2.getString("name"));
-              jLabel6.setText(rs2.getString("cost"));
+              jLabel6.setText(rs2.getString("amount"));
               jLabel7.setText(rs2.getString("status"));
               rs2.next();
               ImageIcon im2=new ImageIcon(getImgID(Integer.parseInt(rs2.getString("P_ID")))); 
               jLabel16.setIcon((Icon) im2);
               jLabel13.setText(rs2.getString("name"));
-              jLabel14.setText(rs2.getString("cost"));
+              jLabel14.setText(rs2.getString("amount"));
               jLabel15.setText(rs2.getString("status"));
               rs2.next();
               ImageIcon im3=new ImageIcon(getImgID(Integer.parseInt(rs2.getString("P_ID")))); 
               jLabel20.setIcon((Icon) im3);
               jLabel17.setText(rs2.getString("name"));
-              jLabel18.setText(rs2.getString("cost"));
+              jLabel18.setText(rs2.getString("amount"));
               jLabel19.setText(rs2.getString("status"));
             
               }

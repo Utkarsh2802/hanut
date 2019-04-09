@@ -914,6 +914,7 @@ public class CartWishlist extends javax.swing.JFrame {
         System.out.println(count_pid + count_pid1+"sum of them");
         if (count_pid + count_pid1 <= 3) {
             ResultSet rs3 = SqlQ.retrive("select P_ID from cart where cust_ID='" + Session.curr_user() + "';");
+            int i=1;
             while (count_pid1 != 0) {
                 int pid = 0;
                 try {
@@ -926,7 +927,26 @@ public class CartWishlist extends javax.swing.JFrame {
                     System.out.println(e);
 
                    }
-                String query = "insert into orders(cust_ID) values('" + Session.curr_user() + "');";
+                ResultSet rs7 = SqlQ.retrive("select cost from product where P_ID='" + pid + "';");
+                float cost = 0;
+                try {
+                    if (rs7.next()) {
+                        cost = Float.parseFloat(rs7.getString("cost"));
+                    }
+                  } 
+                catch (Exception e) {
+                    System.out.println(e);
+
+                   }
+                double q=1;
+                if (i==1)
+                    q=Double.parseDouble(jComboBox1.getSelectedItem().toString());
+                else if(i==2)
+                    q=Double.parseDouble(jComboBox2.getSelectedItem().toString());
+                else
+                    q=Double.parseDouble(jComboBox3.getSelectedItem().toString());
+                float a=(float)q*cost;
+                String query = "insert into orders(cust_ID,amount) values('" + Session.curr_user() + "','" + a+ "');";
                 SqlQ.updateq(query);
                 System.out.println("Error");
                 ResultSet rs4 = SqlQ.retrive("select max(order_ID) as m from orders group by cust_ID having cust_ID='" + Session.curr_user() + "';");
@@ -940,8 +960,8 @@ public class CartWishlist extends javax.swing.JFrame {
                     System.out.println(e);
 
                 }
-                String query1 = "insert into items(order_ID,P_ID) values('" + oid + "','" + pid + "');";
-                SqlQ.updateq(query1);
+                String query3 = "insert into items(order_ID,P_ID,qty) values('" + oid + "','" + pid + "','" + q + "');";
+                SqlQ.updateq(query3);
                 int days=7;
                 String s="Ordered";
                 String query2 = "insert into delivery values('" + oid + "','" + pid + "','" + days+ "','" +s+ "');";
@@ -950,6 +970,7 @@ public class CartWishlist extends javax.swing.JFrame {
             }
             SqlQ.updateq("delete from cart where cust_ID='" + Session.curr_user() + "';");
 
+            JOptionPane.showMessageDialog(this, "Congratulations!! Your Order Has Been Successfully Placed!!");
             CustomerCart c = new CustomerCart();
             this.setVisible(false);
             c.setVisible(true);
