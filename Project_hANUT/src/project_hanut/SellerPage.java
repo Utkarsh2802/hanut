@@ -49,6 +49,13 @@ public class SellerPage extends javax.swing.JFrame {
             rowdata[4]=rs2.getString("status");
             model.addRow(rowdata);
         }
+        String query3="select * from s_acc where s_id='"+Session.curr_user()+"';";
+        ResultSet rs3=SqlQ.retrive(query3);
+        rs3.next();
+        jTextField8.setText(rs3.getString("income"));
+        jTextField9.setText(rs3.getString("expen"));
+        jTextField10.setText(rs3.getString("profit"));
+        
         }
         catch(Exception e){System.out.print(e);}
     }
@@ -144,7 +151,6 @@ public class SellerPage extends javax.swing.JFrame {
         jTextField3 = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
         jTextField4 = new javax.swing.JTextField();
-        jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
@@ -407,15 +413,6 @@ public class SellerPage extends javax.swing.JFrame {
         jTextField4.setBackground(new java.awt.Color(204, 204, 255));
         jTextField4.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 12)); // NOI18N
 
-        jButton5.setBackground(new java.awt.Color(51, 49, 60));
-        jButton5.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 12)); // NOI18N
-        jButton5.setText("Enter");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
-            }
-        });
-
         jButton6.setBackground(new java.awt.Color(51, 49, 60));
         jButton6.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 12)); // NOI18N
         jButton6.setText("Update Status");
@@ -445,9 +442,7 @@ public class SellerPage extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(75, Short.MAX_VALUE))
         );
         jPanel8Layout.setVerticalGroup(
@@ -460,8 +455,7 @@ public class SellerPage extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel13)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton5))
+                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel14)
@@ -476,18 +470,21 @@ public class SellerPage extends javax.swing.JFrame {
         jLabel16.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 12)); // NOI18N
         jLabel16.setText("Income:");
 
+        jTextField8.setEditable(false);
         jTextField8.setBackground(new java.awt.Color(204, 204, 255));
         jTextField8.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 12)); // NOI18N
 
         jLabel17.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 12)); // NOI18N
         jLabel17.setText("Expenditure:");
 
+        jTextField9.setEditable(false);
         jTextField9.setBackground(new java.awt.Color(204, 204, 255));
         jTextField9.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 12)); // NOI18N
 
         jLabel18.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 12)); // NOI18N
         jLabel18.setText("Profit:");
 
+        jTextField10.setEditable(false);
         jTextField10.setBackground(new java.awt.Color(204, 204, 255));
         jTextField10.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 12)); // NOI18N
 
@@ -621,49 +618,17 @@ public class SellerPage extends javax.swing.JFrame {
          // TODO add your handling code here:Stri g 
     }//GEN-LAST:event_jButton4ActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-String orderid = jTextField2.getText();
-String productid = jTextField3.getText();
-// TODO add your handling code here:
-try {
-Connection conn = null;
-Statement mystmt = null;
-ResultSet us = null;
-PreparedStatement ps;
-String query = "select status from delivery where order_id = ? and p_id ?";
-
-conn = Project_hANUT.getConnection();   
-ps = conn.prepareStatement(query);
-ps.setString(1, orderid);
-ps.setString(2, productid);
-us = ps.executeQuery();
-String status =us.getString("status") ;
-jTextField4.setText(status);
-            
-        } catch (Exception e) {
-        }
-    }//GEN-LAST:event_jButton5ActionPerformed
-
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
 String status = jTextField4.getText();
 // TODO add your handling code here:
 String orderid = jTextField2.getText();
 String productid = jTextField3.getText();
 try {
-Connection conn = null;
-Statement mystmt = null;
-PreparedStatement ps;
-String query = "update delivery set status = ? where order_id = ? and p_id ?";
+String query="update table delivery set status='"+status+"' where order_id='"+orderid+"' and p_id='"+productid+"';";
+SqlQ.updateq(query);
 
-conn = Project_hANUT.getConnection();   
-ps = conn.prepareStatement(query);
-ps.setString(1, status);
-ps.setString(2, orderid);
-ps.setString(3, productid);
-ps.executeUpdate();
-JOptionPane.showMessageDialog(null, "Status Updated Successfuly");
-            
-        } catch (Exception e) {
+        } 
+catch (Exception e) {
         }
 
     }//GEN-LAST:event_jButton6ActionPerformed
@@ -728,7 +693,6 @@ this.setVisible(false);// TODO add your handling code here:
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JLabel jLabel1;
@@ -769,3 +733,4 @@ this.setVisible(false);// TODO add your handling code here:
     private javax.swing.JTextField jTextField9;
     // End of variables declaration//GEN-END:variables
 }
+
