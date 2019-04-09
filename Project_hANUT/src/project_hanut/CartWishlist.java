@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package project_hanut;
+
 import java.awt.*;
 import java.awt.image.*;
 import javax.swing.*;
@@ -20,292 +21,298 @@ public class CartWishlist extends javax.swing.JFrame {
      * Creates new form CartWishlist
      */
     public CartWishlist() {
-       initComponents();
-       initializeCart();
-       initializeWish();
-       jPanel10.setVisible(true);
-        
-       
+        initComponents();
+        initializeCart();
+        initializeWish();
+        jPanel10.setVisible(true);
+
     }
-    public void addcart(int pid)
-    {
-       ResultSet rs=SqlQ.retrive("select count(P_ID) as cpid from cart where cust_ID='"+Session.curr_user()+"';");
-       int count_pid=0;
-      try{
-        if(rs.next()){
-            count_pid=Integer.parseInt(rs.getString("cpid"));
+
+    public void addcart(int pid) {
+        ResultSet rs = SqlQ.retrive("select count(P_ID) as cpid from cart where cust_ID='" + Session.curr_user() + "';");
+        int count_pid = 0;
+        try {
+            if (rs.next()) {
+                count_pid = Integer.parseInt(rs.getString("cpid"));
+            }
+        } catch (Exception e) {
+            System.out.println(e + "hello");
+
         }
-       }
-       catch(Exception e)
-       {
-           System.out.println(e+"hello");
-           
-       }
-      if(count_pid==3)
-      {
-          JOptionPane.showMessageDialog(this,"Cannot Add More Then Three Items To The Cart!");
-      }
-      else
-      {
-          System.out.println(pid);
-          String query = "insert into cart values('"+Session.curr_user()+"','"+pid+"');";
-          System.out.println(query);
-          SqlQ.updateq(query);
-          SqlQ.updateq("delete from wishlist where P_ID='"+pid+"';");
-          new CartWishlist().setVisible(true);
-          this.dispose();
-      }
-        
+        if (count_pid == 3) {
+            JOptionPane.showMessageDialog(this, "Cannot Add More Then Three Items To The Cart!");
+        } else {
+            System.out.println(pid);
+            String query = "insert into cart values('" + Session.curr_user() + "','" + pid + "');";
+            System.out.println(query);
+            SqlQ.updateq(query);
+            SqlQ.updateq("delete from wishlist where P_ID='" + pid + "';");
+            new CartWishlist().setVisible(true);
+            this.dispose();
+        }
+
     }
-    public String getImgID(int pid){
-        switch(pid){
-            case 800001:return "PicturesSmall/b01_MasterOfTheGame.jpeg";
-            case 800002:return "PicturesSmall/b02_Divergent.jpeg";
-            case 800003:return "PicturesSmall/b03_sapiens.jpeg";  
-            case 800004:return "PicturesSmall/b04_WingOfFire.jpeg";  
-            case 800005:return "PicturesSmall/b06_Notebook.jpeg"; 
-            case 800006:return "PicturesSmall/b05_HalfBloodPrince.jpeg";
-            case 800007:return "PicturesSmall/b07_LightingThief.jpeg";  
-            case 800008:return "PicturesSmall/b08_DigitalFortress.jpeg";  
-            case 800009:return "PicturesSmall/as01_Watch.jpeg";  
-            case 800010:return "PicturesSmall/as02_Bag.jpeg";  
-            case 800011:return "PicturesSmall/as03_Purse.jpeg";  
-            case 800012:return "PicturesSmall/as04_Cuffs.jpeg";  
-            case 800013:return "PicturesSmall/as05_Wallet.jpeg";  
-            case 800014:return "PicturesSmall/as06_HairBand.jpeg";  
-            case 800015:return "PicturesSmall/as07_Neckless.jpeg";  
-            case 800016:return "PicturesSmall/as08Ring.jpeg";  
-            case 800017:return "PicturesSmall/e01_Earphones.jpeg";  
-            case 800018:return "PicturesSmall/e02_Headphones.jpeg";  
-            case 800019:return "PicturesSmall/e03_Laptop.jpeg";  
-            case 800020:return "PicturesSmall/e04_Phone.jpeg";  
-            case 800021:return "PicturesSmall/e05_Ram.jpeg";  
-            case 800022:return "PicturesSmall/e06_Mouse.jpeg";  
-            case 800023:return "PicturesSmall/e07_Keyboard.jpeg";  
-            case 800024:return "PicturesSmall/e08_Speaker.jpeg";  
-            case 800025:return "PicturesSmall/f01_WJacket.jpeg";  
-            case 800026:return "PicturesSmall/f02_MJacket.jpeg";  
-            case 800027:return "PicturesSmall/f03_TShirt.jpeg";  
-            case 800028:return "PicturesSmall/f04_WTop.jpeg";  
-            case 800029:return "PicturesSmall/f05_MPants.jpeg";  
-            case 800030:return "PicturesSmall/f06_Palazzo.jpeg";  
-            case 800031:return "PicturesSmall/f07_Kurti.jpeg";  
-            case 800032:return "PicturesSmall/f08_Dress.jpeg";  
-            case 800033:return "PicturesSmall/hf01_Sofa.jpeg";  
-            case 800034:return "PicturesSmall/hf02_Bed.jpeg";  
-            case 800035:return "PicturesSmall/hf03_DinningTable.jpeg";  
-            case 800036:return "PicturesSmall/hf04_StudyTable.jpeg";  
-            case 800037:return "PicturesSmall/hf05_cabinets.jpeg";  
-            case 800038:return "PicturesSmall/hf06_Vase.jpeg";  
-            case 800039:return "PicturesSmall/hf07_Fountain.jpeg";  
-            case 800040:return "PicturesSmall/hf08_lamp.jpeg";  
-            default:return null;
-            
+
+    public String getImgID(int pid) {
+        switch (pid) {
+            case 800001:
+                return "PicturesSmall/b01_MasterOfTheGame.jpeg";
+            case 800002:
+                return "PicturesSmall/b02_Divergent.jpeg";
+            case 800003:
+                return "PicturesSmall/b03_sapiens.jpeg";
+            case 800004:
+                return "PicturesSmall/b04_WingOfFire.jpeg";
+            case 800005:
+                return "PicturesSmall/b06_Notebook.jpeg";
+            case 800006:
+                return "PicturesSmall/b05_HalfBloodPrince.jpeg";
+            case 800007:
+                return "PicturesSmall/b07_LightingThief.jpeg";
+            case 800008:
+                return "PicturesSmall/b08_DigitalFortress.jpeg";
+            case 800009:
+                return "PicturesSmall/as01_Watch.jpeg";
+            case 800010:
+                return "PicturesSmall/as02_Bag.jpeg";
+            case 800011:
+                return "PicturesSmall/as03_Purse.jpeg";
+            case 800012:
+                return "PicturesSmall/as04_Cuffs.jpeg";
+            case 800013:
+                return "PicturesSmall/as05_Wallet.jpeg";
+            case 800014:
+                return "PicturesSmall/as06_HairBand.jpeg";
+            case 800015:
+                return "PicturesSmall/as07_Neckless.jpeg";
+            case 800016:
+                return "PicturesSmall/as08Ring.jpeg";
+            case 800017:
+                return "PicturesSmall/e01_Earphones.jpeg";
+            case 800018:
+                return "PicturesSmall/e02_Headphones.jpeg";
+            case 800019:
+                return "PicturesSmall/e03_Laptop.jpeg";
+            case 800020:
+                return "PicturesSmall/e04_Phone.jpeg";
+            case 800021:
+                return "PicturesSmall/e05_Ram.jpeg";
+            case 800022:
+                return "PicturesSmall/e06_Mouse.jpeg";
+            case 800023:
+                return "PicturesSmall/e07_Keyboard.jpeg";
+            case 800024:
+                return "PicturesSmall/e08_Speaker.jpeg";
+            case 800025:
+                return "PicturesSmall/f01_WJacket.jpeg";
+            case 800026:
+                return "PicturesSmall/f02_MJacket.jpeg";
+            case 800027:
+                return "PicturesSmall/f03_TShirt.jpeg";
+            case 800028:
+                return "PicturesSmall/f04_WTop.jpeg";
+            case 800029:
+                return "PicturesSmall/f05_MPants.jpeg";
+            case 800030:
+                return "PicturesSmall/f06_Palazzo.jpeg";
+            case 800031:
+                return "PicturesSmall/f07_Kurti.jpeg";
+            case 800032:
+                return "PicturesSmall/f08_Dress.jpeg";
+            case 800033:
+                return "PicturesSmall/hf01_Sofa.jpeg";
+            case 800034:
+                return "PicturesSmall/hf02_Bed.jpeg";
+            case 800035:
+                return "PicturesSmall/hf03_DinningTable.jpeg";
+            case 800036:
+                return "PicturesSmall/hf04_StudyTable.jpeg";
+            case 800037:
+                return "PicturesSmall/hf05_cabinets.jpeg";
+            case 800038:
+                return "PicturesSmall/hf06_Vase.jpeg";
+            case 800039:
+                return "PicturesSmall/hf07_Fountain.jpeg";
+            case 800040:
+                return "PicturesSmall/hf08_lamp.jpeg";
+            default:
+                return null;
+
         }
     }
-    public void initializeCart(){
-       ResultSet rs=SqlQ.retrive("select count(P_ID) as pid from cart where cust_ID='"+Session.curr_user()+"';");
-       int count_pid=0;
-       System.out.println("hello");
-       ResultSet rs2=SqlQ.retrive("select P_ID,name,cost,quantity from cart natural join product where cust_ID='"+Session.curr_user()+"';");
-        
-       try{
-        if(rs.next()){
-            count_pid=Integer.parseInt(rs.getString("pid"));
+
+    public void initializeCart() {
+        ResultSet rs = SqlQ.retrive("select count(P_ID) as pid from cart where cust_ID='" + Session.curr_user() + "';");
+        int count_pid = 0;
+        System.out.println("hello");
+        ResultSet rs2 = SqlQ.retrive("select P_ID,name,cost,quantity from cart natural join product where cust_ID='" + Session.curr_user() + "';");
+
+        try {
+            if (rs.next()) {
+                count_pid = Integer.parseInt(rs.getString("pid"));
+            }
+        } catch (Exception e) {
+            System.out.println(e + "hello");
+
         }
-       }
-       catch(Exception e)
-       {
-           System.out.println(e+"hello");
-           
-       }
         System.out.println(count_pid);
-        if(count_pid==0)
-        {
+        if (count_pid == 0) {
             jPanel15.setVisible(false);
             jPanel14.setVisible(false);
             jPanel11.setVisible(false);
-        }
-        else if(count_pid==1)
-        {
+        } else if (count_pid == 1) {
             jPanel15.setVisible(false);
             jPanel14.setVisible(false);
-            try{
-              if(rs2.next())
-              {
-              ImageIcon im1=new ImageIcon(getImgID(Integer.parseInt(rs2.getString("P_ID")))); 
-              jLabel10.setIcon(im1);
-              System.out.println(rs2.getString("P_ID"));
-              jLabel5.setText(rs2.getString("name"));
-              jLabel6.setText(rs2.getString("cost"));
-              jLabel7.setText(rs2.getString("quantity"));
+            try {
+                if (rs2.next()) {
+                    ImageIcon im1 = new ImageIcon(getImgID(Integer.parseInt(rs2.getString("P_ID"))));
+                    jLabel10.setIcon(im1);
+                    System.out.println(rs2.getString("P_ID"));
+                    jLabel5.setText(rs2.getString("name"));
+                    jLabel6.setText(rs2.getString("cost"));
+                    jLabel7.setText(rs2.getString("quantity"));
 
+                }
+            } catch (Exception e) {
+                System.out.println(e);
             }
-            }
-           catch(Exception e)
-           {
-               System.out.println(e);
-           }
-           
-        }
-         else if(count_pid==2)
-        {
+
+        } else if (count_pid == 2) {
             jPanel15.setVisible(false);
-            try{
-              if(rs2.next()){
-              ImageIcon im1=new ImageIcon(getImgID(Integer.parseInt(rs2.getString("P_ID")))); 
-              jLabel10.setIcon((Icon) im1);
-              System.out.println(getImgID(Integer.parseInt(rs2.getString("P_ID"))));
-              jLabel5.setText(rs2.getString("name"));
-              jLabel6.setText(rs2.getString("cost"));
-              jLabel7.setText(rs2.getString("quantity"));
-              rs2.next();
-              ImageIcon im2=new ImageIcon(getImgID(Integer.parseInt(rs2.getString("P_ID")))); 
-              jLabel14.setIcon((Icon) im2);
-              jLabel11.setText(rs2.getString("name"));
-              jLabel12.setText(rs2.getString("cost"));
-              jLabel13.setText(rs2.getString("quantity"));
-              }
+            try {
+                if (rs2.next()) {
+                    ImageIcon im1 = new ImageIcon(getImgID(Integer.parseInt(rs2.getString("P_ID"))));
+                    jLabel10.setIcon((Icon) im1);
+                    System.out.println(getImgID(Integer.parseInt(rs2.getString("P_ID"))));
+                    jLabel5.setText(rs2.getString("name"));
+                    jLabel6.setText(rs2.getString("cost"));
+                    jLabel7.setText(rs2.getString("quantity"));
+                    rs2.next();
+                    ImageIcon im2 = new ImageIcon(getImgID(Integer.parseInt(rs2.getString("P_ID"))));
+                    jLabel14.setIcon((Icon) im2);
+                    jLabel11.setText(rs2.getString("name"));
+                    jLabel12.setText(rs2.getString("cost"));
+                    jLabel13.setText(rs2.getString("quantity"));
+                }
+            } catch (Exception e) {
+                System.out.println(e);
             }
-           catch(Exception e)
-           {
-               System.out.println(e);
-           }
-           
+
+        } else {
+            try {
+                if (rs2.next()) {
+                    ImageIcon im1 = new ImageIcon(getImgID(Integer.parseInt(rs2.getString("P_ID"))));
+                    jLabel10.setIcon((Icon) im1);
+                    jLabel5.setText(rs2.getString("name"));
+                    jLabel6.setText(rs2.getString("cost"));
+                    jLabel7.setText(rs2.getString("quantity"));
+                    rs2.next();
+                    ImageIcon im2 = new ImageIcon(getImgID(Integer.parseInt(rs2.getString("P_ID"))));
+                    jLabel14.setIcon((Icon) im2);
+                    jLabel11.setText(rs2.getString("name"));
+                    jLabel12.setText(rs2.getString("cost"));
+                    jLabel13.setText(rs2.getString("quantity"));
+                    rs2.next();
+                    ImageIcon im3 = new ImageIcon(getImgID(Integer.parseInt(rs2.getString("P_ID"))));
+                    jLabel18.setIcon((Icon) im3);
+                    jLabel15.setText(rs2.getString("name"));
+                    jLabel16.setText(rs2.getString("cost"));
+                    jLabel17.setText(rs2.getString("quantity"));
+
+                }
+
+            } catch (Exception e) {
+                System.out.println(e);
+            }
+
         }
-        else
-         {
-             try{
-              if(rs2.next()){
-              ImageIcon im1=new ImageIcon(getImgID(Integer.parseInt(rs2.getString("P_ID")))); 
-              jLabel10.setIcon((Icon) im1);
-              jLabel5.setText(rs2.getString("name"));
-              jLabel6.setText(rs2.getString("cost"));
-              jLabel7.setText(rs2.getString("quantity"));
-              rs2.next();
-              ImageIcon im2=new ImageIcon(getImgID(Integer.parseInt(rs2.getString("P_ID")))); 
-              jLabel14.setIcon((Icon) im2);
-              jLabel11.setText(rs2.getString("name"));
-              jLabel12.setText(rs2.getString("cost"));
-              jLabel13.setText(rs2.getString("quantity"));
-              rs2.next();
-              ImageIcon im3=new ImageIcon(getImgID(Integer.parseInt(rs2.getString("P_ID")))); 
-              jLabel18.setIcon((Icon) im3);
-              jLabel15.setText(rs2.getString("name"));
-              jLabel16.setText(rs2.getString("cost"));
-              jLabel17.setText(rs2.getString("quantity"));
-            
-              }
-           
-            }
-           catch(Exception e)
-           {
-               System.out.println(e);
-           }
-           
-         }
     }
-    public void initializeWish(){
-       ResultSet rs=SqlQ.retrive("select count(P_ID) as pid from wishlist where cust_ID='"+Session.curr_user()+"';");
-       int count_pid=0;
-       System.out.println("hello");
-       ResultSet rs2=SqlQ.retrive("select P_ID,name,cost,quantity from wishlist natural join product where cust_ID='"+Session.curr_user()+"';");
-        
-       try{
-        if(rs.next()){
-            count_pid=Integer.parseInt(rs.getString("pid"));
+
+    public void initializeWish() {
+        ResultSet rs = SqlQ.retrive("select count(P_ID) as pid from wishlist where cust_ID='" + Session.curr_user() + "';");
+        int count_pid = 0;
+        System.out.println("hello");
+        ResultSet rs2 = SqlQ.retrive("select P_ID,name,cost,quantity from wishlist natural join product where cust_ID='" + Session.curr_user() + "';");
+
+        try {
+            if (rs.next()) {
+                count_pid = Integer.parseInt(rs.getString("pid"));
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+
         }
-       }
-       catch(Exception e)
-       {
-           System.out.println(e);
-           
-       }
         System.out.println(count_pid);
-        if(count_pid==0)
-        {
+        if (count_pid == 0) {
             jPanel18.setVisible(false);
             jPanel19.setVisible(false);
             jPanel20.setVisible(false);
-        }
-        else if(count_pid==1)
-        {
+        } else if (count_pid == 1) {
             jPanel19.setVisible(false);
             jPanel20.setVisible(false);
-            try{
-              if(rs2.next())
-              {
-              ImageIcon im1=new ImageIcon(getImgID(Integer.parseInt(rs2.getString("P_ID")))); 
-              jLabel30.setIcon(im1);
-              System.out.println(rs2.getString("P_ID"));
-              jLabel27.setText(rs2.getString("name"));
-              jLabel28.setText(rs2.getString("cost"));
-              jLabel29.setText(rs2.getString("quantity"));
+            try {
+                if (rs2.next()) {
+                    ImageIcon im1 = new ImageIcon(getImgID(Integer.parseInt(rs2.getString("P_ID"))));
+                    jLabel30.setIcon(im1);
+                    System.out.println(rs2.getString("P_ID"));
+                    jLabel27.setText(rs2.getString("name"));
+                    jLabel28.setText(rs2.getString("cost"));
+                    jLabel29.setText(rs2.getString("quantity"));
 
+                }
+            } catch (Exception e) {
+                System.out.println(e);
             }
-            }
-           catch(Exception e)
-           {
-               System.out.println(e);
-           }
-           
-        }
-         else if(count_pid==2)
-        {
+
+        } else if (count_pid == 2) {
             jPanel20.setVisible(false);
-            try{
-              if(rs2.next()){
-              ImageIcon im1=new ImageIcon(getImgID(Integer.parseInt(rs2.getString("P_ID")))); 
-              jLabel30.setIcon((Icon) im1);
-              System.out.println(getImgID(Integer.parseInt(rs2.getString("P_ID"))));
-              jLabel27.setText(rs2.getString("name"));
-              jLabel28.setText(rs2.getString("cost"));
-              jLabel29.setText(rs2.getString("quantity"));
-              rs2.next();
-              ImageIcon im2=new ImageIcon(getImgID(Integer.parseInt(rs2.getString("P_ID")))); 
-              jLabel34.setIcon((Icon) im2);
-              jLabel31.setText(rs2.getString("name"));
-              jLabel32.setText(rs2.getString("cost"));
-              jLabel33.setText(rs2.getString("quantity"));
-              }
+            try {
+                if (rs2.next()) {
+                    ImageIcon im1 = new ImageIcon(getImgID(Integer.parseInt(rs2.getString("P_ID"))));
+                    jLabel30.setIcon((Icon) im1);
+                    System.out.println(getImgID(Integer.parseInt(rs2.getString("P_ID"))));
+                    jLabel27.setText(rs2.getString("name"));
+                    jLabel28.setText(rs2.getString("cost"));
+                    jLabel29.setText(rs2.getString("quantity"));
+                    rs2.next();
+                    ImageIcon im2 = new ImageIcon(getImgID(Integer.parseInt(rs2.getString("P_ID"))));
+                    jLabel34.setIcon((Icon) im2);
+                    jLabel31.setText(rs2.getString("name"));
+                    jLabel32.setText(rs2.getString("cost"));
+                    jLabel33.setText(rs2.getString("quantity"));
+                }
+            } catch (Exception e) {
+                System.out.println(e);
             }
-           catch(Exception e)
-           {
-               System.out.println(e);
-           }
-           
+
+        } else {
+            try {
+                if (rs2.next()) {
+                    ImageIcon im1 = new ImageIcon(getImgID(Integer.parseInt(rs2.getString("P_ID"))));
+                    jLabel30.setIcon((Icon) im1);
+                    jLabel27.setText(rs2.getString("name"));
+                    jLabel28.setText(rs2.getString("cost"));
+                    jLabel29.setText(rs2.getString("quantity"));
+                    rs2.next();
+                    ImageIcon im2 = new ImageIcon(getImgID(Integer.parseInt(rs2.getString("P_ID"))));
+                    jLabel34.setIcon((Icon) im2);
+                    jLabel31.setText(rs2.getString("name"));
+                    jLabel32.setText(rs2.getString("cost"));
+                    jLabel33.setText(rs2.getString("quantity"));
+                    rs2.next();
+                    ImageIcon im3 = new ImageIcon(getImgID(Integer.parseInt(rs2.getString("P_ID"))));
+                    jLabel38.setIcon((Icon) im3);
+                    jLabel35.setText(rs2.getString("name"));
+                    jLabel36.setText(rs2.getString("cost"));
+                    jLabel37.setText(rs2.getString("quantity"));
+
+                }
+
+            } catch (Exception e) {
+                System.out.println(e);
+            }
+
         }
-        else
-         {
-             try{
-              if(rs2.next()){
-              ImageIcon im1=new ImageIcon(getImgID(Integer.parseInt(rs2.getString("P_ID")))); 
-              jLabel30.setIcon((Icon) im1);
-              jLabel27.setText(rs2.getString("name"));
-              jLabel28.setText(rs2.getString("cost"));
-              jLabel29.setText(rs2.getString("quantity"));
-              rs2.next();
-              ImageIcon im2=new ImageIcon(getImgID(Integer.parseInt(rs2.getString("P_ID")))); 
-              jLabel34.setIcon((Icon) im2);
-              jLabel31.setText(rs2.getString("name"));
-              jLabel32.setText(rs2.getString("cost"));
-              jLabel33.setText(rs2.getString("quantity"));
-              rs2.next();
-              ImageIcon im3=new ImageIcon(getImgID(Integer.parseInt(rs2.getString("P_ID")))); 
-              jLabel38.setIcon((Icon) im3);
-              jLabel35.setText(rs2.getString("name"));
-              jLabel36.setText(rs2.getString("cost"));
-              jLabel37.setText(rs2.getString("quantity"));
-            
-              }
-           
-            }
-           catch(Exception e)
-           {
-               System.out.println(e);
-           }
-           
-         }
     }
 
     /**
@@ -355,16 +362,19 @@ public class CartWishlist extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
         jPanel14 = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
+        jComboBox2 = new javax.swing.JComboBox<>();
         jPanel15 = new javax.swing.JPanel();
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
+        jComboBox3 = new javax.swing.JComboBox<>();
         jButton6 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
 
@@ -680,6 +690,8 @@ public class CartWishlist extends javax.swing.JFrame {
 
         jLabel10.setText("jLabel10");
 
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3" }));
+
         javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
         jPanel11.setLayout(jPanel11Layout);
         jPanel11Layout.setHorizontalGroup(
@@ -688,8 +700,11 @@ public class CartWishlist extends javax.swing.JFrame {
                 .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel11Layout.createSequentialGroup()
+                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(67, 67, 67)
+                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 393, Short.MAX_VALUE)
                     .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -701,7 +716,9 @@ public class CartWishlist extends javax.swing.JFrame {
                 .addGap(1, 1, 1)
                 .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
             .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
@@ -715,6 +732,8 @@ public class CartWishlist extends javax.swing.JFrame {
 
         jLabel14.setText("jLabel10");
 
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3" }));
+
         javax.swing.GroupLayout jPanel14Layout = new javax.swing.GroupLayout(jPanel14);
         jPanel14.setLayout(jPanel14Layout);
         jPanel14Layout.setHorizontalGroup(
@@ -723,9 +742,13 @@ public class CartWishlist extends javax.swing.JFrame {
                 .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
-                    .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
+                    .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel14Layout.createSequentialGroup()
+                        .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(12, 12, 12)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel14Layout.setVerticalGroup(
@@ -736,7 +759,9 @@ public class CartWishlist extends javax.swing.JFrame {
                 .addGap(1, 1, 1)
                 .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
             .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
@@ -750,6 +775,8 @@ public class CartWishlist extends javax.swing.JFrame {
 
         jLabel18.setText("jLabel10");
 
+        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", " " }));
+
         javax.swing.GroupLayout jPanel15Layout = new javax.swing.GroupLayout(jPanel15);
         jPanel15.setLayout(jPanel15Layout);
         jPanel15Layout.setHorizontalGroup(
@@ -758,9 +785,13 @@ public class CartWishlist extends javax.swing.JFrame {
                 .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel17, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
-                    .addComponent(jLabel16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jLabel16, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
+                    .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel15Layout.createSequentialGroup()
+                        .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(12, 12, 12)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel15Layout.setVerticalGroup(
@@ -769,7 +800,9 @@ public class CartWishlist extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(39, 39, 39)
-                .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
             .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                 .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -803,8 +836,8 @@ public class CartWishlist extends javax.swing.JFrame {
                         .addContainerGap()
                         .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jPanel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jPanel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jPanel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(jPanel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, 377, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel10Layout.createSequentialGroup()
                         .addGap(87, 87, 87)
                         .addComponent(jButton6)
@@ -856,148 +889,161 @@ public class CartWishlist extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        ResultSet rs=SqlQ.retrive("select count(order_ID) as cpid from orders natural join items where cust_ID='"+Session.curr_user()+"';");
-       int count_pid=0;
-      try{
-        if(rs.next()){
-            count_pid=Integer.parseInt(rs.getString("cpid"));
+        ResultSet rs = SqlQ.retrive("select count(order_ID) as cpid from orders where cust_ID='" + Session.curr_user() + "';");
+        int count_pid = 0;
+        try {
+            if (rs.next()) {
+                count_pid = Integer.parseInt(rs.getString("cpid"));
+                System.out.println(count_pid+"count or order oid");
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+
         }
-       }
-       catch(Exception e)
-       {
-           System.out.println(e);
-           
-       }
-       ResultSet rs2=SqlQ.retrive("select count(P_ID) as cpid1 from cart where cust_ID='"+Session.curr_user()+"';");
-       int count_pid1=0;
-      try{
-        if(rs.next()){
-            count_pid1=Integer.parseInt(rs2.getString("cpid1"));
+        ResultSet rs2 = SqlQ.retrive("select count(P_ID) as cpid1 from cart where cust_ID='" + Session.curr_user() + "';");
+        int count_pid1 = 0;
+        try {
+            if (rs2.next()) {
+                count_pid1 = Integer.parseInt(rs2.getString("cpid1"));
+                System.out.println(count_pid1+"count or order pid");
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+
         }
-       }
-      
-       catch(Exception e)
-       {
-           System.out.println(e);
-           
-       }
-      if(count_pid+count_pid1<=3)
-      {
-          while(count_pid1!=0)
-          {
-              ResultSet rs3=SqlQ.retrive("select P_ID from cart where cust_ID='"+Session.curr_user()+"';");
-             int pid=0;
-       try{
-         if(rs3.next()){
-             pid=Integer.parseInt(rs3.getString("P_ID"));
-          }
-         }
-      
-       catch(Exception e)
-       {
-           System.out.println(e);
-           
-       }
-              String query = "insert into orders(cust_ID) values('"+Session.curr_user()+"');";
-              SqlQ.updateq(query);
-              ResultSet rs4=SqlQ.retrive("select order_ID from orders where cust_ID='"+Session.curr_user()+"';");
-              int oid=0;
-       try{
-         if(rs4.next()){
-             oid=Integer.parseInt(rs4.getString("order_ID"));
-          }
-         }
-      
-       catch(Exception e)
-       {
-           System.out.println(e);
-           
-       }
-       String query1 = "insert into items(order_ID,P_ID) values('"+oid+"','"+pid+"');";
-              SqlQ.updateq(query1);
-          }
-                SqlQ.updateq("delete from cart where cust_ID='"+Session.curr_user()+"';");
-      
-        CustomerCart c= new CustomerCart();
-        this.setVisible(false);
-        c.setVisible(true);
-      }
-      else
-      {
-        JOptionPane.showMessageDialog(this,"Cannot Add More Then Three Items To The Orders List!");
-      }
-  
+        System.out.println(count_pid + count_pid1+"sum of them");
+        if (count_pid + count_pid1 <= 3) {
+            ResultSet rs3 = SqlQ.retrive("select P_ID from cart where cust_ID='" + Session.curr_user() + "';");
+            while (count_pid1 != 0) {
+                int pid = 0;
+                try {
+                    if (rs3.next()) {
+                        pid = Integer.parseInt(rs3.getString("P_ID"));
+                        System.out.println(pid+"pid");
+                    }
+                  } 
+                catch (Exception e) {
+                    System.out.println(e);
+
+                   }
+                String query = "insert into orders(cust_ID) values('" + Session.curr_user() + "');";
+                SqlQ.updateq(query);
+                System.out.println("Error");
+                ResultSet rs4 = SqlQ.retrive("select max(order_ID) as m from orders group by cust_ID having cust_ID='" + Session.curr_user() + "';");
+                int oid = 0;
+                try {
+                    if (rs4.next()) {
+                        oid = Integer.parseInt(rs4.getString("m"));
+                        System.out.println(oid+"oid");
+                    }
+                } catch (Exception e) {
+                    System.out.println(e);
+
+                }
+                String query1 = "insert into items(order_ID,P_ID) values('" + oid + "','" + pid + "');";
+                SqlQ.updateq(query1);
+                int days=7;
+                String s="Ordered";
+                String query2 = "insert into delivery values('" + oid + "','" + pid + "','" + days+ "','" +s+ "');";
+                SqlQ.updateq(query2);
+                count_pid1--;
+            }
+            SqlQ.updateq("delete from cart where cust_ID='" + Session.curr_user() + "';");
+
+            CustomerCart c = new CustomerCart();
+            this.setVisible(false);
+            c.setVisible(true);
+        } else {
+            JOptionPane.showMessageDialog(this, "Cannot Add More Then Three Items To The Orders List!");
+        }
+
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        // TODO add your handling code here:
+        
+        ResultSet rs = SqlQ.retrive("select count(P_ID) as cpid from cart where cust_ID='" + Session.curr_user() + "';");
+        int count_pid = 0;
+        try {
+            if (rs.next()) {
+                count_pid = Integer.parseInt(rs.getString("cpid"));
+                System.out.println(count_pid);
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+          }
+            if(count_pid==0)
+            {
+                JOptionPane.showMessageDialog(this, "Add Items To cart To Remove!");
+            }
+            else
+            {
+             SqlQ.updateq("delete from cart where cust_ID='" + Session.curr_user() + "';");
+             new CartWishlist().setVisible(true);
+            this.dispose();
+            }
+
+        
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-LoginPage l = new LoginPage();
-Session.logout();
-this.setVisible(false);
-l.setVisible(true);        // TODO add your handling code here:
+        LoginPage l = new LoginPage();
+        Session.logout();
+        this.setVisible(false);
+        l.setVisible(true);        // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-AllProductPage a = new AllProductPage();
-a.setVisible(true);
-this.setVisible(false);
+        AllProductPage a = new AllProductPage();
+        a.setVisible(true);
+        this.setVisible(false);
 // TODO add your handling code here:
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
 
-      ResultSet rs=SqlQ.retrive("select P_ID as pid from product where name='"+jLabel31.getText()+"';");
-      int pid=0; 
-      try{
-        if(rs.next()){
-            pid=Integer.parseInt(rs.getString("pid"));
+        ResultSet rs = SqlQ.retrive("select P_ID as pid from product where name='" + jLabel31.getText() + "';");
+        int pid = 0;
+        try {
+            if (rs.next()) {
+                pid = Integer.parseInt(rs.getString("pid"));
+            }
+        } catch (Exception e) {
+            System.out.println(e + "hello");
+
         }
-       }
-       catch(Exception e)
-       {
-           System.out.println(e+"hello");
-           
-       }
-       addcart(pid);
+        addcart(pid);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
-        ResultSet rs=SqlQ.retrive("select P_ID as pid from product where name='"+jLabel27.getText()+"';");
-      int pid=0; 
-      try{
-        if(rs.next()){
-            pid=Integer.parseInt(rs.getString("pid"));
+        ResultSet rs = SqlQ.retrive("select P_ID as pid from product where name='" + jLabel27.getText() + "';");
+        int pid = 0;
+        try {
+            if (rs.next()) {
+                pid = Integer.parseInt(rs.getString("pid"));
+            }
+        } catch (Exception e) {
+            System.out.println(e + "hello");
+
         }
-       }
-       catch(Exception e)
-       {
-           System.out.println(e+"hello");
-           
-       }
-       addcart(pid);
+        addcart(pid);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
-               ResultSet rs=SqlQ.retrive("select P_ID as pid from product where name='"+jLabel35.getText()+"';");
-      int pid=0; 
-      try{
-        if(rs.next()){
-            pid=Integer.parseInt(rs.getString("pid"));
+        ResultSet rs = SqlQ.retrive("select P_ID as pid from product where name='" + jLabel35.getText() + "';");
+        int pid = 0;
+        try {
+            if (rs.next()) {
+                pid = Integer.parseInt(rs.getString("pid"));
+            }
+        } catch (Exception e) {
+            System.out.println(e + "hello");
+
         }
-       }
-       catch(Exception e)
-       {
-           System.out.println(e+"hello");
-           
-       }
-       addcart(pid);
+        addcart(pid);
     }//GEN-LAST:event_jButton10ActionPerformed
-    
+
     /**
      * @param args the command line arguments
      */
@@ -1011,7 +1057,7 @@ this.setVisible(false);
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                     
+
                 }
             }
         } catch (ClassNotFoundException ex) {
@@ -1041,6 +1087,9 @@ this.setVisible(false);
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
+    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> jComboBox2;
+    private javax.swing.JComboBox<String> jComboBox3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
