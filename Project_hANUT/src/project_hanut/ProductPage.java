@@ -352,27 +352,52 @@ public class ProductPage extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+int pidi=Integer.parseInt(pid);
+        ResultSet rs = SqlQ.retrive("select count(P_ID) as cpid from wishlist where cust_ID='" + Session.curr_user() + "';");
+        int count_pid = 0;
+        try {
+            if (rs.next()) {
+                count_pid = Integer.parseInt(rs.getString("cpid"));
+            }
+        } catch (Exception e) {
+            System.out.println(e + "hello");
+
+        }
+        if (count_pid == 3) {
+            JOptionPane.showMessageDialog(this, "Cannot Add More Then Three Items To The Wishlist!");
+        } else {
+            System.out.println(pidi);
+            String query = "insert into Wishlist values('" + Session.curr_user() + "','" + pidi + "');";
+            System.out.println(query);
+            SqlQ.updateq(query);
+            new CartWishlist().setVisible(true);
+            this.dispose();
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-//check for limit of 3
-//count of 3
-String query= "select count(p_id) as count from cart where cust_id="+Session.curr_user()+";";
-ResultSet rs=SqlQ.retrive(query);
-try{
-if(rs.next()){
-    if(Integer.parseInt(rs.getString("count"))>=3){
-        JOptionPane.showMessageDialog(this, "You cant add more than 3 products in cart");
-    }
-    else{
-        //add
-        query="insert into cart values('"+Session.curr_user()+"',);";
-        SqlQ.updateq(query);
-        
-    }
-}}
-catch(SQLException e){}
+        int pidi=Integer.parseInt(pid);
+        ResultSet rs = SqlQ.retrive("select count(P_ID) as cpid from cart where cust_ID='" + Session.curr_user() + "';");
+        int count_pid = 0;
+        try {
+            if (rs.next()) {
+                count_pid = Integer.parseInt(rs.getString("cpid"));
+            }
+        } catch (Exception e) {
+            System.out.println(e + "hello");
+
+        }
+        if (count_pid == 3) {
+            JOptionPane.showMessageDialog(this, "Cannot Add More Then Three Items To The Cart!");
+        } else {
+            System.out.println(pidi);
+            String query = "insert into cart values('" + Session.curr_user() + "','" + pidi + "');";
+            System.out.println(query);
+            SqlQ.updateq(query);
+            new CartWishlist().setVisible(true);
+            this.dispose();
+        }
+
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 

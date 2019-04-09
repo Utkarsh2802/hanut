@@ -10,8 +10,8 @@ package project_hanut;
  * @author raghav
  */
 public class Session {
-    private static char userType='C';
-    private static int currUser=6700011;
+    private static char userType;
+    private static int currUser;
     public static void logined(String id){
        char c[]= id.toCharArray();
        currUser=Integer.parseInt(id);
