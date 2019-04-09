@@ -30,11 +30,11 @@ public class CustomerCart extends javax.swing.JFrame {
     }
     private void initialiseOrder()
     {
-        ResultSet rs=SqlQ.retrive("select count(P_ID) as pid from items natural join orders where cust_ID='"+Session.curr_user()+"';");
+        ResultSet rs=SqlQ.retrive("select count(order_ID) as oid from orders where cust_ID='"+Session.curr_user()+"';");
        int count_pid=0;
               try{
         if(rs.next()){
-            count_pid=Integer.parseInt(rs.getString("pid"));
+            count_pid=Integer.parseInt(rs.getString("oid"));
         }
        }
        catch(Exception e)
@@ -42,8 +42,8 @@ public class CustomerCart extends javax.swing.JFrame {
            System.out.println(e+"hello");
            
        }
-        ResultSet rs2=SqlQ.retrive("select P_ID,name,status,cost from orders natural join items natural join delivery natural join product where cust_ID='"+Session.curr_user()+"';");
-      if(count_pid==0)
+        ResultSet rs2=SqlQ.retrive("select P_ID,name,cost,status from orders natural join items natural join delivery natural join product where cust_ID='"+Session.curr_user()+"';");
+         if(count_pid==0)
         {
             jPanel11.setVisible(false);
             jPanel12.setVisible(false);
