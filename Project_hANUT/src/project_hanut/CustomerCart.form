@@ -433,6 +433,9 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
+<<<<<<< HEAD
+                  <EmptySpace min="0" pref="596" max="32767" attributes="0"/>
+=======
                   <Group type="102" attributes="0">
                       <EmptySpace min="25" pref="25" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
@@ -442,10 +445,17 @@
                       </Group>
                       <EmptySpace min="203" pref="203" max="-2" attributes="0"/>
                   </Group>
+>>>>>>> fed6f3a875d3159fa90c99de955bb58ebe0693df
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
+<<<<<<< HEAD
+                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+=======
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
                       <Component id="jPanel11" min="-2" max="-2" attributes="0"/>
@@ -643,6 +653,7 @@
               </SubComponents>
             </Container>
           </SubComponents>
+>>>>>>> fed6f3a875d3159fa90c99de955bb58ebe0693df
         </Container>
       </SubComponents>
     </Container>

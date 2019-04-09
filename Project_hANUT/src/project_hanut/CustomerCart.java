@@ -1,4 +1,14 @@
+<<<<<<< HEAD
  package project_hanut;
+=======
+package project_hanut;
+<<<<<<< HEAD
+public class CustomerCart extends javax.swing.JFrame {
+    public CustomerCart() {
+        initComponents();
+    }
+=======
+>>>>>>> 3dba31eb015c031007cce77e15b775ba2f38db30
 import java.awt.*;
 import java.awt.image.*;
 import javax.swing.*;
@@ -175,6 +185,7 @@ public class CustomerCart extends javax.swing.JFrame {
         }
     }
 
+>>>>>>> fed6f3a875d3159fa90c99de955bb58ebe0693df
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -199,6 +210,8 @@ public class CustomerCart extends javax.swing.JFrame {
         jLabel12 = new javax.swing.JLabel();
         jTextField7 = new javax.swing.JTextField();
         jPanel7 = new javax.swing.JPanel();
+<<<<<<< HEAD
+=======
         jPanel11 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
@@ -214,6 +227,7 @@ public class CustomerCart extends javax.swing.JFrame {
         jLabel18 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
+>>>>>>> fed6f3a875d3159fa90c99de955bb58ebe0693df
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -407,6 +421,8 @@ public class CustomerCart extends javax.swing.JFrame {
                 .addContainerGap(260, Short.MAX_VALUE))
         );
 
+<<<<<<< HEAD
+=======
         jPanel11.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         jLabel5.setText("jLabel5");
@@ -512,10 +528,18 @@ public class CustomerCart extends javax.swing.JFrame {
             .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
+>>>>>>> fed6f3a875d3159fa90c99de955bb58ebe0693df
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+<<<<<<< HEAD
+            .addGap(0, 596, Short.MAX_VALUE)
+        );
+        jPanel7Layout.setVerticalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+=======
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addGap(25, 25, 25)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -534,6 +558,7 @@ public class CustomerCart extends javax.swing.JFrame {
                 .addGap(25, 25, 25)
                 .addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+>>>>>>> fed6f3a875d3159fa90c99de955bb58ebe0693df
         );
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -580,9 +605,13 @@ public class CustomerCart extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+<<<<<<< HEAD
+       
+=======
         LoginPage l = new LoginPage();
         this.setVisible(false);
         l.setVisible(true);
+>>>>>>> fed6f3a875d3159fa90c99de955bb58ebe0693df
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
@@ -637,6 +666,16 @@ public class CustomerCart extends javax.swing.JFrame {
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
+<<<<<<< HEAD
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
+=======
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -660,6 +699,7 @@ public class CustomerCart extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel13;
+>>>>>>> fed6f3a875d3159fa90c99de955bb58ebe0693df
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
