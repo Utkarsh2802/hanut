@@ -1,7 +1,6 @@
 package project_hanut;
-import java.sql.*;/*
-import com.mysql.jdbc.Connection;
-import com.mysql.jdbc.Statement;*/
+
+import java.sql.*;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 
@@ -10,7 +9,7 @@ public class SqlQ {
         ResultSet rs=null;
         try {
             Class.forName("java.sql.DriverManager");
-            Connection con = (Connection)DriverManager.getConnection("jdbc:mysql://localhost:3306/hanut","root","dastan");
+            Connection con = (Connection)DriverManager.getConnection("jdbc:mysql://localhost:3306/hanut","root", "student123");
             Statement stmt = (Statement) con.createStatement();
             rs=stmt.executeQuery(query);            
         }
@@ -23,7 +22,9 @@ public class SqlQ {
     public static void updateq(String query) {
         try {
             Class.forName("java.sql.DriverManager");
-            Connection con = (Connection)DriverManager.getConnection("jdbc:mysql://localhost:3306/hanut","root","dastan");
+
+            Connection con = (Connection)DriverManager.getConnection("jdbc:mysql://localhost:3306/hanut","root", "student123");
+
             Statement stmt = (Statement) con.createStatement();
             stmt.executeUpdate(query);                       
         }

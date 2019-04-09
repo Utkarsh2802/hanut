@@ -45,14 +45,14 @@ CREATE TABLE product (
 CREATE TABLE orders (
 	cust_ID int(10) NOT NULL,
 	order_ID int(10) NOT NULL AUTO_INCREMENT,
-	amount FLOAT(10) NOT NULL,
+	amount FLOAT(10),
 	PRIMARY KEY (order_ID)
 );
 
 CREATE TABLE items (
 	order_ID int(10) NOT NULL,
 	P_ID int(10) NOT NULL,
-	qty int(5) NOT NULL DEFAULT '0',
+	qty int(5) NOT NULL DEFAULT '1',
 	PRIMARY KEY (order_ID,P_ID)
 );
 
@@ -71,7 +71,6 @@ CREATE TABLE wishlist (
 CREATE TABLE delivery (
 	order_ID int(10) NOT NULL,
 	P_ID int(10) NOT NULL,
-	dateoforder DATE NOT NULL,
 	days numeric(3) NOT NULL,
 	status varchar(10) NOT NULL,
 	PRIMARY KEY (order_ID,P_ID)
@@ -119,7 +118,7 @@ ALTER TABLE man_pro ADD CONSTRAINT man_pro_fk1 FOREIGN KEY (P_ID) REFERENCES pro
 
 insert into customer values(6700011,'Chandranshi',9830828787,'chansi.saraf@gmail.com','33 /, Hennur Main Road, Lingarajpuram');
 insert into customer values(6700012,'Raghav',9752354670,'raghav@msn.com','C/315, Vashi Plaza, Sector 17, Vashi');
-insert into customer values(6700013,'Prashant',9713577875,'prashant@in.com','H-6, 1st Fl.,Omkar,Near Marathi Vidhiyalaya');
+insert into customer values(6700013,'Prashant',9713577875,'Prashant@rediff.com','H-6, 1st Fl.,Omkar,Near Marathi Vidhiyalaya');
 insert into customer values(6700014,'Utkarsh',9572635551,'Utkarsh@rediff.com','Hs 27, Main Market, Kailash Colon');
 insert into customer values(6700015,'Sahil',9470720607,'Sahil@outlook.com','B/12 Shukla Cmpd, Dahisar');
 insert into seller values(8300011,'Raju Singh',9376689349,'Raju@yahoo.com','47 / nd Flr, Ramwadi, Kalbadevi');
@@ -135,7 +134,7 @@ insert into manufacturer values(7700014,'upala sankar',9221277687,'upala@gmail.c
 insert into manufacturer values(7700015,'Hemakuta  Mukherjee',9440366955,'Hemakuta@rediff.com','Copper Rollers Premises,LSB Marg');
 insert into cred values('chansi.saraf@gmail.com',6700011,'hello123');
 insert into cred values('raghav@msn.com',6700012,'doramon12');
-insert into cred values('prashant@in.com',6700013,'hbk');
+insert into cred values('Prashant@rediff.com',6700013,'therethere');
 insert into cred values('Utkarsh@rediff.com',6700014,'boss123');
 insert into cred values('Sahil@outlook.com',6700015,'quipquip');
 insert into cred values('Raju@yahoo.com',8300011,'hello123');
@@ -152,23 +151,23 @@ insert into product values(800001,'Master Of The Game',450,'books',8300013,5);
 insert into product values(800002,'Divergent',355,'books',8300014,4);
 insert into product values(800003,'Sapiens',600,'books',8300013,5);
 insert into product values(800004,'Wings Of Fire',525,'books',8300014,5);
-insert into product values(800005,'Notebook',450,'books',8300014,2);
+insert into product values(800005,'Notebook',450,'books',8300014,6);
 insert into product values(800006,'Half Blood Prince',650,'books',8300013,3);
 insert into product values(800007,'Lightning Thieft',355,'books',8300013,4);
 insert into product values(800008,'Digital Fortress',600,'books',8300013,5);
 insert into product values(800009,'Titan Watch',4025,'acces',8300015,3);
-insert into product values(800010,'Caprese Tote Bag',3056,'acces',8300014,2);
-insert into product values(800011,'Women Purse',525,'acces',8300014,2);
-insert into product values(800012,'Mens Cufflinks',1025,'acces',8300015,2);
+insert into product values(800010,'Caprese Tote Bag',3056,'acces',8300014,5);
+insert into product values(800011,'Women Purse',525,'acces',8300014,5);
+insert into product values(800012,'Mens Cufflinks',1025,'acces',8300015,6);
 insert into product values(800013,'Mens Wallet',895,'acces',8300015,7);
 insert into product values(800014,'Womens Hair Band',399,'acces',8300015,15);
-insert into product values(800015,'Diamond Necklace',10995,'acces',8300014,2);
-insert into product values(800016,'Ruby Ring',12555,'acces',8300015,1);
+insert into product values(800015,'Diamond Necklace',10995,'acces',8300014,4);
+insert into product values(800016,'Ruby Ring',12555,'acces',8300015,5);
 insert into product values(800017,'Apple Earphones',2200,'ele',8300011,3);
 insert into product values(800018,'Sony Headphones',2200,'ele',8300011,5);
 insert into product values(800019,'HP Laptop',60555,'ele',8300011,6);
-insert into product values(800020,'One Plus 6T',32099,'ele',8300011,1);
-insert into product values(800021,'8GB RAM',3200,'ele',8300011,2);
+insert into product values(800020,'One Plus 6T',32099,'ele',8300011,4);
+insert into product values(800021,'8GB RAM',3200,'ele',8300011,3);
 insert into product values(800022,'Logitech Mouse',1099,'ele',8300011,7);
 insert into product values(800023,'Apple Keyboard',3200,'ele',8300011,3);
 insert into product values(800024,'JBL Speakers',4599,'ele',8300011,3);
@@ -188,6 +187,14 @@ insert into product values(800037,'Kitchen Cabinets',79299,'home',8300016,7);
 insert into product values(800038,'Decorative Flower Vase',14559,'home',8300016,12);
 insert into product values(800039,'Indoor Fountian',8999,'home',8300016,7);
 insert into product values(800040,'hanging Lamps',12099,'home',8300016,7);
+insert into cart values(6700011,800001);
+insert into cart values(6700011,800002);
+insert into cart values(6700011,800003);
+insert into wishlist values(6700011,800012);
 insert into orders values(6700011,7900011,900);
 insert into items values(7900011,800001,2);
-insert into delivery values(7900011,800001,'2019-01-23',3,'up');
+insert into delivery values(7900011,800001,3,'Ordered');
+delete from orders where order_ID=7900024;
+delete from orders where order_ID=7900025;
+delete from items where order_ID=7900024;
+delete from items where order_ID=7900025;

@@ -7,6 +7,9 @@ package project_hanut;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Random;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 /**
@@ -18,8 +21,31 @@ public class ProductPage extends javax.swing.JFrame {
     /**
      * Creates new form ProductPage
      */
+    static String pid;
     public ProductPage() {
         initComponents();
+    }
+    public ProductPage(String pid) {
+        this.pid=pid;
+        initComponents();
+        loadProduct();
+    }
+    public void loadProduct(){
+        String query="Select * from product,seller where product.s_id=seller.id and p_id="+pid;
+        ResultSet rs=SqlQ.retrive(query);
+        try{
+            rs.next();
+            jLabel3.setText(rs.getString("name"));
+            jLabel4.setText("Sold by: "+rs.getString("seller.name"));
+            jLabel11.setText("Quantity available: "+rs.getString("quantity"));
+            int ran=new Random().nextInt(3)+3;
+            jLabel6.setText("Rating: "+ran+"/5");
+            jLabel7.setText("Price: "+(char)8377+rs.getString("cost"));
+            ImageIcon image = new ImageIcon(Images.getImgID(Integer.parseInt(rs.getString("p_id"))));
+            jLabel5.setIcon((Icon) image);
+        }
+        catch(Exception e){}
+        
     }
 
     /**
@@ -43,14 +69,16 @@ public class ProductPage extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jPanel7 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
         jButton4 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -111,7 +139,7 @@ public class ProductPage extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(19, 19, 19)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(26, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -175,11 +203,11 @@ public class ProductPage extends javax.swing.JFrame {
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 368, Short.MAX_VALUE)
+            .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 368, Short.MAX_VALUE)
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 332, Short.MAX_VALUE)
+            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 332, Short.MAX_VALUE)
         );
 
         jButton1.setBackground(new java.awt.Color(51, 49, 60));
@@ -208,20 +236,23 @@ public class ProductPage extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 12)); // NOI18N
         jLabel4.setText("<Seller>");
 
-        jLabel5.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 12)); // NOI18N
-        jLabel5.setText("<Manufacturer>");
-
         jLabel6.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 12)); // NOI18N
         jLabel6.setText("<Rating>");
 
         jLabel7.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 15)); // NOI18N
         jLabel7.setText("<Price>");
 
+        jLabel10.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 12)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(49, 144, 38));
+        jLabel10.setText("Delivery in 5 to 8 business days");
+
+        jLabel11.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 12)); // NOI18N
+        jLabel11.setText("<Quantity Available>");
+
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel7Layout.createSequentialGroup()
@@ -230,18 +261,22 @@ public class ProductPage extends javax.swing.JFrame {
                     .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 265, Short.MAX_VALUE)
                     .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
+            .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel3)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(45, 45, 45)
                 .addComponent(jLabel4)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel6)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel11)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel10)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
                 .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -277,7 +312,7 @@ public class ProductPage extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(22, 22, 22))
         );
         jPanel2Layout.setVerticalGroup(
@@ -295,7 +330,7 @@ public class ProductPage extends javax.swing.JFrame {
                             .addComponent(jButton1)
                             .addComponent(jButton2)))
                     .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 105, Short.MAX_VALUE))
+                .addGap(0, 70, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -317,34 +352,60 @@ public class ProductPage extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+int pidi=Integer.parseInt(pid);
+        ResultSet rs = SqlQ.retrive("select count(P_ID) as cpid from wishlist where cust_ID='" + Session.curr_user() + "';");
+        int count_pid = 0;
+        try {
+            if (rs.next()) {
+                count_pid = Integer.parseInt(rs.getString("cpid"));
+            }
+        } catch (Exception e) {
+            System.out.println(e + "hello");
+
+        }
+        if (count_pid == 3) {
+            JOptionPane.showMessageDialog(this, "Cannot Add More Then Three Items To The Wishlist!");
+        } else {
+            System.out.println(pidi);
+            String query = "insert into Wishlist values('" + Session.curr_user() + "','" + pidi + "');";
+            System.out.println(query);
+            SqlQ.updateq(query);
+            new CartWishlist().setVisible(true);
+            this.dispose();
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-//check for limit of 3
-//count of 3
-String query= "select count(p_id) as count from cart where cust_id="+Session.curr_user()+";";
-ResultSet rs=SqlQ.retrive(query);
-try{
-if(rs.next()){
-    if(Integer.parseInt(rs.getString("count"))>=3){
-        JOptionPane.showMessageDialog(this, "You cant add more than 3 products in cart");
-    }
-    else{
-        //add
-        query="insert into cart values('"+Session.curr_user()+"',);";
-        SqlQ.updateq(query);
-        
-    }
-}}
-catch(SQLException e){}
+        int pidi=Integer.parseInt(pid);
+        ResultSet rs = SqlQ.retrive("select count(P_ID) as cpid from cart where cust_ID='" + Session.curr_user() + "';");
+        int count_pid = 0;
+        try {
+            if (rs.next()) {
+                count_pid = Integer.parseInt(rs.getString("cpid"));
+            }
+        } catch (Exception e) {
+            System.out.println(e + "hello");
+
+        }
+        if (count_pid == 3) {
+            JOptionPane.showMessageDialog(this, "Cannot Add More Then Three Items To The Cart!");
+        } else {
+            System.out.println(pidi);
+            String query = "insert into cart values('" + Session.curr_user() + "','" + pidi + "');";
+            System.out.println(query);
+            SqlQ.updateq(query);
+            new CartWishlist().setVisible(true);
+            this.dispose();
+        }
+
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-     CartWishlist cart = new CartWishlist();
-this.setVisible(false);
-cart.setVisible(true);   // TODO add your handling code here:
+
+        CartWishlist cart = new CartWishlist();
+        this.setVisible(false);
+        cart.setVisible(true);   // TODO add your handling code here:
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -402,6 +463,8 @@ all.setVisible(true);   // TODO add your handling code here:
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
