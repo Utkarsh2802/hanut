@@ -7,6 +7,9 @@ package project_hanut;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Random;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 /**
@@ -18,8 +21,31 @@ public class ProductPage extends javax.swing.JFrame {
     /**
      * Creates new form ProductPage
      */
+    static String pid;
     public ProductPage() {
         initComponents();
+    }
+    public ProductPage(String pid) {
+        this.pid=pid;
+        initComponents();
+        loadProduct();
+    }
+    public void loadProduct(){
+        String query="Select * from product,seller where product.s_id=seller.id and p_id="+pid;
+        ResultSet rs=SqlQ.retrive(query);
+        try{
+            rs.next();
+            jLabel3.setText(rs.getString("name"));
+            jLabel4.setText("Sold by: "+rs.getString("seller.name"));
+            jLabel11.setText("Quantity available: "+rs.getString("quantity"));
+            int ran=new Random().nextInt(3)+3;
+            jLabel6.setText("Rating: "+ran+"/5");
+            jLabel7.setText("Price: "+(char)8377+rs.getString("cost"));
+            ImageIcon image = new ImageIcon(Images.getImgID(Integer.parseInt(rs.getString("p_id"))));
+            jLabel5.setIcon((Icon) image);
+        }
+        catch(Exception e){}
+        
     }
 
     /**
@@ -43,6 +69,7 @@ public class ProductPage extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jPanel7 = new javax.swing.JPanel();
@@ -176,11 +203,11 @@ public class ProductPage extends javax.swing.JFrame {
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 368, Short.MAX_VALUE)
+            .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 368, Short.MAX_VALUE)
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 332, Short.MAX_VALUE)
+            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 332, Short.MAX_VALUE)
         );
 
         jButton1.setBackground(new java.awt.Color(51, 49, 60));
@@ -216,7 +243,8 @@ public class ProductPage extends javax.swing.JFrame {
         jLabel7.setText("<Price>");
 
         jLabel10.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 12)); // NOI18N
-        jLabel10.setText("<No Of days>");
+        jLabel10.setForeground(new java.awt.Color(49, 144, 38));
+        jLabel10.setText("Delivery in 5 to 8 business days");
 
         jLabel11.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 12)); // NOI18N
         jLabel11.setText("<Quantity Available>");
@@ -284,7 +312,7 @@ public class ProductPage extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(22, 22, 22))
         );
         jPanel2Layout.setVerticalGroup(
@@ -415,6 +443,7 @@ all.setVisible(true);   // TODO add your handling code here:
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;

@@ -5,6 +5,15 @@
  */
 package project_hanut;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import java.sql.ResultSet;
+
 /**
  *
  * @author MAHE
@@ -16,6 +25,32 @@ public class SellerPage2 extends javax.swing.JFrame {
      */
     public SellerPage2() {
         initComponents();
+        sellerDetails();
+    }
+    public void sellerDetails(){
+        String query="Select * from seller where id='"+Session.curr_user()+"'";
+        ResultSet rs=SqlQ.retrive(query);
+        DefaultTableModel model = (DefaultTableModel)
+        jTable1.getModel();
+        String query2="select p_id,name,cost,quantity as qty from product where s_id='"+Session.curr_user()+"';";
+        ResultSet rs2= SqlQ.retrive(query2);
+        try{
+            
+        if(rs.next()){
+            jTextField1.setText(rs.getString("name"));
+            jTextField6.setText(rs.getString("phone"));
+            jTextField7.setText(rs.getString("email"));
+        }
+        while(rs2.next()){
+            String oid=rs2.getString("p_id");
+            String pid=rs2.getString("name");
+            String name=rs2.getString("cost");
+            String qty=rs2.getString("qty");
+           
+            model.addRow(new Object[]{oid,pid,name,qty});
+        }
+        }
+        catch(Exception e){System.out.print(e);}
     }
 
     /**
@@ -289,14 +324,7 @@ public class SellerPage2 extends javax.swing.JFrame {
         jTable1.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 12)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
                 "Product ID", "Product", "Price", "Quantity"
