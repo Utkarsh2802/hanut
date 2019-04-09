@@ -197,6 +197,9 @@
               <Color blue="1e" green="31" red="33" type="rgb"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jPanel8MouseClicked"/>
+          </Events>
 
           <Layout>
             <DimensionLayout dim="0">
@@ -613,7 +616,7 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="3c" green="31" red="33" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="&lt;CategoryName&gt;"/>
+                <Property name="text" type="java.lang.String" value="Books"/>
               </Properties>
             </Component>
             <Container class="javax.swing.JPanel" name="jPanel18">
