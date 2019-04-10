@@ -22,30 +22,33 @@ public class ProductPage extends javax.swing.JFrame {
      * Creates new form ProductPage
      */
     static String pid;
+
     public ProductPage() {
         initComponents();
     }
+
     public ProductPage(String pid) {
-        this.pid=pid;
+        this.pid = pid;
         initComponents();
         loadProduct();
     }
-    public void loadProduct(){
-        String query="Select * from product,seller where product.s_id=seller.id and p_id="+pid;
-        ResultSet rs=SqlQ.retrive(query);
-        try{
+
+    public void loadProduct() {
+        String query = "Select * from product,seller where product.s_id=seller.id and p_id=" + pid;
+        ResultSet rs = SqlQ.retrive(query);
+        try {
             rs.next();
             jLabel3.setText(rs.getString("name"));
-            jLabel4.setText("Sold by: "+rs.getString("seller.name"));
-            jLabel11.setText("Quantity available: "+rs.getString("quantity"));
-            int ran=new Random().nextInt(3)+3;
-            jLabel6.setText("Rating: "+ran+"/5");
-            jLabel7.setText("Price: "+(char)8377+rs.getString("cost"));
+            jLabel4.setText("Sold by: " + rs.getString("seller.name"));
+            jLabel11.setText("Quantity available: " + rs.getString("quantity"));
+            int ran = new Random().nextInt(3) + 3;
+            jLabel6.setText("Rating: " + ran + "/5");
+            jLabel7.setText("Price: " + (char) 8377 + rs.getString("cost"));
             ImageIcon image = new ImageIcon(Images.getImgID(Integer.parseInt(rs.getString("p_id"))));
             jLabel5.setIcon((Icon) image);
+        } catch (Exception e) {
         }
-        catch(Exception e){}
-        
+
     }
 
     /**
@@ -356,7 +359,7 @@ public class ProductPage extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-int pidi=Integer.parseInt(pid);
+        int pidi = Integer.parseInt(pid);
         ResultSet rs = SqlQ.retrive("select count(P_ID) as cpid from wishlist where cust_ID='" + Session.curr_user() + "';");
         int count_pid = 0;
         try {
@@ -380,7 +383,7 @@ int pidi=Integer.parseInt(pid);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        int pidi=Integer.parseInt(pid);
+        int pidi = Integer.parseInt(pid);
         ResultSet rs = SqlQ.retrive("select count(P_ID) as cpid from cart where cust_ID='" + Session.curr_user() + "';");
         int count_pid = 0;
         try {
@@ -413,16 +416,16 @@ int pidi=Integer.parseInt(pid);
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-LoginPage l = new LoginPage();
-Session.logout();
-this.setVisible(false);
-l.setVisible(true);        // TODO add your handling code here:
+        LoginPage l = new LoginPage();
+        Session.logout();
+        this.setVisible(false);
+        l.setVisible(true);        // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-     AllProductPage all = new AllProductPage();
-this.setVisible(false);
-all.setVisible(true);   // TODO add your handling code here:
+        AllProductPage all = new AllProductPage();
+        this.setVisible(false);
+        all.setVisible(true);   // TODO add your handling code here:
     }//GEN-LAST:event_jButton5ActionPerformed
 
     /**

@@ -9,39 +9,40 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class SellerPage extends javax.swing.JFrame {
+
     public SellerPage() {
         initComponents();
         sellerDetails();
     }
-    public void sellerDetails(){
-        String query="Select * from seller where id='"+Session.curr_user()+"'";
-        ResultSet rs=SqlQ.retrive(query);
-        DefaultTableModel model = (DefaultTableModel)jTable1.getModel();
-        String query2="select order_id,p_id,name,qty,status from items natural join delivery natural join product where s_id='"+Session.curr_user()+"';";
-        ResultSet rs2= SqlQ.retrive(query2);
-        Object rowdata[]= new Object[5];
+
+    public void sellerDetails() {
+        String query = "Select * from seller where id='" + Session.curr_user() + "'";
+        ResultSet rs = SqlQ.retrive(query);
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        String query2 = "select order_id,p_id,name,qty,status from items natural join delivery natural join product where s_id='" + Session.curr_user() + "';";
+        ResultSet rs2 = SqlQ.retrive(query2);
+        Object rowdata[] = new Object[5];
         try {
-            if(rs.next()){
-            jTextField1.setText(rs.getString("name"));
-            jTextField6.setText(rs.getString("phone"));
-            jTextField7.setText(rs.getString("email"));
+            if (rs.next()) {
+                jTextField1.setText(rs.getString("name"));
+                jTextField6.setText(rs.getString("phone"));
+                jTextField7.setText(rs.getString("email"));
             }
-            while(rs2.next()) {
-            rowdata[0]=rs2.getString("order_id");
-            rowdata[1]=rs2.getString("p_id");
-            rowdata[2]=rs2.getString("name");
-            rowdata[3]=rs2.getString("qty");
-            rowdata[4]=rs2.getString("status");
-            model.addRow(rowdata);
+            while (rs2.next()) {
+                rowdata[0] = rs2.getString("order_id");
+                rowdata[1] = rs2.getString("p_id");
+                rowdata[2] = rs2.getString("name");
+                rowdata[3] = rs2.getString("qty");
+                rowdata[4] = rs2.getString("status");
+                model.addRow(rowdata);
             }
-            String query3="select * from s_acc where s_id='"+Session.curr_user()+"';";
-            ResultSet rs3=SqlQ.retrive(query3);
+            String query3 = "select * from s_acc where s_id='" + Session.curr_user() + "';";
+            ResultSet rs3 = SqlQ.retrive(query3);
             rs3.next();
             jTextField8.setText(rs3.getString("income"));
             jTextField9.setText(rs3.getString("expen"));
             jTextField10.setText(rs3.getString("profit"));
-        }
-        catch(Exception e){
+        } catch (Exception e) {
             System.out.print(e);
         }
     }
@@ -530,12 +531,12 @@ public class SellerPage extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-       new SellerPage().setVisible(true);
-       this.dispose();
+        new SellerPage().setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
@@ -544,10 +545,9 @@ public class SellerPage extends javax.swing.JFrame {
         String orderid = jTextField2.getText();
         String productid = jTextField3.getText();
         try {
-            String query="update delivery set status='"+status+"' where order_id='"+orderid+"' and p_id='"+productid+"';";
+            String query = "update delivery set status='" + status + "' where order_id='" + orderid + "' and p_id='" + productid + "';";
             SqlQ.updateq(query);
-        } 
-        catch (Exception e) {
+        } catch (Exception e) {
         }
         new SellerPage().setVisible(true);
         this.dispose();
@@ -569,9 +569,9 @@ public class SellerPage extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField2ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-       SellerPage2 sp2 = new SellerPage2();
-       sp2.setVisible(true);
-       this.setVisible(false); // TODO add your handling code here:
+        SellerPage2 sp2 = new SellerPage2();
+        sp2.setVisible(true);
+        this.setVisible(false); // TODO add your handling code here:
     }//GEN-LAST:event_jButton7ActionPerformed
 
     /**

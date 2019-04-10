@@ -237,7 +237,7 @@ public class CustomerCart extends javax.swing.JFrame {
 
         jLabel8.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 12)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel8.setText("© CURP Foundations");
+        jLabel8.setText("© CRSP Foundations");
 
         jLabel9.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 12)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));

@@ -27,38 +27,39 @@ public class SellerPage2 extends javax.swing.JFrame {
         initComponents();
         sellerDetails();
     }
-    public void sellerDetails(){
-        String query="Select * from seller where id='"+Session.curr_user()+"'";
-        ResultSet rs=SqlQ.retrive(query);
-        DefaultTableModel model = (DefaultTableModel)
-        jTable1.getModel();
-        String query2="select p_id,name,cost,quantity as qty from product where s_id='"+Session.curr_user()+"';";
-        ResultSet rs2= SqlQ.retrive(query2);
-        try{
-            
-        if(rs.next()){
-            jTextField1.setText(rs.getString("name"));
-            jTextField6.setText(rs.getString("phone"));
-            jTextField7.setText(rs.getString("email"));
+
+    public void sellerDetails() {
+        String query = "Select * from seller where id='" + Session.curr_user() + "'";
+        ResultSet rs = SqlQ.retrive(query);
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        String query2 = "select p_id,name,cost,quantity as qty from product where s_id='" + Session.curr_user() + "';";
+        ResultSet rs2 = SqlQ.retrive(query2);
+        try {
+
+            if (rs.next()) {
+                jTextField1.setText(rs.getString("name"));
+                jTextField6.setText(rs.getString("phone"));
+                jTextField7.setText(rs.getString("email"));
+            }
+            while (rs2.next()) {
+                String oid = rs2.getString("p_id");
+                String pid = rs2.getString("name");
+                String name = rs2.getString("cost");
+                String qty = rs2.getString("qty");
+
+                model.addRow(new Object[]{oid, pid, name, qty});
+            }
+        } catch (Exception e) {
+            System.out.print(e);
         }
-        while(rs2.next()){
-            String oid=rs2.getString("p_id");
-            String pid=rs2.getString("name");
-            String name=rs2.getString("cost");
-            String qty=rs2.getString("qty");
-           
-            model.addRow(new Object[]{oid,pid,name,qty});
-        }
-        }
-        catch(Exception e){System.out.print(e);}
-         String query3="select * from s_acc where s_id='"+Session.curr_user()+"';";
-            ResultSet rs3=SqlQ.retrive(query3);
-            try{
+        String query3 = "select * from s_acc where s_id='" + Session.curr_user() + "';";
+        ResultSet rs3 = SqlQ.retrive(query3);
+        try {
             rs3.next();
             jTextField8.setText(rs3.getString("income"));
             jTextField9.setText(rs3.getString("expen"));
             jTextField10.setText(rs3.getString("profit"));
-            
+
         } catch (Exception e) {
             System.out.println(e + "hello");
 
@@ -524,7 +525,7 @@ public class SellerPage2 extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-       LoginPage l = new LoginPage();
+        LoginPage l = new LoginPage();
         this.setVisible(false);
         l.setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
@@ -534,10 +535,10 @@ public class SellerPage2 extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-      int pid=Integer.parseInt(jTextField2.getText());
-      float cost=Float.parseFloat(jTextField3.getText());
-      int q=Integer.parseInt(jTextField4.getText());
-      ResultSet rs = SqlQ.retrive("select quantity from product where P_ID='" + pid + "';");
+        int pid = Integer.parseInt(jTextField2.getText());
+        float cost = Float.parseFloat(jTextField3.getText());
+        int q = Integer.parseInt(jTextField4.getText());
+        ResultSet rs = SqlQ.retrive("select quantity from product where P_ID='" + pid + "';");
         int count_pid = 0;
         try {
             if (rs.next()) {
@@ -547,12 +548,12 @@ public class SellerPage2 extends javax.swing.JFrame {
             System.out.println(e);
 
         }
-        q=q+count_pid;
-      SqlQ.updateq("update product set quantity='"+q+"' where P_ID='" + pid + "';");
-      SqlQ.updateq("update product set cost='"+cost+"' where P_ID='" + pid + "';");
-            new SellerPage2().setVisible(true);
-            this.dispose();
-        
+        q = q + count_pid;
+        SqlQ.updateq("update product set quantity='" + q + "' where P_ID='" + pid + "';");
+        SqlQ.updateq("update product set cost='" + cost + "' where P_ID='" + pid + "';");
+        new SellerPage2().setVisible(true);
+        this.dispose();
+
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed

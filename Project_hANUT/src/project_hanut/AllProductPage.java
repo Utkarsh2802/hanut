@@ -1,4 +1,5 @@
 package project_hanut;
+
 import java.awt.*;
 import java.awt.image.*;
 import java.io.*;
@@ -9,10 +10,11 @@ import javax.swing.*;
 import javax.imageio.ImageIO;
 
 public class AllProductPage extends javax.swing.JFrame {
+
     public AllProductPage() {
         initComponents();
         getCustomerName();
-        java.awt.event.MouseEvent evt=null;
+        java.awt.event.MouseEvent evt = null;
         jLabel4MouseClicked(evt);
         jLabel10.setText("Books");
         jLabel16.setVisible(false);
@@ -24,21 +26,21 @@ public class AllProductPage extends javax.swing.JFrame {
         jLabel36.setVisible(false);
         jLabel37.setVisible(false);
         AutoCompletion.enable(jComboBox1);
-        
+
         //AutoCompleteDecorator.decorate(this.jComboBox1);
-        
-        
     }
-    public void getCustomerName(){
-        String query="select * from customer where id='"+Session.curr_user()+"';";
-        ResultSet rs=SqlQ.retrive(query);
-        try{
-            if(rs.next()){
-            jLabel38.setText(rs.getString("name"));
+
+    public void getCustomerName() {
+        String query = "select * from customer where id='" + Session.curr_user() + "';";
+        ResultSet rs = SqlQ.retrive(query);
+        try {
+            if (rs.next()) {
+                jLabel38.setText(rs.getString("name"));
+            }
+        } catch (Exception e) {
         }
-        }
-        catch(Exception e){}
     }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -135,7 +137,7 @@ public class AllProductPage extends javax.swing.JFrame {
 
         jLabel8.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 12)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel8.setText("© CURP Foundations");
+        jLabel8.setText("© CRSP Foundations");
 
         jLabel9.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 12)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
@@ -209,8 +211,14 @@ public class AllProductPage extends javax.swing.JFrame {
             }
         });
 
+        jLabel38.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel38.setForeground(new java.awt.Color(254, 254, 254));
         jLabel38.setText("<name>");
+        jLabel38.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel38MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -224,35 +232,36 @@ public class AllProductPage extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(19, 19, 19)
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(0, 5, Short.MAX_VALUE))
+                            .addComponent(jLabel38, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap())
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jLabel38)
-                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(34, 34, 34)
-                .addComponent(jLabel38)
-                .addGap(86, 86, 86)
-                .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 18, Short.MAX_VALUE)
+                .addGap(27, 27, 27)
+                .addComponent(jLabel38, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(79, 79, 79)
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 18, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 18, Short.MAX_VALUE)
+                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 18, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 18, Short.MAX_VALUE)
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 20, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 20, Short.MAX_VALUE)
+                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 20, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(135, 135, 135)
@@ -797,16 +806,16 @@ public class AllProductPage extends javax.swing.JFrame {
 
     private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
 //4,6,3,5,7
-jLabel4.setFont(new Font("TakaoPGothic",Font.BOLD,17));
-jLabel6.setFont(new Font("TakaoPGothic",Font.PLAIN,16));
-jLabel3.setFont(new Font("TakaoPGothic",Font.PLAIN,16));
-jLabel5.setFont(new Font("TakaoPGothic",Font.PLAIN,16));
-jLabel7.setFont(new Font("TakaoPGothic",Font.PLAIN,16));
+        jLabel4.setFont(new Font("TakaoPGothic", Font.BOLD, 17));
+        jLabel6.setFont(new Font("TakaoPGothic", Font.PLAIN, 16));
+        jLabel3.setFont(new Font("TakaoPGothic", Font.PLAIN, 16));
+        jLabel5.setFont(new Font("TakaoPGothic", Font.PLAIN, 16));
+        jLabel7.setFont(new Font("TakaoPGothic", Font.PLAIN, 16));
 
         try {
             ImageIcon image1 = new ImageIcon("PicturesSmall/b01_MasterOfTheGame.jpeg");
             ImageIcon image2 = new ImageIcon("PicturesSmall/b02_Divergent.jpeg");
-            ImageIcon image3 = new ImageIcon("PicturesSmall/b03_sapiens.jpeg" );
+            ImageIcon image3 = new ImageIcon("PicturesSmall/b03_sapiens.jpeg");
             ImageIcon image4 = new ImageIcon("PicturesSmall/b04_WingOfFire.jpeg");
             ImageIcon image5 = new ImageIcon("PicturesSmall/b05_HalfBloodPrince.jpeg");
             ImageIcon image6 = new ImageIcon("PicturesSmall/b06_Notebook.jpeg");
@@ -820,50 +829,49 @@ jLabel7.setFont(new Font("TakaoPGothic",Font.PLAIN,16));
             jLabel32.setIcon((Icon) image6);
             jLabel41.setIcon((Icon) image7);
             jLabel44.setIcon((Icon) image8);
-            ResultSet rs=SqlQ.retrive("select p_id,name,cost from product where category='books'");
+            ResultSet rs = SqlQ.retrive("select p_id,name,cost from product where category='books'");
             rs.next();
-                jLabel21.setText(rs.getString("name"));
-                jLabel22.setText(((char)8377)+rs.getString("cost"));
-                jLabel16.setText(rs.getString("p_id"));
+            jLabel21.setText(rs.getString("name"));
+            jLabel22.setText(((char) 8377) + rs.getString("cost"));
+            jLabel16.setText(rs.getString("p_id"));
             rs.next();
-                jLabel11.setText(rs.getString("name"));
-                jLabel13.setText(((char)8377)+rs.getString("cost"));
-                jLabel17.setText(rs.getString("p_id"));
+            jLabel11.setText(rs.getString("name"));
+            jLabel13.setText(((char) 8377) + rs.getString("cost"));
+            jLabel17.setText(rs.getString("p_id"));
             rs.next();
-                jLabel24.setText(rs.getString("name"));
-                jLabel25.setText(((char)8377)+rs.getString("cost"));
-                jLabel18.setText(rs.getString("p_id"));
+            jLabel24.setText(rs.getString("name"));
+            jLabel25.setText(((char) 8377) + rs.getString("cost"));
+            jLabel18.setText(rs.getString("p_id"));
             rs.next();
-                jLabel14.setText(rs.getString("name"));
-                jLabel28.setText(((char)8377)+rs.getString("cost"));
-                jLabel19.setText(rs.getString("p_id"));
+            jLabel14.setText(rs.getString("name"));
+            jLabel28.setText(((char) 8377) + rs.getString("cost"));
+            jLabel19.setText(rs.getString("p_id"));
             rs.next();
-                jLabel30.setText(rs.getString("name"));
-                jLabel31.setText(((char)8377)+rs.getString("cost"));
-                jLabel27.setText(rs.getString("p_id"));
+            jLabel30.setText(rs.getString("name"));
+            jLabel31.setText(((char) 8377) + rs.getString("cost"));
+            jLabel27.setText(rs.getString("p_id"));
             rs.next();
-                jLabel33.setText(rs.getString("name"));
-                jLabel34.setText(((char)8377)+rs.getString("cost"));
-                jLabel35.setText(rs.getString("p_id"));
+            jLabel33.setText(rs.getString("name"));
+            jLabel34.setText(((char) 8377) + rs.getString("cost"));
+            jLabel35.setText(rs.getString("p_id"));
             rs.next();
-                jLabel42.setText(rs.getString("name"));
-                jLabel43.setText(((char)8377)+rs.getString("cost"));
-                jLabel36.setText(rs.getString("p_id"));
+            jLabel42.setText(rs.getString("name"));
+            jLabel43.setText(((char) 8377) + rs.getString("cost"));
+            jLabel36.setText(rs.getString("p_id"));
             rs.next();
-                jLabel15.setText(rs.getString("name"));
-                jLabel45.setText(((char)8377)+rs.getString("cost"));
-                jLabel37.setText(rs.getString("p_id"));
-        }
-        catch (Exception c) {
+            jLabel15.setText(rs.getString("name"));
+            jLabel45.setText(((char) 8377) + rs.getString("cost"));
+            jLabel37.setText(rs.getString("p_id"));
+        } catch (Exception c) {
         }
     }//GEN-LAST:event_jLabel4MouseClicked
 
     private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
-jLabel4.setFont(new Font("TakaoPGothic",Font.PLAIN,16));
-jLabel6.setFont(new Font("TakaoPGothic",Font.BOLD,17));
-jLabel3.setFont(new Font("TakaoPGothic",Font.PLAIN,16));
-jLabel5.setFont(new Font("TakaoPGothic",Font.PLAIN,16));
-jLabel7.setFont(new Font("TakaoPGothic",Font.PLAIN,16));
+        jLabel4.setFont(new Font("TakaoPGothic", Font.PLAIN, 16));
+        jLabel6.setFont(new Font("TakaoPGothic", Font.BOLD, 17));
+        jLabel3.setFont(new Font("TakaoPGothic", Font.PLAIN, 16));
+        jLabel5.setFont(new Font("TakaoPGothic", Font.PLAIN, 16));
+        jLabel7.setFont(new Font("TakaoPGothic", Font.PLAIN, 16));
         try {
             jLabel10.setText("Electronics");
             ImageIcon image1 = new ImageIcon("PicturesSmall/e01_Earphones.png");
@@ -872,7 +880,7 @@ jLabel7.setFont(new Font("TakaoPGothic",Font.PLAIN,16));
             ImageIcon image4 = new ImageIcon("PicturesSmall/e04_Phone.jpeg");
             ImageIcon image5 = new ImageIcon("PicturesSmall/e05_Ram.jpeg");
             ImageIcon image6 = new ImageIcon("PicturesSmall/e06_Mouse.jpeg");
-            ImageIcon image7 = new ImageIcon("PicturesSmall/e07_Keyboard.jpeg" );
+            ImageIcon image7 = new ImageIcon("PicturesSmall/e07_Keyboard.jpeg");
             ImageIcon image8 = new ImageIcon("PicturesSmall/e08_Speaker.jpeg");
             jLabel20.setIcon((Icon) image1);
             jLabel12.setIcon((Icon) image2);
@@ -882,50 +890,49 @@ jLabel7.setFont(new Font("TakaoPGothic",Font.PLAIN,16));
             jLabel32.setIcon((Icon) image6);
             jLabel41.setIcon((Icon) image7);
             jLabel44.setIcon((Icon) image8);
-            ResultSet rs=SqlQ.retrive("select p_id,name,cost from product where category='ele'");
+            ResultSet rs = SqlQ.retrive("select p_id,name,cost from product where category='ele'");
             rs.next();
-                jLabel21.setText(rs.getString("name"));
-                jLabel22.setText(((char)8377)+rs.getString("cost"));
-                jLabel16.setText(rs.getString("p_id"));
+            jLabel21.setText(rs.getString("name"));
+            jLabel22.setText(((char) 8377) + rs.getString("cost"));
+            jLabel16.setText(rs.getString("p_id"));
             rs.next();
-                jLabel11.setText(rs.getString("name"));
-                jLabel13.setText(((char)8377)+rs.getString("cost"));
-                jLabel17.setText(rs.getString("p_id"));
+            jLabel11.setText(rs.getString("name"));
+            jLabel13.setText(((char) 8377) + rs.getString("cost"));
+            jLabel17.setText(rs.getString("p_id"));
             rs.next();
-                jLabel24.setText(rs.getString("name"));
-                jLabel25.setText(((char)8377)+rs.getString("cost"));
-                jLabel18.setText(rs.getString("p_id"));
+            jLabel24.setText(rs.getString("name"));
+            jLabel25.setText(((char) 8377) + rs.getString("cost"));
+            jLabel18.setText(rs.getString("p_id"));
             rs.next();
-                jLabel14.setText(rs.getString("name"));
-                jLabel28.setText(((char)8377)+rs.getString("cost"));
-                jLabel19.setText(rs.getString("p_id"));
+            jLabel14.setText(rs.getString("name"));
+            jLabel28.setText(((char) 8377) + rs.getString("cost"));
+            jLabel19.setText(rs.getString("p_id"));
             rs.next();
-                jLabel30.setText(rs.getString("name"));
-                jLabel31.setText(((char)8377)+rs.getString("cost"));
-                jLabel27.setText(rs.getString("p_id"));
+            jLabel30.setText(rs.getString("name"));
+            jLabel31.setText(((char) 8377) + rs.getString("cost"));
+            jLabel27.setText(rs.getString("p_id"));
             rs.next();
-                jLabel33.setText(rs.getString("name"));
-                jLabel34.setText(((char)8377)+rs.getString("cost"));
-                jLabel35.setText(rs.getString("p_id"));
+            jLabel33.setText(rs.getString("name"));
+            jLabel34.setText(((char) 8377) + rs.getString("cost"));
+            jLabel35.setText(rs.getString("p_id"));
             rs.next();
-                jLabel42.setText(rs.getString("name"));
-                jLabel43.setText(((char)8377)+rs.getString("cost"));
-                jLabel36.setText(rs.getString("p_id"));
+            jLabel42.setText(rs.getString("name"));
+            jLabel43.setText(((char) 8377) + rs.getString("cost"));
+            jLabel36.setText(rs.getString("p_id"));
             rs.next();
-                jLabel15.setText(rs.getString("name"));
-                jLabel45.setText(((char)8377)+rs.getString("cost"));
-                jLabel37.setText(rs.getString("p_id"));
-        }
-        catch (Exception c) {
+            jLabel15.setText(rs.getString("name"));
+            jLabel45.setText(((char) 8377) + rs.getString("cost"));
+            jLabel37.setText(rs.getString("p_id"));
+        } catch (Exception c) {
         }
     }//GEN-LAST:event_jLabel6MouseClicked
 
     private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
-jLabel4.setFont(new Font("TakaoPGothic",Font.PLAIN,16));
-jLabel6.setFont(new Font("TakaoPGothic",Font.PLAIN,16));
-jLabel3.setFont(new Font("TakaoPGothic",Font.BOLD,17));
-jLabel5.setFont(new Font("TakaoPGothic",Font.PLAIN,16));
-jLabel7.setFont(new Font("TakaoPGothic",Font.PLAIN,16));
+        jLabel4.setFont(new Font("TakaoPGothic", Font.PLAIN, 16));
+        jLabel6.setFont(new Font("TakaoPGothic", Font.PLAIN, 16));
+        jLabel3.setFont(new Font("TakaoPGothic", Font.BOLD, 17));
+        jLabel5.setFont(new Font("TakaoPGothic", Font.PLAIN, 16));
+        jLabel7.setFont(new Font("TakaoPGothic", Font.PLAIN, 16));
         try {
             jLabel10.setText("Fashion");
             ImageIcon image1 = new ImageIcon("PicturesSmall/f01_WJacket.jpeg");
@@ -944,50 +951,49 @@ jLabel7.setFont(new Font("TakaoPGothic",Font.PLAIN,16));
             jLabel32.setIcon((Icon) image6);
             jLabel41.setIcon((Icon) image7);
             jLabel44.setIcon((Icon) image8);
-            ResultSet rs=SqlQ.retrive("select p_id,name,cost from product where category='fash'");
+            ResultSet rs = SqlQ.retrive("select p_id,name,cost from product where category='fash'");
             rs.next();
-                jLabel21.setText(rs.getString("name"));
-                jLabel22.setText(((char)8377)+rs.getString("cost"));
-                jLabel16.setText(rs.getString("p_id"));
+            jLabel21.setText(rs.getString("name"));
+            jLabel22.setText(((char) 8377) + rs.getString("cost"));
+            jLabel16.setText(rs.getString("p_id"));
             rs.next();
-                jLabel11.setText(rs.getString("name"));
-                jLabel13.setText(((char)8377)+rs.getString("cost"));
-                jLabel17.setText(rs.getString("p_id"));
+            jLabel11.setText(rs.getString("name"));
+            jLabel13.setText(((char) 8377) + rs.getString("cost"));
+            jLabel17.setText(rs.getString("p_id"));
             rs.next();
-                jLabel24.setText(rs.getString("name"));
-                jLabel25.setText(((char)8377)+rs.getString("cost"));
-                jLabel18.setText(rs.getString("p_id"));
+            jLabel24.setText(rs.getString("name"));
+            jLabel25.setText(((char) 8377) + rs.getString("cost"));
+            jLabel18.setText(rs.getString("p_id"));
             rs.next();
-                jLabel14.setText(rs.getString("name"));
-                jLabel28.setText(((char)8377)+rs.getString("cost"));
-                jLabel19.setText(rs.getString("p_id"));
+            jLabel14.setText(rs.getString("name"));
+            jLabel28.setText(((char) 8377) + rs.getString("cost"));
+            jLabel19.setText(rs.getString("p_id"));
             rs.next();
-                jLabel30.setText(rs.getString("name"));
-                jLabel31.setText(((char)8377)+rs.getString("cost"));
-                jLabel27.setText(rs.getString("p_id"));
+            jLabel30.setText(rs.getString("name"));
+            jLabel31.setText(((char) 8377) + rs.getString("cost"));
+            jLabel27.setText(rs.getString("p_id"));
             rs.next();
-                jLabel33.setText(rs.getString("name"));
-                jLabel34.setText(((char)8377)+rs.getString("cost"));
-                jLabel35.setText(rs.getString("p_id"));
+            jLabel33.setText(rs.getString("name"));
+            jLabel34.setText(((char) 8377) + rs.getString("cost"));
+            jLabel35.setText(rs.getString("p_id"));
             rs.next();
-                jLabel42.setText(rs.getString("name"));
-                jLabel43.setText(((char)8377)+rs.getString("cost"));
-                jLabel36.setText(rs.getString("p_id"));
+            jLabel42.setText(rs.getString("name"));
+            jLabel43.setText(((char) 8377) + rs.getString("cost"));
+            jLabel36.setText(rs.getString("p_id"));
             rs.next();
-                jLabel15.setText(rs.getString("name"));
-                jLabel45.setText(((char)8377)+rs.getString("cost"));
-                jLabel37.setText(rs.getString("p_id"));
-        }
-        catch (Exception c) {
+            jLabel15.setText(rs.getString("name"));
+            jLabel45.setText(((char) 8377) + rs.getString("cost"));
+            jLabel37.setText(rs.getString("p_id"));
+        } catch (Exception c) {
         }
     }//GEN-LAST:event_jLabel3MouseClicked
 
     private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
-jLabel4.setFont(new Font("TakaoPGothic",Font.PLAIN,16));
-jLabel6.setFont(new Font("TakaoPGothic",Font.PLAIN,16));
-jLabel3.setFont(new Font("TakaoPGothic",Font.PLAIN,16));
-jLabel5.setFont(new Font("TakaoPGothic",Font.BOLD,17));
-jLabel7.setFont(new Font("TakaoPGothic",Font.PLAIN,16));
+        jLabel4.setFont(new Font("TakaoPGothic", Font.PLAIN, 16));
+        jLabel6.setFont(new Font("TakaoPGothic", Font.PLAIN, 16));
+        jLabel3.setFont(new Font("TakaoPGothic", Font.PLAIN, 16));
+        jLabel5.setFont(new Font("TakaoPGothic", Font.BOLD, 17));
+        jLabel7.setFont(new Font("TakaoPGothic", Font.PLAIN, 16));
         try {
             jLabel10.setText("Accessories");
             ImageIcon image1 = new ImageIcon("PicturesSmall/as01_Watch.jpeg");
@@ -1006,52 +1012,51 @@ jLabel7.setFont(new Font("TakaoPGothic",Font.PLAIN,16));
             jLabel32.setIcon((Icon) image6);
             jLabel41.setIcon((Icon) image7);
             jLabel44.setIcon((Icon) image8);
-            ResultSet rs=SqlQ.retrive("select p_id,name,cost from product where category='acces'");
+            ResultSet rs = SqlQ.retrive("select p_id,name,cost from product where category='acces'");
             rs.next();
-                jLabel21.setText(rs.getString("name"));
-                jLabel22.setText(((char)8377)+rs.getString("cost"));
-                jLabel16.setText(rs.getString("p_id"));
+            jLabel21.setText(rs.getString("name"));
+            jLabel22.setText(((char) 8377) + rs.getString("cost"));
+            jLabel16.setText(rs.getString("p_id"));
             rs.next();
-                jLabel11.setText(rs.getString("name"));
-                jLabel13.setText(((char)8377)+rs.getString("cost"));
-                jLabel17.setText(rs.getString("p_id"));
+            jLabel11.setText(rs.getString("name"));
+            jLabel13.setText(((char) 8377) + rs.getString("cost"));
+            jLabel17.setText(rs.getString("p_id"));
             rs.next();
-                jLabel24.setText(rs.getString("name"));
-                jLabel25.setText(((char)8377)+rs.getString("cost"));
-                jLabel18.setText(rs.getString("p_id"));
+            jLabel24.setText(rs.getString("name"));
+            jLabel25.setText(((char) 8377) + rs.getString("cost"));
+            jLabel18.setText(rs.getString("p_id"));
             rs.next();
-                jLabel14.setText(rs.getString("name"));
-                jLabel28.setText(((char)8377)+rs.getString("cost"));
-                jLabel19.setText(rs.getString("p_id"));
+            jLabel14.setText(rs.getString("name"));
+            jLabel28.setText(((char) 8377) + rs.getString("cost"));
+            jLabel19.setText(rs.getString("p_id"));
             rs.next();
-                jLabel30.setText(rs.getString("name"));
-                jLabel31.setText(((char)8377)+rs.getString("cost"));
-                jLabel27.setText(rs.getString("p_id"));
+            jLabel30.setText(rs.getString("name"));
+            jLabel31.setText(((char) 8377) + rs.getString("cost"));
+            jLabel27.setText(rs.getString("p_id"));
             rs.next();
-                jLabel33.setText(rs.getString("name"));
-                jLabel34.setText(((char)8377)+rs.getString("cost"));
-                jLabel35.setText(rs.getString("p_id"));
+            jLabel33.setText(rs.getString("name"));
+            jLabel34.setText(((char) 8377) + rs.getString("cost"));
+            jLabel35.setText(rs.getString("p_id"));
             rs.next();
-                jLabel42.setText(rs.getString("name"));
-                jLabel43.setText(((char)8377)+rs.getString("cost"));
-                jLabel36.setText(rs.getString("p_id"));
+            jLabel42.setText(rs.getString("name"));
+            jLabel43.setText(((char) 8377) + rs.getString("cost"));
+            jLabel36.setText(rs.getString("p_id"));
             rs.next();
-                jLabel15.setText(rs.getString("name"));
-                jLabel45.setText(((char)8377)+rs.getString("cost"));
-                jLabel37.setText(rs.getString("p_id"));
-        }
-        catch (Exception c) {
+            jLabel15.setText(rs.getString("name"));
+            jLabel45.setText(((char) 8377) + rs.getString("cost"));
+            jLabel37.setText(rs.getString("p_id"));
+        } catch (Exception c) {
         }
     }//GEN-LAST:event_jLabel5MouseClicked
 
     private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
-jLabel4.setFont(new Font("TakaoPGothic",Font.PLAIN,16));
-jLabel6.setFont(new Font("TakaoPGothic",Font.PLAIN,16));
-jLabel3.setFont(new Font("TakaoPGothic",Font.PLAIN,16));
-jLabel5.setFont(new Font("TakaoPGothic",Font.PLAIN,16));
-jLabel7.setFont(new Font("TakaoPGothic",Font.BOLD,17));
+        jLabel4.setFont(new Font("TakaoPGothic", Font.PLAIN, 16));
+        jLabel6.setFont(new Font("TakaoPGothic", Font.PLAIN, 16));
+        jLabel3.setFont(new Font("TakaoPGothic", Font.PLAIN, 16));
+        jLabel5.setFont(new Font("TakaoPGothic", Font.PLAIN, 16));
+        jLabel7.setFont(new Font("TakaoPGothic", Font.BOLD, 17));
         try {
-           jLabel10.setText("Home and Furniture");
+            jLabel10.setText("Home and Furniture");
             ImageIcon image1 = new ImageIcon("PicturesSmall/hf01_Sofa.jpeg");
             ImageIcon image2 = new ImageIcon("PicturesSmall/hf02_Bed.jpeg");
             ImageIcon image3 = new ImageIcon("PicturesSmall/hf03_DiningTable.jpeg");
@@ -1068,133 +1073,132 @@ jLabel7.setFont(new Font("TakaoPGothic",Font.BOLD,17));
             jLabel32.setIcon((Icon) image6);
             jLabel41.setIcon((Icon) image7);
             jLabel44.setIcon((Icon) image8);
-            ResultSet rs=SqlQ.retrive("select p_id,name,cost from product where category='home'");
+            ResultSet rs = SqlQ.retrive("select p_id,name,cost from product where category='home'");
             rs.next();
-                jLabel21.setText(rs.getString("name"));
-                jLabel22.setText(((char)8377)+rs.getString("cost"));
-                jLabel16.setText(rs.getString("p_id"));
+            jLabel21.setText(rs.getString("name"));
+            jLabel22.setText(((char) 8377) + rs.getString("cost"));
+            jLabel16.setText(rs.getString("p_id"));
             rs.next();
-                jLabel11.setText(rs.getString("name"));
-                jLabel13.setText(((char)8377)+rs.getString("cost"));
-                jLabel17.setText(rs.getString("p_id"));
+            jLabel11.setText(rs.getString("name"));
+            jLabel13.setText(((char) 8377) + rs.getString("cost"));
+            jLabel17.setText(rs.getString("p_id"));
             rs.next();
-                jLabel24.setText(rs.getString("name"));
-                jLabel25.setText(((char)8377)+rs.getString("cost"));
-                jLabel18.setText(rs.getString("p_id"));
+            jLabel24.setText(rs.getString("name"));
+            jLabel25.setText(((char) 8377) + rs.getString("cost"));
+            jLabel18.setText(rs.getString("p_id"));
             rs.next();
-                jLabel14.setText(rs.getString("name"));
-                jLabel28.setText(((char)8377)+rs.getString("cost"));
-                jLabel19.setText(rs.getString("p_id"));
+            jLabel14.setText(rs.getString("name"));
+            jLabel28.setText(((char) 8377) + rs.getString("cost"));
+            jLabel19.setText(rs.getString("p_id"));
             rs.next();
-                jLabel30.setText(rs.getString("name"));
-                jLabel31.setText(((char)8377)+rs.getString("cost"));
-                jLabel27.setText(rs.getString("p_id"));
+            jLabel30.setText(rs.getString("name"));
+            jLabel31.setText(((char) 8377) + rs.getString("cost"));
+            jLabel27.setText(rs.getString("p_id"));
             rs.next();
-                jLabel33.setText(rs.getString("name"));
-                jLabel34.setText(((char)8377)+rs.getString("cost"));
-                jLabel35.setText(rs.getString("p_id"));
+            jLabel33.setText(rs.getString("name"));
+            jLabel34.setText(((char) 8377) + rs.getString("cost"));
+            jLabel35.setText(rs.getString("p_id"));
             rs.next();
-                jLabel42.setText(rs.getString("name"));
-                jLabel43.setText(((char)8377)+rs.getString("cost"));
-                jLabel36.setText(rs.getString("p_id"));
+            jLabel42.setText(rs.getString("name"));
+            jLabel43.setText(((char) 8377) + rs.getString("cost"));
+            jLabel36.setText(rs.getString("p_id"));
             rs.next();
-                jLabel15.setText(rs.getString("name"));
-                jLabel45.setText(((char)8377)+rs.getString("cost"));
-                jLabel37.setText(rs.getString("p_id"));
-        }
-        catch (Exception c) {
+            jLabel15.setText(rs.getString("name"));
+            jLabel45.setText(((char) 8377) + rs.getString("cost"));
+            jLabel37.setText(rs.getString("p_id"));
+        } catch (Exception c) {
         }
     }//GEN-LAST:event_jLabel7MouseClicked
 
     private void jLabel20MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel20MouseClicked
-       new ProductPage(jLabel16.getText()).setVisible(true);
-        this.setVisible(false); 
+        new ProductPage(jLabel16.getText()).setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_jLabel20MouseClicked
 
     private void jLabel21MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel21MouseClicked
         new ProductPage(jLabel16.getText()).setVisible(true);
-        this.setVisible(false); 
+        this.setVisible(false);
     }//GEN-LAST:event_jLabel21MouseClicked
 
     private void jLabel22MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel22MouseClicked
         new ProductPage(jLabel16.getText()).setVisible(true);
-        this.setVisible(false); 
+        this.setVisible(false);
     }//GEN-LAST:event_jLabel22MouseClicked
 
     private void jLabel24MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel24MouseClicked
         new ProductPage(jLabel18.getText()).setVisible(true);
-        this.setVisible(false); 
+        this.setVisible(false);
     }//GEN-LAST:event_jLabel24MouseClicked
 
     private void jLabel25MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel25MouseClicked
         new ProductPage(jLabel18.getText()).setVisible(true);
-        this.setVisible(false); 
+        this.setVisible(false);
     }//GEN-LAST:event_jLabel25MouseClicked
 
     private void jLabel26MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel26MouseClicked
-new ProductPage(jLabel19.getText()).setVisible(true);
+        new ProductPage(jLabel19.getText()).setVisible(true);
         this.setVisible(false);     }//GEN-LAST:event_jLabel26MouseClicked
 
     private void jLabel28MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel28MouseClicked
         new ProductPage(jLabel19.getText()).setVisible(true);
-        this.setVisible(false); 
+        this.setVisible(false);
     }//GEN-LAST:event_jLabel28MouseClicked
 
     private void jLabel29MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel29MouseClicked
         new ProductPage(jLabel27.getText()).setVisible(true);
-        this.setVisible(false); 
+        this.setVisible(false);
     }//GEN-LAST:event_jLabel29MouseClicked
 
     private void jLabel30MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel30MouseClicked
         new ProductPage(jLabel27.getText()).setVisible(true);
-        this.setVisible(false); 
+        this.setVisible(false);
     }//GEN-LAST:event_jLabel30MouseClicked
 
     private void jLabel31MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel31MouseClicked
-         new ProductPage(jLabel27.getText()).setVisible(true);
-        this.setVisible(false); 
+        new ProductPage(jLabel27.getText()).setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_jLabel31MouseClicked
 
     private void jLabel32MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel32MouseClicked
-         new ProductPage(jLabel35.getText()).setVisible(true);
-        this.setVisible(false); 
+        new ProductPage(jLabel35.getText()).setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_jLabel32MouseClicked
 
     private void jLabel33MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel33MouseClicked
         new ProductPage(jLabel35.getText()).setVisible(true);
-        this.setVisible(false); 
+        this.setVisible(false);
     }//GEN-LAST:event_jLabel33MouseClicked
 
     private void jLabel34MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel34MouseClicked
         new ProductPage(jLabel35.getText()).setVisible(true);
-        this.setVisible(false); 
+        this.setVisible(false);
     }//GEN-LAST:event_jLabel34MouseClicked
 
     private void jLabel42MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel42MouseClicked
 
-new ProductPage(jLabel35.getText()).setVisible(true);
+        new ProductPage(jLabel35.getText()).setVisible(true);
         this.setVisible(false);         // TODO add your handling code here:
     }//GEN-LAST:event_jLabel42MouseClicked
 
     private void jLabel43MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel43MouseClicked
-new ProductPage(jLabel35.getText()).setVisible(true);
+        new ProductPage(jLabel35.getText()).setVisible(true);
         this.setVisible(false);         // TODO add your handling code here:
     }//GEN-LAST:event_jLabel43MouseClicked
 
     private void jLabel44MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel44MouseClicked
-new ProductPage(jLabel37.getText()).setVisible(true);
-        this.setVisible(false); 
+        new ProductPage(jLabel37.getText()).setVisible(true);
+        this.setVisible(false);
         // TODO add your handling code here:
     }//GEN-LAST:event_jLabel44MouseClicked
 
     private void jLabel45MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel45MouseClicked
-new ProductPage(jLabel37.getText()).setVisible(true);
-        this.setVisible(false); 
+        new ProductPage(jLabel37.getText()).setVisible(true);
+        this.setVisible(false);
         // TODO add your handling code here:
     }//GEN-LAST:event_jLabel45MouseClicked
 
     private void jComboBox1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jComboBox1MouseClicked
-jComboBox1.setSelectedItem("");
+        jComboBox1.setSelectedItem("");
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox1MouseClicked
 
@@ -1203,39 +1207,39 @@ jComboBox1.setSelectedItem("");
     }//GEN-LAST:event_jComboBox1ItemStateChanged
 
     private void jLabel12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel12MouseClicked
-new ProductPage(jLabel17.getText()).setVisible(true);
-        this.setVisible(false); 
+        new ProductPage(jLabel17.getText()).setVisible(true);
+        this.setVisible(false);
         // TODO add your handling code here:
     }//GEN-LAST:event_jLabel12MouseClicked
 
     private void jLabel11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel11MouseClicked
-new ProductPage(jLabel17.getText()).setVisible(true);
+        new ProductPage(jLabel17.getText()).setVisible(true);
         this.setVisible(false);         // TODO add your handling code here:
     }//GEN-LAST:event_jLabel11MouseClicked
 
     private void jLabel13MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel13MouseClicked
-new ProductPage(jLabel17.getText()).setVisible(true);
+        new ProductPage(jLabel17.getText()).setVisible(true);
         this.setVisible(false);         // TODO add your handling code here:
     }//GEN-LAST:event_jLabel13MouseClicked
 
     private void jLabel23MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel23MouseClicked
-new ProductPage(jLabel18.getText()).setVisible(true);
+        new ProductPage(jLabel18.getText()).setVisible(true);
         this.setVisible(false);         // TODO add your handling code here:
     }//GEN-LAST:event_jLabel23MouseClicked
 
     private void jLabel14MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel14MouseClicked
-new ProductPage(jLabel19.getText()).setVisible(true);
+        new ProductPage(jLabel19.getText()).setVisible(true);
         this.setVisible(false);         // TODO add your handling code here:
     }//GEN-LAST:event_jLabel14MouseClicked
 
     private void jLabel41MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel41MouseClicked
-new ProductPage(jLabel36.getText()).setVisible(true);
-        this.setVisible(false); 
+        new ProductPage(jLabel36.getText()).setVisible(true);
+        this.setVisible(false);
         // TODO add your handling code here:
     }//GEN-LAST:event_jLabel41MouseClicked
 
     private void jLabel15MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel15MouseClicked
-new ProductPage(jLabel37.getText()).setVisible(true);
+        new ProductPage(jLabel37.getText()).setVisible(true);
         this.setVisible(false);         // TODO add your handling code here:
     }//GEN-LAST:event_jLabel15MouseClicked
 
@@ -1245,9 +1249,9 @@ new ProductPage(jLabel37.getText()).setVisible(true);
     }//GEN-LAST:event_jComboBox1MousePressed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-int i= jComboBox1.getSelectedIndex();
-new ProductPage(""+(i+800001)).setVisible(true);
-this.setVisible(false);
+        int i = jComboBox1.getSelectedIndex();
+        new ProductPage("" + (i + 800001)).setVisible(true);
+        this.setVisible(false);
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -1256,8 +1260,13 @@ this.setVisible(false);
         this.setVisible(false);
         cart.setVisible(true);   // TODO add your handling code here:
     }//GEN-LAST:event_jButton4ActionPerformed
-          
-     
+
+    private void jLabel38MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel38MouseClicked
+        new CustomerCart().setVisible(true);
+        this.dispose();
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel38MouseClicked
+
     /**
      * @param args the command line arguments
      */

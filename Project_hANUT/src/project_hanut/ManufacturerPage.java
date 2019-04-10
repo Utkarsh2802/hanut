@@ -27,38 +27,36 @@ public class ManufacturerPage extends javax.swing.JFrame {
         initComponents();
         ManufacturerDetails();
     }
-    public void ManufacturerDetails(){
-        String query="Select * from manufacturer where id='"+Session.curr_user()+"'";
-        ResultSet rs=SqlQ.retrive(query);
-        int q=0;
-        DefaultTableModel model = (DefaultTableModel)
-        jTable1.getModel();
-        String query2="select p_id,name,cost,quantity as qty from product natural join man_pro where M_ID='"+Session.curr_user()+"';";
-        ResultSet rs2= SqlQ.retrive(query2);
-        try{
-            
-        if(rs.next()){
-            jTextField1.setText(rs.getString("name"));
-            jTextField6.setText(rs.getString("phone"));
-            jTextField7.setText(rs.getString("email"));
-        }
-        while(rs2.next()){
-            String oid=rs2.getString("p_id");
-            String pid=rs2.getString("name");
-            String name=rs2.getString("cost");
-            String qty=rs2.getString("qty");
-            q=Integer.parseInt(qty);
-            q=q*37;
-           qty=Integer.toString(q);
-            model.addRow(new Object[]{oid,pid,name,qty});
-        }
-        }
-        catch(Exception e){System.out.print(e);}
-            
-        } 
 
-        
-    
+    public void ManufacturerDetails() {
+        String query = "Select * from manufacturer where id='" + Session.curr_user() + "'";
+        ResultSet rs = SqlQ.retrive(query);
+        int q = 0;
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        String query2 = "select p_id,name,cost,quantity as qty from product natural join man_pro where M_ID='" + Session.curr_user() + "';";
+        ResultSet rs2 = SqlQ.retrive(query2);
+        try {
+
+            if (rs.next()) {
+                jTextField1.setText(rs.getString("name"));
+                jTextField6.setText(rs.getString("phone"));
+                jTextField7.setText(rs.getString("email"));
+            }
+            while (rs2.next()) {
+                String oid = rs2.getString("p_id");
+                String pid = rs2.getString("name");
+                String name = rs2.getString("cost");
+                String qty = rs2.getString("qty");
+                q = Integer.parseInt(qty);
+                q = q * 37;
+                qty = Integer.toString(q);
+                model.addRow(new Object[]{oid, pid, name, qty});
+            }
+        } catch (Exception e) {
+            System.out.print(e);
+        }
+
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -353,9 +351,9 @@ public class ManufacturerPage extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-                LoginPage l = new LoginPage();
+        LoginPage l = new LoginPage();
         this.setVisible(false);
-        l.setVisible(true);       
+        l.setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed

@@ -1,13 +1,16 @@
 package project_hanut;
+
 import java.sql.*;
 import javax.swing.JOptionPane;
 
 public class LoginPage extends javax.swing.JFrame {
+
     public LoginPage() {
         initComponents();
         jLabel1.setVisible(false);
         jLabel6.setVisible(false);
     }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -61,7 +64,7 @@ public class LoginPage extends javax.swing.JFrame {
 
         jLabel3.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Username");
+        jLabel3.setText("Email");
         jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 11, 108, 31));
 
         jSeparator2.setForeground(new java.awt.Color(255, 255, 255));
@@ -93,20 +96,22 @@ public class LoginPage extends javax.swing.JFrame {
         jLabel6.setText("Incorrect password");
         jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, -1, -1));
 
+        jButton1.setBackground(new java.awt.Color(51, 49, 60));
         jButton1.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 14)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(51, 49, 60));
+        jButton1.setForeground(new java.awt.Color(204, 204, 204));
         jButton1.setText("Sign Up");
-        jButton1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jButton1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
 
+        jButton2.setBackground(new java.awt.Color(51, 49, 60));
         jButton2.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 14)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(51, 49, 60));
+        jButton2.setForeground(new java.awt.Color(204, 204, 204));
         jButton2.setText("Login");
-        jButton2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jButton2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)));
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -115,37 +120,40 @@ public class LoginPage extends javax.swing.JFrame {
 
         jLabel5.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 12)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("© CURP Foundations 2019");
+        jLabel5.setText("© CRSP Foundations 2019");
 
         javax.swing.GroupLayout sidepane1Layout = new javax.swing.GroupLayout(sidepane1);
         sidepane1.setLayout(sidepane1Layout);
         sidepane1Layout.setHorizontalGroup(
             sidepane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(sidepane1Layout.createSequentialGroup()
-                .addGap(26, 26, 26)
                 .addGroup(sidepane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, sidepane1Layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel5))
                     .addGroup(sidepane1Layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(31, 31, 31)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(51, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, sidepane1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel5)
+                        .addGroup(sidepane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(sidepane1Layout.createSequentialGroup()
+                                .addGap(26, 26, 26)
+                                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(sidepane1Layout.createSequentialGroup()
+                                .addGap(36, 36, 36)
+                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 41, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         sidepane1Layout.setVerticalGroup(
             sidepane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, sidepane1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 307, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(7, 7, 7)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(sidepane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(53, 53, 53)
+                .addGap(105, 105, 105)
                 .addComponent(jLabel5)
                 .addContainerGap())
         );
@@ -186,40 +194,41 @@ public class LoginPage extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         String emailid = jTextField2.getText();
         String password = new String(jPasswordField1.getPassword());
-        boolean verified=false;
-        try {  
-            String query="SELECT id,password FROM cred where email='"+emailid+"';";
-            ResultSet rs=SqlQ.retrive(query);
-            if(rs.next()){
+        boolean verified = false;
+        try {
+            String query = "SELECT id,password FROM cred where email='" + emailid + "';";
+            ResultSet rs = SqlQ.retrive(query);
+            if (rs.next()) {
                 jLabel1.setVisible(false);
-                String pass=rs.getString("password");
-                String username=rs.getString("id");
-                if(pass.equals(password)){
-                Session.logined(username);
-                verified=true;
-                }
-                else
+                String pass = rs.getString("password");
+                String username = rs.getString("id");
+                if (pass.equals(password)) {
+                    Session.logined(username);
+                    verified = true;
+                } else {
                     jLabel6.setVisible(true);//JOptionPane.showMessageDialog(this, "password incorrect!");
-            }
-            else {
+                }
+            } else {
                 jLabel6.setVisible(false);
                 jLabel1.setVisible(true);// JOptionPane.showMessageDialog(this, "Username incorrect!");
             }
-            if(verified) {
+            if (verified) {
                 jLabel6.setVisible(false);
-                switch(Session.user_type()){
-                    case 'C':new AllProductPage().setVisible(true);
+                switch (Session.user_type()) {
+                    case 'C':
+                        new AllProductPage().setVisible(true);
                         break;
-                    case 'S':new SellerPage().setVisible(true);
+                    case 'S':
+                        new SellerPage().setVisible(true);
                         break;
-                    case 'M':new ManufacturerPage().setVisible(true);//manufacturer page->new ManufacturerPage().setVisible(true);
+                    case 'M':
+                        new ManufacturerPage().setVisible(true);//manufacturer page->new ManufacturerPage().setVisible(true);
                         break;
                 }
                 this.dispose();
             }
-        }
-        catch(Exception e) {
-            System.out.println(e+"hi");
+        } catch (Exception e) {
+            System.out.println(e + "hi");
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 
