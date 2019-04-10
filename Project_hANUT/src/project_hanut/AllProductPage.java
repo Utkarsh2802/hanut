@@ -337,6 +337,7 @@ public class AllProductPage extends javax.swing.JFrame {
         });
 
         jLabel47.setIcon(new javax.swing.ImageIcon(getClass().getResource("/project_hanut/PorfileIcon.png"))); // NOI18N
+        jLabel47.setToolTipText("Profile");
         jLabel47.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel47MouseClicked(evt);

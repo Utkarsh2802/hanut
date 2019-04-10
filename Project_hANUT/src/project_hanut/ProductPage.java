@@ -201,6 +201,7 @@ public class ProductPage extends javax.swing.JFrame {
         });
 
         jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/project_hanut/PorfileIcon.png"))); // NOI18N
+        jLabel12.setToolTipText("Profile");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);

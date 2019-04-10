@@ -1,3 +1,7 @@
+drop database hanut;
+create database hanut;
+use hanut;
+
 CREATE TABLE customer ( 
 	id int(10) NOT NULL AUTO_INCREMENT,
 	name varchar(30) NOT NULL,
@@ -98,9 +102,9 @@ ALTER TABLE items ADD CONSTRAINT items_fk0 FOREIGN KEY (order_ID) REFERENCES ord
 
 ALTER TABLE items ADD CONSTRAINT items_fk1 FOREIGN KEY (P_ID) REFERENCES product(P_ID);
 
-ALTER TABLE Cart ADD CONSTRAINT Cart_fk0 FOREIGN KEY (cust_ID) REFERENCES customer(id);
+ALTER TABLE cart ADD CONSTRAINT cart_fk0 FOREIGN KEY (cust_ID) REFERENCES customer(id);
 
-ALTER TABLE Cart ADD CONSTRAINT Cart_fk1 FOREIGN KEY (P_ID) REFERENCES product(P_ID);
+ALTER TABLE cart ADD CONSTRAINT cart_fk1 FOREIGN KEY (P_ID) REFERENCES product(P_ID);
 
 ALTER TABLE wishlist ADD CONSTRAINT wishlist_fk0 FOREIGN KEY (cust_ID) REFERENCES customer(id);
 
