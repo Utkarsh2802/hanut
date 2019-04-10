@@ -10,7 +10,7 @@ public class SqlQ {
         ResultSet rs = null;
         try {
             Class.forName("java.sql.DriverManager");
-            Connection con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/hanut", "root", "student123");
+            Connection con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/hanut", "root", "khator");
             Statement stmt = (Statement) con.createStatement();
             rs = stmt.executeQuery(query);
         } catch (Exception e) {
@@ -23,7 +23,7 @@ public class SqlQ {
         try {
             Class.forName("java.sql.DriverManager");
 
-            Connection con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/hanut", "root", "student123");
+            Connection con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/hanut", "root", "khator");
 
             Statement stmt = (Statement) con.createStatement();
             stmt.executeUpdate(query);

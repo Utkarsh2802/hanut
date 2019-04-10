@@ -937,7 +937,7 @@ public class CartWishlist extends javax.swing.JFrame {
                 try{
                       String query="call buy('"+cid+"','"+a+"','"+income+"','"+profit+"','"+q+"','"+pid+"','"+sid+"')";
                 CallableStatement cstm=null;
-                Connection conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/hanut", "root", "student123");
+                Connection conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/hanut", "root", "khator");
                 cstm = conn.prepareCall (query);
                 cstm.executeQuery();
                 }
@@ -946,14 +946,6 @@ public class CartWishlist extends javax.swing.JFrame {
                             System.out.println(e);
                         }
                 
-                /*String query = "insert into orders(cust_ID,amount) values('" + Session.curr_user() + "','" + a+ "');";
-                SqlQ.updateq(query);
-                SqlQ.updateq("update S_ACC set income='"+income+"' where S_ID='" + sid + "';");
-                SqlQ.updateq("update S_ACC set profit='"+profit+"' where S_ID='" + sid + "';");
-                System.out.println("Error");
-                
-                SqlQ.updateq("update product set quantity='"+qty+"' where P_ID='" + pid + "';");
-                SqlQ.updateq("delete from cart where cust_ID='" + Session.curr_user() + "' and P_ID='" + pid + "';");*/
                 ResultSet rs4 = SqlQ.retrive("select max(order_ID) as m from orders group by cust_ID having cust_ID='" + Session.curr_user() + "';");
                 int oid = 0;
                 try {
@@ -965,6 +957,7 @@ public class CartWishlist extends javax.swing.JFrame {
                     System.out.println(e);
 
                 }
+                
                 String query3 = "insert into items(order_ID,P_ID,qty) values('" + oid + "','" + pid + "','" + q + "');";
                 SqlQ.updateq(query3);
                 int days=7;
@@ -972,9 +965,11 @@ public class CartWishlist extends javax.swing.JFrame {
                 String query2 = "insert into delivery values('" + oid + "','" + pid + "','" + days+ "','" +s+ "');";
                 SqlQ.updateq(query2);
                 JOptionPane.showMessageDialog(this, "Congratulations!! Your Order Has Been Successfully Placed!!");
+                
                 CustomerCart c = new CustomerCart();
                 this.setVisible(false);
                 c.setVisible(true);
+                
                 
                }
                 else

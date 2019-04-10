@@ -56,7 +56,7 @@ CREATE TABLE items (
 	PRIMARY KEY (order_ID,P_ID)
 );
 
-CREATE TABLE Cart (
+CREATE TABLE cart (
 	cust_ID int(10) NOT NULL,
 	P_ID int(10) NOT NULL,
 	PRIMARY KEY (cust_ID,P_ID)
