@@ -4,10 +4,7 @@
  * and open the template in the editor.
  */
 package project_hanut;
-<<<<<<< HEAD
-=======
 
->>>>>>> fed6f3a875d3159fa90c99de955bb58ebe0693df
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -15,11 +12,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-<<<<<<< HEAD
-=======
 import java.sql.ResultSet;
 
->>>>>>> fed6f3a875d3159fa90c99de955bb58ebe0693df
 /**
  *
  * @author MAHE
@@ -31,9 +25,6 @@ public class SellerPage2 extends javax.swing.JFrame {
      */
     public SellerPage2() {
         initComponents();
-<<<<<<< HEAD
-        stockDetails();
-=======
         sellerDetails();
     }
     public void sellerDetails(){
@@ -60,7 +51,18 @@ public class SellerPage2 extends javax.swing.JFrame {
         }
         }
         catch(Exception e){System.out.print(e);}
->>>>>>> fed6f3a875d3159fa90c99de955bb58ebe0693df
+         String query3="select * from s_acc where s_id='"+Session.curr_user()+"';";
+            ResultSet rs3=SqlQ.retrive(query3);
+            try{
+            rs3.next();
+            jTextField8.setText(rs3.getString("income"));
+            jTextField9.setText(rs3.getString("expen"));
+            jTextField10.setText(rs3.getString("profit"));
+            
+        } catch (Exception e) {
+            System.out.println(e + "hello");
+
+        }
     }
 
     /**
@@ -95,7 +97,6 @@ public class SellerPage2 extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        jButton4 = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         jPanel8 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
@@ -105,6 +106,13 @@ public class SellerPage2 extends javax.swing.JFrame {
         jLabel14 = new javax.swing.JLabel();
         jTextField4 = new javax.swing.JTextField();
         jButton6 = new javax.swing.JButton();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        jTextField8 = new javax.swing.JTextField();
+        jLabel17 = new javax.swing.JLabel();
+        jTextField9 = new javax.swing.JTextField();
+        jLabel18 = new javax.swing.JLabel();
+        jTextField10 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -275,7 +283,7 @@ public class SellerPage2 extends javax.swing.JFrame {
                             .addComponent(jLabel4)
                             .addComponent(jLabel11)
                             .addComponent(jLabel12))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 94, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel6Layout.setVerticalGroup(
@@ -291,11 +299,11 @@ public class SellerPage2 extends javax.swing.JFrame {
                 .addComponent(jLabel11)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel12)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(258, Short.MAX_VALUE))
+                .addContainerGap(267, Short.MAX_VALUE))
         );
 
         jLabel5.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 15)); // NOI18N
@@ -314,17 +322,8 @@ public class SellerPage2 extends javax.swing.JFrame {
         jTable1.setGridColor(new java.awt.Color(204, 204, 255));
         jScrollPane1.setViewportView(jTable1);
 
-        jButton4.setBackground(new java.awt.Color(51, 49, 60));
-        jButton4.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 12)); // NOI18N
-        jButton4.setText("Update Stock");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
-            }
-        });
-
         jLabel6.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 15)); // NOI18N
-        jLabel6.setText("Add Product");
+        jLabel6.setText("Update Product");
 
         jLabel7.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 12)); // NOI18N
         jLabel7.setText("Product ID");
@@ -342,11 +341,6 @@ public class SellerPage2 extends javax.swing.JFrame {
 
         jTextField3.setBackground(new java.awt.Color(204, 204, 255));
         jTextField3.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 12)); // NOI18N
-        jTextField3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField3ActionPerformed(evt);
-            }
-        });
 
         jLabel14.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 12)); // NOI18N
         jLabel14.setText("Quantity");
@@ -356,7 +350,8 @@ public class SellerPage2 extends javax.swing.JFrame {
 
         jButton6.setBackground(new java.awt.Color(51, 49, 60));
         jButton6.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 12)); // NOI18N
-        jButton6.setText("Add");
+        jButton6.setForeground(new java.awt.Color(255, 255, 255));
+        jButton6.setText("Update");
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton6ActionPerformed(evt);
@@ -402,6 +397,30 @@ public class SellerPage2 extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        jLabel15.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 15)); // NOI18N
+        jLabel15.setText("Account Summary");
+
+        jLabel16.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 12)); // NOI18N
+        jLabel16.setText("Income:");
+
+        jTextField8.setEditable(false);
+        jTextField8.setBackground(new java.awt.Color(204, 204, 255));
+        jTextField8.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 12)); // NOI18N
+
+        jLabel17.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 12)); // NOI18N
+        jLabel17.setText("Expenditure:");
+
+        jTextField9.setEditable(false);
+        jTextField9.setBackground(new java.awt.Color(204, 204, 255));
+        jTextField9.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 12)); // NOI18N
+
+        jLabel18.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 12)); // NOI18N
+        jLabel18.setText("Profit:");
+
+        jTextField10.setEditable(false);
+        jTextField10.setBackground(new java.awt.Color(204, 204, 255));
+        jTextField10.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 12)); // NOI18N
+
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
@@ -415,11 +434,24 @@ public class SellerPage2 extends javax.swing.JFrame {
                     .addGroup(jPanel7Layout.createSequentialGroup()
                         .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(418, 418, 418))
+                    .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel7Layout.createSequentialGroup()
-                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 572, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(47, Short.MAX_VALUE))
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 572, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel7Layout.createSequentialGroup()
+                                .addGap(16, 16, 16)
+                                .addComponent(jLabel16)
+                                .addGap(18, 18, 18)
+                                .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel17)
+                                .addGap(18, 18, 18)
+                                .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel18)
+                                .addGap(18, 18, 18)
+                                .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel7Layout.createSequentialGroup()
                         .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))))
@@ -431,12 +463,20 @@ public class SellerPage2 extends javax.swing.JFrame {
                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jButton4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(54, 54, 54)
                 .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(29, 29, 29)
+                .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel16)
+                    .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel17)
+                    .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel18)
+                    .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -459,7 +499,7 @@ public class SellerPage2 extends javax.swing.JFrame {
                     .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 23, Short.MAX_VALUE))))
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -483,30 +523,6 @@ public class SellerPage2 extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public void stockDetails(){
-        String query="Select * from seller where id='"+Session.curr_user()+"'";
-        ResultSet rs=SqlQ.retrive(query);
-        DefaultTableModel model = (DefaultTableModel)
-        jTable1.getModel();
-        String query2="select p_id,name,cost,quantity from product where s_id='"+Session.curr_user()+"';";
-        ResultSet rs2= SqlQ.retrive(query);
-        Object rowdata[] = new Object[4];
-        try{
-        if(rs.next()){
-            jTextField1.setText(rs.getString("name"));
-            jTextField6.setText(rs.getString("phone"));
-            jTextField7.setText(rs.getString("email"));
-        }
-        while(rs2.next()){
-            rowdata[0]=rs2.getString("p_id");
-            rowdata[1]=rs2.getString("name");
-            rowdata[2]=rs2.getString("cost");
-            rowdata[3]=rs2.getString("quantity");
-            model.addRow(rowdata);
-        }
-        }
-        catch(Exception e){System.out.print(e);}
-    }
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
        
     }//GEN-LAST:event_jButton3ActionPerformed
@@ -515,12 +531,25 @@ public class SellerPage2 extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
-
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+      int pid=Integer.parseInt(jTextField2.getText());
+      float cost=Float.parseFloat(jTextField3.getText());
+      int q=Integer.parseInt(jTextField4.getText());
+      ResultSet rs = SqlQ.retrive("select quantity from product where P_ID='" + pid + "';");
+        int count_pid = 0;
+        try {
+            if (rs.next()) {
+                count_pid = Integer.parseInt(rs.getString("quantity"));
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+
+        }
+        q=q+count_pid;
+      SqlQ.updateq("update product set quantity='"+q+"' where P_ID='" + pid + "';");
+      SqlQ.updateq("update product set cost='"+cost+"' where P_ID='" + pid + "';");
+            new SellerPage2().setVisible(true);
+            this.dispose();
         
     }//GEN-LAST:event_jButton6ActionPerformed
 
@@ -533,10 +562,6 @@ public class SellerPage2 extends javax.swing.JFrame {
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField2ActionPerformed
-
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -576,7 +601,6 @@ public class SellerPage2 extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
@@ -584,6 +608,10 @@ public class SellerPage2 extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -603,10 +631,13 @@ public class SellerPage2 extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField10;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField7;
+    private javax.swing.JTextField jTextField8;
+    private javax.swing.JTextField jTextField9;
     // End of variables declaration//GEN-END:variables
 }

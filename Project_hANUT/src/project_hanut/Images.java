@@ -1,14 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package project_hanut;
-
-/**
- *
- * @author raghav
- */
 public class Images {
     public static String getImgID(int pid){
         switch(pid){
@@ -52,10 +42,8 @@ public class Images {
             case 800038:return "PicturesLarge/hf06_Vase.jpeg";  
             case 800039:return "PicturesLarge/hf07_Fountain.jpeg";  
             case 800040:return "PicturesLarge/hf08_lamp.jpeg";  
-            default:return null;
-            
+            default:return null;       
         }
-    }
-    
+    }    
 }
 
