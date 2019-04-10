@@ -33,7 +33,7 @@ public class ManufacturerPage extends javax.swing.JFrame {
         ResultSet rs = SqlQ.retrive(query);
         int q = 0;
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-        String query2 = "select p_id,name,cost,quantity as qty from product natural join man_pro where M_ID='" + Session.curr_user() + "';";
+        String query2 = "select p_id,name,cost,quantity as qty from product where P_ID in (select P_ID from man_pro where M_ID='" + Session.curr_user() + "');";
         ResultSet rs2 = SqlQ.retrive(query2);
         try {
 

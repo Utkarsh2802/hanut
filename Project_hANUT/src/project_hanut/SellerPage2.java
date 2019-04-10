@@ -5,7 +5,9 @@
  */
 package project_hanut;
 
+import java.sql.CallableStatement;
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -538,7 +540,18 @@ public class SellerPage2 extends javax.swing.JFrame {
         int pid = Integer.parseInt(jTextField2.getText());
         float cost = Float.parseFloat(jTextField3.getText());
         int q = Integer.parseInt(jTextField4.getText());
-        ResultSet rs = SqlQ.retrive("select quantity from product where P_ID='" + pid + "';");
+         try{
+                String query="call updateseller('"+pid+"','"+q+"','"+cost+"')";
+                CallableStatement cstm=null;
+                Connection conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/hanut", "root", "student123");
+                cstm = conn.prepareCall (query);
+                cstm.executeQuery();
+                }
+                catch(Exception e)
+                        {
+                            System.out.println(e);
+                        }
+        /*ResultSet rs = SqlQ.retrive("select quantity from product where P_ID='" + pid + "';");
         int count_pid = 0;
         try {
             if (rs.next()) {
@@ -550,7 +563,7 @@ public class SellerPage2 extends javax.swing.JFrame {
         }
         q = q + count_pid;
         SqlQ.updateq("update product set quantity='" + q + "' where P_ID='" + pid + "';");
-        SqlQ.updateq("update product set cost='" + cost + "' where P_ID='" + pid + "';");
+        SqlQ.updateq("update product set cost='" + cost + "' where P_ID='" + pid + "';");*/
         new SellerPage2().setVisible(true);
         this.dispose();
 

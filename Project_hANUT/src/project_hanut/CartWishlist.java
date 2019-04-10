@@ -7,6 +7,9 @@ package project_hanut;
 
 import java.awt.*;
 import java.awt.image.*;
+import java.sql.CallableStatement;
+import java.sql.Connection;
+import java.sql.DriverManager;
 import javax.swing.*;
 import javax.imageio.ImageIO;
 import java.sql.ResultSet;
@@ -930,14 +933,27 @@ public class CartWishlist extends javax.swing.JFrame {
                 float a=(float)q*cost;
                 income=income+a;
                 profit=profit+a;
-                String query = "insert into orders(cust_ID,amount) values('" + Session.curr_user() + "','" + a+ "');";
+                int cid=Session.curr_user();
+                try{
+                      String query="call buy('"+cid+"','"+a+"','"+income+"','"+profit+"','"+q+"','"+pid+"','"+sid+"')";
+                CallableStatement cstm=null;
+                Connection conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/hanut", "root", "student123");
+                cstm = conn.prepareCall (query);
+                cstm.executeQuery();
+                }
+                catch(Exception e)
+                        {
+                            System.out.println(e);
+                        }
+                
+                /*String query = "insert into orders(cust_ID,amount) values('" + Session.curr_user() + "','" + a+ "');";
                 SqlQ.updateq(query);
                 SqlQ.updateq("update S_ACC set income='"+income+"' where S_ID='" + sid + "';");
                 SqlQ.updateq("update S_ACC set profit='"+profit+"' where S_ID='" + sid + "';");
                 System.out.println("Error");
                 
                 SqlQ.updateq("update product set quantity='"+qty+"' where P_ID='" + pid + "';");
-                SqlQ.updateq("delete from cart where cust_ID='" + Session.curr_user() + "' and P_ID='" + pid + "';");
+                SqlQ.updateq("delete from cart where cust_ID='" + Session.curr_user() + "' and P_ID='" + pid + "';");*/
                 ResultSet rs4 = SqlQ.retrive("select max(order_ID) as m from orders group by cust_ID having cust_ID='" + Session.curr_user() + "';");
                 int oid = 0;
                 try {

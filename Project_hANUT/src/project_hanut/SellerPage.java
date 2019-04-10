@@ -19,7 +19,7 @@ public class SellerPage extends javax.swing.JFrame {
         String query = "Select * from seller where id='" + Session.curr_user() + "'";
         ResultSet rs = SqlQ.retrive(query);
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-        String query2 = "select order_id,p_id,name,qty,status from items natural join delivery natural join product where s_id='" + Session.curr_user() + "';";
+        String query2 = "with prod(pid,n) as (select P_ID,name from product where S_ID='" + Session.curr_user() + "') select order_id,P_ID,n,qty,status from items natural join delivery natural join prod where P_ID=pid;";
         ResultSet rs2 = SqlQ.retrive(query2);
         Object rowdata[] = new Object[5];
         try {
@@ -31,7 +31,7 @@ public class SellerPage extends javax.swing.JFrame {
             while (rs2.next()) {
                 rowdata[0] = rs2.getString("order_id");
                 rowdata[1] = rs2.getString("p_id");
-                rowdata[2] = rs2.getString("name");
+                rowdata[2] = rs2.getString("n");
                 rowdata[3] = rs2.getString("qty");
                 rowdata[4] = rs2.getString("status");
                 model.addRow(rowdata);
