@@ -212,7 +212,7 @@ public class LoginPage extends javax.swing.JFrame {
                         break;
                     case 'S':new SellerPage().setVisible(true);
                         break;
-                    case 'M':new SellerPage().setVisible(true);//manufacturer page->new ManufacturerPage().setVisible(true);
+                    case 'M':new ManufacturerPage().setVisible(true);//manufacturer page->new ManufacturerPage().setVisible(true);
                         break;
                 }
                 this.dispose();
