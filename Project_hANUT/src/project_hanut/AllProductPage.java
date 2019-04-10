@@ -266,35 +266,36 @@ public class AllProductPage extends javax.swing.JFrame {
         jButton3.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 14)); // NOI18N
         jButton3.setForeground(new java.awt.Color(51, 49, 60));
         jButton3.setText("LogOut");
-        jButton3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jButton3.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
             }
         });
 
-        jComboBox1.setBackground(new java.awt.Color(99, 96, 112));
+        jComboBox1.setBackground(new java.awt.Color(249, 249, 248));
         jComboBox1.setEditable(true);
         jComboBox1.setForeground(new java.awt.Color(255, 255, 255));
         jComboBox1.setMaximumRowCount(5);
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Master of the Game", "Divergent", "Sapiens", "Wing Of Fire", "Half Blood Prince", "Notebook", "Lightning Thief", "Digital Fortress", "Watch", "Bag", "Purse", "Cuffs", "Wallet", "Hair Band", "Necklace", "Ring", "Earphones", "Headphones", "Laptop", "Phone", "RAM", "Mouse", "Keyboard", "Speaker", "Women's Jacket", "Mens' Jacket", "TShirt", "Womens' Top", "Mens' Pants", "Palazzo", "Kurti", "Dress", "Sofa", "Bed", "Dining Table", "Study Table", "Cabinets", "Vase", "Fountain", "Lamp", " " }));
+        jComboBox1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         jComboBox1.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 jComboBox1ItemStateChanged(evt);
             }
         });
         jComboBox1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jComboBox1MouseClicked(evt);
-            }
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 jComboBox1MousePressed(evt);
             }
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jComboBox1MouseClicked(evt);
+            }
         });
 
-        jButton1.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
-        jButton1.setText("Surprize Me");
-        jButton1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jButton1.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
+        jButton1.setText("Search");
+        jButton1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);

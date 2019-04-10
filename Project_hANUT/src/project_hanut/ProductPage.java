@@ -159,7 +159,7 @@ public class ProductPage extends javax.swing.JFrame {
         jButton3.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 14)); // NOI18N
         jButton3.setForeground(new java.awt.Color(51, 49, 60));
         jButton3.setText("LogOut");
-        jButton3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jButton3.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
@@ -169,7 +169,7 @@ public class ProductPage extends javax.swing.JFrame {
         jButton5.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 14)); // NOI18N
         jButton5.setForeground(new java.awt.Color(51, 49, 60));
         jButton5.setText("Home");
-        jButton5.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jButton5.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton5ActionPerformed(evt);
