@@ -945,7 +945,7 @@ public class CartWishlist extends javax.swing.JFrame {
                 try{
                       String query="call buy('"+cid+"','"+a+"','"+income+"','"+profit+"','"+q+"','"+pid+"','"+sid+"')";
                 CallableStatement cstm=null;
-                Connection conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/hanut", "root", "khator");
+                Connection conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/hanut", "root", "student123");
                 cstm = conn.prepareCall (query);
                 cstm.executeQuery();
                 }

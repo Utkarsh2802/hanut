@@ -206,16 +206,19 @@ public class CustomerCart extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
         jPanel12 = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
         jPanel13 = new javax.swing.JPanel();
         jLabel17 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
+        jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -437,6 +440,13 @@ public class CustomerCart extends javax.swing.JFrame {
 
         jLabel10.setText("jLabel10");
 
+        jButton1.setText("Delete");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
         jPanel11.setLayout(jPanel11Layout);
         jPanel11Layout.setHorizontalGroup(
@@ -445,10 +455,14 @@ public class CustomerCart extends javax.swing.JFrame {
                 .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
+                    .addGroup(jPanel11Layout.createSequentialGroup()
+                        .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton1)
+                        .addGap(18, 18, 18))
                     .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(38, Short.MAX_VALUE))
         );
         jPanel11Layout.setVerticalGroup(
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -458,7 +472,9 @@ public class CustomerCart extends javax.swing.JFrame {
                 .addGap(1, 1, 1)
                 .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1)))
             .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
@@ -472,6 +488,13 @@ public class CustomerCart extends javax.swing.JFrame {
 
         jLabel16.setText("jLabel10");
 
+        jButton2.setText("Delete");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
         jPanel12.setLayout(jPanel12Layout);
         jPanel12Layout.setHorizontalGroup(
@@ -483,6 +506,8 @@ public class CustomerCart extends javax.swing.JFrame {
                     .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
                     .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton2)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel12Layout.setVerticalGroup(
@@ -493,7 +518,9 @@ public class CustomerCart extends javax.swing.JFrame {
                 .addGap(1, 1, 1)
                 .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton2)))
             .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
@@ -507,6 +534,13 @@ public class CustomerCart extends javax.swing.JFrame {
 
         jLabel20.setText("jLabel10");
 
+        jButton3.setText("Delete");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel13Layout = new javax.swing.GroupLayout(jPanel13);
         jPanel13.setLayout(jPanel13Layout);
         jPanel13Layout.setHorizontalGroup(
@@ -518,6 +552,8 @@ public class CustomerCart extends javax.swing.JFrame {
                     .addComponent(jLabel19, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
                     .addComponent(jLabel18, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton3)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel13Layout.setVerticalGroup(
@@ -528,7 +564,9 @@ public class CustomerCart extends javax.swing.JFrame {
                 .addGap(1, 1, 1)
                 .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton3)))
             .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
@@ -633,6 +671,120 @@ jLabel22.setFont(new Font("TakaoPGothic", Font.ITALIC, 18));
         // TODO add your handling code here:
     }//GEN-LAST:event_jLabel22MouseEntered
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        String P_name=jLabel5.getText();
+        ResultSet rs=SqlQ.retrive("select P_ID,order_ID,amount,S_ID from orders natural join items natural join product where cust_ID='"+Session.curr_user()+"' and name='"+P_name+"';");
+        int pid=0;
+        int oid=0;
+        float amt=0;
+        int sid=0;
+        
+              try{
+        if(rs.next()){
+            pid=Integer.parseInt(rs.getString("P_ID"));
+            oid=Integer.parseInt(rs.getString("order_ID"));
+            sid=Integer.parseInt(rs.getString("S_ID"));
+            amt=Float.parseFloat(rs.getString("amount"));
+        }
+       }
+       catch(Exception e)
+       {
+           System.out.println(e+"hello");
+           
+       }
+        
+        SqlQ.updateq("delete from delivery where order_ID='"+oid+"' and P_ID='"+pid+"';");
+        SqlQ.updateq("commit");
+        SqlQ.updateq("delete from items where order_ID='"+oid+"' and P_ID='"+pid+"';");
+        SqlQ.updateq("commit");
+        SqlQ.updateq("delete from orders where order_ID='"+oid+"';");
+        SqlQ.updateq("commit");
+        SqlQ.updateq("update S_ACC set income=income+'"+amt+"' where S_ID='"+sid+"';");
+        SqlQ.updateq("commit");
+        SqlQ.updateq("update S_ACC set profit=profit+'"+amt+"' where S_ID='"+sid+"';");
+        SqlQ.updateq("commit");
+        CustomerCart c = new CustomerCart();
+        c.setVisible(true);
+        this.dispose();
+                
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+
+        String P_name=jLabel13.getText();
+        ResultSet rs=SqlQ.retrive("select P_ID,order_ID,amount,S_ID from orders natural join items natural join product where cust_ID='"+Session.curr_user()+"' and name='"+P_name+"';");
+        int pid=0;
+        int oid=0;
+        float amt=0;
+        int sid=0;
+        
+              try{
+        if(rs.next()){
+            pid=Integer.parseInt(rs.getString("P_ID"));
+            oid=Integer.parseInt(rs.getString("order_ID"));
+            sid=Integer.parseInt(rs.getString("S_ID"));
+            amt=Float.parseFloat(rs.getString("amount"));
+        }
+       }
+       catch(Exception e)
+       {
+           System.out.println(e+"hello");
+           
+       }
+        
+        SqlQ.updateq("delete from delivery where order_ID='"+oid+"' and P_ID='"+pid+"';");
+        SqlQ.updateq("commit");
+        SqlQ.updateq("delete from items where order_ID='"+oid+"' and P_ID='"+pid+"';");
+        SqlQ.updateq("commit");
+        SqlQ.updateq("delete from orders where order_ID='"+oid+"';");
+        SqlQ.updateq("commit");
+        SqlQ.updateq("update S_ACC set income=income+'"+amt+"' where S_ID='"+sid+"';");
+        SqlQ.updateq("commit");
+        SqlQ.updateq("update S_ACC set profit=profit+'"+amt+"' where S_ID='"+sid+"';");
+        SqlQ.updateq("commit");
+        CustomerCart c = new CustomerCart();
+        c.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+
+        String P_name=jLabel17.getText();
+        ResultSet rs=SqlQ.retrive("select P_ID,order_ID,amount,S_ID from orders natural join items natural join product where cust_ID='"+Session.curr_user()+"' and name='"+P_name+"';");
+        int pid=0;
+        int oid=0;
+        float amt=0;
+        int sid=0;
+        
+              try{
+        if(rs.next()){
+            pid=Integer.parseInt(rs.getString("P_ID"));
+            oid=Integer.parseInt(rs.getString("order_ID"));
+            sid=Integer.parseInt(rs.getString("S_ID"));
+            amt=Float.parseFloat(rs.getString("amount"));
+        }
+       }
+       catch(Exception e)
+       {
+           System.out.println(e+"hello");
+           
+       }
+        
+        SqlQ.updateq("delete from delivery where order_ID='"+oid+"' and P_ID='"+pid+"';");
+        SqlQ.updateq("commit");
+        SqlQ.updateq("delete from items where order_ID='"+oid+"' and P_ID='"+pid+"';");
+        SqlQ.updateq("commit");
+        SqlQ.updateq("delete from orders where order_ID='"+oid+"';");
+        SqlQ.updateq("commit");
+        SqlQ.updateq("update S_ACC set income=income+'"+amt+"' where S_ID='"+sid+"';");
+        SqlQ.updateq("commit");
+        SqlQ.updateq("update S_ACC set profit=profit+'"+amt+"' where S_ID='"+sid+"';");
+        SqlQ.updateq("commit");
+        CustomerCart c = new CustomerCart();
+        c.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton3ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -672,6 +824,9 @@ jLabel22.setFont(new Font("TakaoPGothic", Font.ITALIC, 18));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
