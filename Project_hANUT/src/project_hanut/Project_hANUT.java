@@ -6,7 +6,7 @@ public class Project_hANUT {
         ResultSet rs = null;
         Connection conn = null;
         try {
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/hanut","root","dastan");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/hanut","root","student123");
             if(conn!=null)
                 System.out.print("connected");
         }
