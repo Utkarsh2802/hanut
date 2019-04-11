@@ -2,8 +2,8 @@ package project_hanut;
 
 public class Session {
 
-    private static char userType='S';
-    private static int currUser=8300013;
+    private static char userType;
+    private static int currUser;
 
     public static void logined(String id) {
         char c[] = id.toCharArray();
